@@ -1,3 +1,6 @@
 [
-	{"Rank":1, "Name":"Ash", "Class":"Hunter", "Subclass":"Fighter", "Weapons":"Sword", "Time":"1:00", "Score":"2390", "Youtube":"youtube.com/test"}
+	{"Rank":1, "Name":"Ash", "Class":"Hunter", "Subclass":"Fighter", "Weapons":"Sword", "Time":"1:00", "Score":"2390", "Youtube":"youtube.com/test"},
+	{"Rank":2, "Name":"Ash", "Class":"Hunter", "Subclass":"Fighter", "Weapons":"Sword", "Time":"1:00", "Score":"2390", "Youtube":"youtube.com/test"},
+	{"Rank":3, "Name":"Ash", "Class":"Hunter", "Subclass":"Fighter", "Weapons":"Sword", "Time":"1:00", "Score":"2390", "Youtube":"youtube.com/test"},
+	{"Rank":4, "Name":"Ash", "Class":"Hunter", "Subclass":"Fighter", "Weapons":"Sword", "Time":"1:00", "Score":"2390", "Youtube":"youtube.com/test"}
 ]
