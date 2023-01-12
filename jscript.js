@@ -1,109 +1,219 @@
-<head>
-	<title>PSO2NGS Unofficial Leaderboards</title>
-	<link rel="stylesheet" href="style.css">
-</head>
+const scorebody = document.querySelector("#ranking > tbody");
 
-<body>
-	<div class="informational">
-		This is a very barebones PSO2NGS leaderboard made by SliWhist
-		<br>
-		<br>It's held together by ducktape, glue, and tears.
-		<br>
-		<br>
-		<br>Click a category to enter a horribly nested set of subcategories to see scores.
-		<br>
-		<br>A proper score submission method is still in progress.
-		<br>
-		<br>
-		<br>Also, this was put together using copy-paste from W3Schools, research from various stackoverflow questions, and outright gutted parts of multiple codepen.io projects.
-		<br>
-		<br>Basically, it could break at any time, is a crediting nightmare, and will be redone when I'm less tired.
-	</div>
-	<div>
-		<section id="scoreboard">
-		  
-			<div class="category">
-				<button class="catlink" onclick="changeCategory(event, 'purple')">Purple Triggers</button>
-				<button class="catlink" onclick="changeCategory(event, 'ordinal')">Ordinal Tower</button>
-			<!--  <button class="tablinks" onclick="changeCategory(event, 'pyramid')">Trinitas (Pyramid)</button>
-			  <button class="tablinks" onclick="changeCategory(event, 'strike')">Cannonball Strike</button>
-			  <button class="tablinks" onclick="changeCategory(event, 'cocoons')">Cocoons & Towers</button>
-			  <button class="tablinks" onclick="changeCategory(event, 'fieldraces')">Field Races</button> -->
-			</div>
-			  
-			<div id="ordinal" class="category-content">
-				<div class="placeholderText">
-					Soon :)
-				</div>
-			</div>
-			  
-			<div id="purple" class="category-content">
-			  
-				<div class="subcategory">
-					<button class="subcatlink" onclick="changeSubCategory(event, 'purp-ael')">Aelio Devastators (Rank 3)</button>
-					<button class="subcatlink" onclick="changeSubCategory(event, 'purp-ret')">Retem Devastators (Rank 3)</button>
-					<button class="subcatlink" onclick="changeSubCategory(event, 'purp-kvar')">Kvaris Devastators (Rank 2)</button>
-					<button class="subcatlink" onclick="changeSubCategory(event, 'purp-stia')">Stia Devastators</button>
-				</div>
+function loadScores (scoreID) {
+  const request = new XMLHttpRequest();
+  var boardref;
+  
+  	boardref = document.getElementsByClassName("score-ranking")[0];
+	boardref.style.visibility = "visible";
+  
+	switch (scoreID) {
+		// Aelio
+		case "purp-ael-1":
+			//fetch('scores/ael_1p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
+			break;
+		case "purp-ael-2":
+			//fetch('scores/ael_2p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
+			break;
+		case "purp-ael-3":
+			//fetch('scores/ael_3p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
+			break;
+		case "purp-ael-4":
+			//fetch('scores/ael_4p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
+			break;
+		// Retem
+		case "purp-ret-1":
+			//fetch('scores/ret_1p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
+			break;
+		case "purp-ret-2":
+			//fetch('scores/ret_2p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
+			break;
+		case "purp-ret-3":
+			//fetch('scores/ret_3p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
+			break;
+		case "purp-ret-4":
+			//fetch('scores/ret_4p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
+			break;
+		// Kvaris
+		case "purp-kvar-1":
+			//fetch('scores/kvar_1p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
+			break;
+		case "purp-kvar-2":
+			//fetch('scores/kvar_2p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
+			break;
+		case "purp-kvar-3":
+			//fetch('scores/kvar_3p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
+			break;
+		case "purp-kvar-4":
+			//fetch('scores/kvar_4p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
+			break;
+		// Stia
+		case "purp-stia-1":
+			//fetch('scores/stia_1p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
+			break;
+		case "purp-stia-2":
+			//fetch('scores/stia_2p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
+			break;
+		case "purp-stia-3":
+			//fetch('scores/stia_3p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
+			break;
+		case "purp-stia-4":
+			//fetch('scores/stia_4p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
+			break;
+			
+	}
+	
+}
 
-				<div id="purp-ael" class="subcategory-content">
-					<div class="partysize">
-						<button class="partylink" onclick="changeBracket(event, 'purp-ael-1')">Solo</button>
-						<button class="partylink" onclick="changeBracket(event, 'purp-ael-2')">Duos (2 Players)</button>
-						<button class="partylink" onclick="changeBracket(event, 'purp-ael-3')">Trios (3 Players)</button>
-						<button class="partylink" onclick="changeBracket(event, 'purp-ael-4')">Full Party (4 Players)</button>
-					</div>
-				  
-				</div>
-				  
-				<div id="purp-ret" class="subcategory-content">
-					<div class="partysize">
-						<button class="partylink" onclick="changeBracket(event, 'purp-ret-1')">Solo</button>
-						<button class="partylink" onclick="changeBracket(event, 'purp-ret-2')">Duos (2 Players)</button>
-						<button class="partylink" onclick="changeBracket(event, 'purp-ret-3')">Trios (3 Players)</button>
-						<button class="partylink" onclick="changeBracket(event, 'purp-ret-4')">Full Party (4 Players)</button>
-					</div>
-				</div>
-				  
-				<div id="purp-kvar" class="subcategory-content">
-					<div class="partysize">
-						<button class="partylink" onclick="changeBracket(event, 'purp-kvar-1')">Solo</button>
-						<button class="partylink" onclick="changeBracket(event, 'purp-kvar-2')">Duos (2 Players)</button>
-						<button class="partylink" onclick="changeBracket(event, 'purp-kvar-3')">Trios (3 Players)</button>
-						<button class="partylink" onclick="changeBracket(event, 'purp-kvar-4')">Full Party (4 Players)</button>
-					</div>
-				</div>
-				   
-				<div id="purp-stia" class="subcategory-content">
-					<div class="partysize">
-						<button class="partylink" onclick="changeBracket(event, 'purp-stia-1')">Solo</button>
-						<button class="partylink" onclick="changeBracket(event, 'purp-stia-2')">Duos (2 Players)</button>
-						<button class="partylink" onclick="changeBracket(event, 'purp-stia-3')">Trios (3 Players)</button>
-						<button class="partylink" onclick="changeBracket(event, 'purp-stia-4')">Full Party (4 Players)</button>
-					</div>
-				</div>
+function populateRankings (json) {
+    cleanupScore();
+    // Populate Leaderboard
+    json.forEach((row) => {
+        const tr = document.createElement("tr");
 
-				<table id="ranking" class="score-ranking" width=100%>
-					<thead>
-						<tr>
-							<th>Rank</th>
-							<th>Player</th>
-							<th>Main Class</th>
-							<th>Subclass</th>
-							<th class="CellWithComment">Weapon(s)<span class="CellComment">These are the weapons that were in use on the run shown.</span></th>
-							<th class="CellWithComment">Game Time<span class="CellComment">Displayed in MM:SS. Game Time is the final time as shown by the game.</span></th>
-							<th>Score</th>
-							<th>Video Link</th>
-						</tr>
-					</thead>
-					<tbody>
-					</tbody>
-				</table>
-			  
-			</div>
-		</section>
+        Object.values(row).forEach((cell, index) => {
+			if (index == 7) {
+				if (cell == "") {
+					const td = document.createElement("td");
+		            td.textContent = cell;
+		            tr.appendChild(td);
+				}
+				else {
+					const td = document.createElement("td");
+					var link = document.createElement("a");
 
-	</div>
-</body>
+					link.setAttribute("href", cell);
+					link.textContent = "Link";
+		            td.textContent = "";
+		            tr.appendChild(td);
+					td.appendChild(link);
+				}
+			}
+			else {
+				const td = document.createElement("td");
+	            td.textContent = cell;
+	            tr.appendChild(td);
+			}
+        });
 
-<script src="jscript.js"></script>
+        scorebody.appendChild(tr);
+    });
+}
+
+function changeCategory(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("category-content");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("catlink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+function cleanupScore() {
+    while (scorebody.firstChild) {
+        scorebody.removeChild(scorebody.firstChild);
+    }
+}
+
+function changeSubCategory(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks, boardref;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("subcategory-content");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+	boardref = document.getElementsByClassName("score-ranking")[0];
+	boardref.style.visibility = "hidden";
+	
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("subcatlink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  
+  tablinks = document.getElementsByClassName("partylink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+  
+function changeBracket(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+	
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("partylink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  evt.currentTarget.className += " active";
+  
+  loadScores(cityName);
+}
