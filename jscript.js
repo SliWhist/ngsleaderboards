@@ -10,68 +10,107 @@ function loadScores (scoreID) {
 	switch (scoreID) {
 		// Aelio
 		case "purp-ael-1":
-			request.open("get", "scores/testScore.js");
+			//fetch('scores/ael_1p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
 			break;
 		case "purp-ael-2":
-			request.open("get", "scores/ael_2p.js");
+			//fetch('scores/ael_2p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
 			break;
 		case "purp-ael-3":
-			request.open("get", "scores/ael_3p.js");
+			//fetch('scores/ael_3p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
 			break;
 		case "purp-ael-4":
-			request.open("get", "scores/ael_4p.js");
+			//fetch('scores/ael_4p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
 			break;
 		// Retem
 		case "purp-ret-1":
-			request.open("get", "scores/ret_1p.js");
+			//fetch('scores/ret_1p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
 			break;
 		case "purp-ret-2":
-			request.open("get", "scores/ret_2p.js");
+			//fetch('scores/ret_2p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
 			break;
 		case "purp-ret-3":
-			request.open("get", "scores/ret_3p.js");
+			//fetch('scores/ret_3p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
 			break;
 		case "purp-ret-4":
-			request.open("get", "scores/ret_4p.js");
+			//fetch('scores/ret_4p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
 			break;
 		// Kvaris
 		case "purp-kvar-1":
-			request.open("get", "scores/kvar_1p.js");
+			//fetch('scores/kvar_1p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
 			break;
 		case "purp-kvar-2":
-			request.open("get", "scores/kvar_2p.js");
+			//fetch('scores/kvar_2p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
 			break;
 		case "purp-kvar-3":
-			request.open("get", "scores/kvar_3p.js");
+			//fetch('scores/kvar_3p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
 			break;
 		case "purp-kvar-4":
-			request.open("get", "scores/kvar_4p.js");
+			//fetch('scores/kvar_4p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
 			break;
 		// Stia
 		case "purp-stia-1":
-			request.open("get", "scores/stia_1p.js");
+			//fetch('scores/stia_1p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
 			break;
 		case "purp-stia-2":
-			request.open("get", "scores/stia_2p.js");
+			//fetch('scores/stia_2p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
 			break;
 		case "purp-stia-3":
-			request.open("get", "scores/stia_3p.js");
+			//fetch('scores/stia_3p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
 			break;
 		case "purp-stia-4":
-			request.open("get", "scores/stia_4p.js");
+			//fetch('scores/stia_4p.json')
+			fetch('scores/noScore.json')
+				.then((response) => response.json())
+				.then((data) => populateRankings(data));
 			break;
 			
 	}
 	
-	request.onload = () => {
-		try {
-			const json = JSON.parse(request.responseText);
-			populateRankings(json);
-		} catch (e) {
-			console.warn("Could not load Player Rankings! :(");
-		}
-	};
-	request.send();
 }
 
 function populateRankings (json) {
@@ -80,10 +119,29 @@ function populateRankings (json) {
     json.forEach((row) => {
         const tr = document.createElement("tr");
 
-        row.forEach((cell) => {
-            const td = document.createElement("td");
-            td.textContent = cell;
-            tr.appendChild(td);
+        Object.values(row).forEach((cell, index) => {
+			if (index == 7) {
+				if (cell == "") {
+					const td = document.createElement("td");
+		            td.textContent = cell;
+		            tr.appendChild(td);
+				}
+				else {
+					const td = document.createElement("td");
+					var link = document.createElement("a");
+
+					link.setAttribute("href", cell);
+					link.textContent = "Link";
+		            td.textContent = "";
+		            tr.appendChild(td);
+					td.appendChild(link);
+				}
+			}
+			else {
+				const td = document.createElement("td");
+	            td.textContent = cell;
+	            tr.appendChild(td);
+			}
         });
 
         scorebody.appendChild(tr);
