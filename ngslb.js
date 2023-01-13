@@ -273,31 +273,31 @@ function generateClassImages(input) {
 	const input2 = input.toLowerCase();
 	switch (input2) {
 		case "hunter":
-			return '<img src="/img/class-hunter.png"> Hunter';
+			return '<img src="img/class-hunter.png"> Hunter';
 			break;
 		case "fighter":
-			return '<img src="/img/class-fighter.png"> Fighter';
+			return '<img src="img/class-fighter.png"> Fighter';
 			break;
 		case "ranger":
-			return '<img src="/img/class-ranger.png"> Ranger';
+			return '<img src="img/class-ranger.png"> Ranger';
 			break;
 		case "gunner":
-			return '<img src="/img/class-gunner.png"> Gunner';
+			return '<img src="img/class-gunner.png"> Gunner';
 			break;
 		case "force":
-			return '<img src="/img/class-force.png"> Force';
+			return '<img src="img/class-force.png"> Force';
 			break;
 		case "techter":
-			return '<img src="/img/class-techter.png"> Techter';
+			return '<img src="img/class-techter.png"> Techter';
 			break;
 		case "braver":
-			return '<img src="/img/class-braver.png"> Braver';
+			return '<img src="img/class-braver.png"> Braver';
 			break;
 		case "bouncer":
-			return '<img src="/img/class-bouncer.png"> Bouncer';
+			return '<img src="img/class-bouncer.png"> Bouncer';
 			break;
 		case "waker":
-			return '<img src="/img/class-waker.png"> Waker';
+			return '<img src="img/class-waker.png"> Waker';
 			break;
 		default:
 			return '';
