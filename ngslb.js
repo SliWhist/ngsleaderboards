@@ -24,6 +24,10 @@ function checkScoreOptions() {
 	scoretitle.innerHTML = output;
 	return scoreCode;
 }
+function getPartySize() {
+	var partySize = document.querySelector('input[name="partysize"]:checked').value;
+	return partySize;
+}
 
 // Time for the most sinful function in this file.
 
@@ -212,7 +216,10 @@ function loadScores () {
 
 function populateRankings (json) {
     cleanupScore();
-    // Populate Leaderboard
+	
+	var partySize = getPartySize();
+	
+    // Populate Leaderboard -- AKA the horrible elseif zone.
     json.forEach((row) => {
         const tr = document.createElement("tr");
 
@@ -238,23 +245,58 @@ function populateRankings (json) {
 					td.appendChild(link);
 				}
 			}
+			// If we're on player... This is for party splits.
+			else if (index == 1) {
+				if (partySize != "solo") {
+					const td = document.createElement("td");
+					td.innerHTML = splitPartyPlayers(cell);
+					tr.appendChild(td);
+				}
+				else if (partySize == "solo") {
+					const td = document.createElement("td");
+					td.textContent = cell;
+					tr.appendChild(td);
+				}
+				
+			}
 			// If we're on Main Class...
 			else if (index == 2) {
-				const td = document.createElement("td");
-	            td.innerHTML = generateClassImages(cell);
-	            tr.appendChild(td);
+				if (partySize != "solo") {
+					const td = document.createElement("td");
+					td.innerHTML = splitPartyClasses(cell);
+					tr.appendChild(td);
+				}
+				else if (partySize == "solo") {
+					const td = document.createElement("td");
+					td.innerHTML = generateClassImages(cell);
+					tr.appendChild(td);
+				}
 			}
 			// If we're on Sub Class...
 			else if (index == 3) {
-				const td = document.createElement("td");
-	            td.innerHTML = generateClassImages(cell);
-	            tr.appendChild(td);
+				if (partySize != "solo") {
+					const td = document.createElement("td");
+					td.innerHTML = splitPartyClasses(cell);
+					tr.appendChild(td);
+				}
+				else if (partySize == "solo") {
+					const td = document.createElement("td");
+					td.innerHTML = generateClassImages(cell);
+					tr.appendChild(td);
+				}
 			}
 			// If we're on Weapon(s)...
 			else if (index == 4) {
-				const td = document.createElement("td");
-	            td.innerHTML = generateWeaponImages(cell);
-	            tr.appendChild(td);
+				if (partySize != "solo") {
+					const td = document.createElement("td");
+					td.innerHTML = splitPartyWeapons(cell);
+					tr.appendChild(td);
+				}
+				else if (partySize == "solo") {
+					const td = document.createElement("td");
+					td.innerHTML = generateWeaponImages(cell);
+					tr.appendChild(td);
+				}
 			}
 			// Everywhere else.
 			else {
@@ -267,6 +309,36 @@ function populateRankings (json) {
         scorebody.appendChild(tr);
 		reloadTooltips();
     });
+}
+
+function splitPartyPlayers(input) {
+	var inputArray = input.split('@@@');
+	console.log(inputArray);
+	let result = '';
+	inputArray.forEach((string) => {
+		result = result + string + '<br>';
+	});
+	return result;
+}
+
+function splitPartyWeapons(input) {
+	var inputArray = input.split('@@@');
+	console.log(inputArray);
+	let result = '';
+	inputArray.forEach((string) => {
+		result = result + generateWeaponImages(string) + '<br>';
+	});
+	return result;
+}
+
+function splitPartyClasses(input) {
+	var inputArray = input.split('@@@');
+	console.log(inputArray);
+	let result = '';
+	inputArray.forEach((string) => {
+		result = result + generateClassImages(string) + '<br>';
+	});
+	return result;
 }
 
 function generateClassImages(input) {
