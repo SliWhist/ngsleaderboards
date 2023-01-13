@@ -75,6 +75,43 @@
 			</div>
 		</div>
 		
+		<div class="row my-2 align-content-center" id="buttons-classfilter">
+			<div class="col">
+				<p class="text-center text-light"><strong>Main Class Filters</strong></p>
+				<div class="btn-group d-flex" role="group" aria-label="Main Class Filters">
+					<input type="radio" class="btn-check" name="classFilter" value="none" id="classFilter1" autocomplete="off" onclick="loadScores();" checked>
+					<label class="btn btn-outline-secondary" for="classFilter1">All</label>
+
+					<input type="radio" class="btn-check" name="classFilter" value="hunter" id="classFilter2" autocomplete="off" onclick="loadScores();">
+					<label class="btn btn-outline-secondary" for="classFilter2"><img src="img/class-hunter.png"> Hunter</label>
+
+					<input type="radio" class="btn-check" name="classFilter" value="fighter" id="classFilter3" autocomplete="off" onclick="loadScores();">
+					<label class="btn btn-outline-secondary" for="classFilter3"><img src="img/class-fighter.png"> Fighter</label>
+					
+					<input type="radio" class="btn-check" name="classFilter" value="ranger" id="classFilter4" autocomplete="off" onclick="loadScores();">
+					<label class="btn btn-outline-secondary" for="classFilter4"><img src="img/class-ranger.png"> Ranger</label>
+					
+					<input type="radio" class="btn-check" name="classFilter" value="gunner" id="classFilter5" autocomplete="off" onclick="loadScores();">
+					<label class="btn btn-outline-secondary" for="classFilter5"><img src="img/class-gunner.png"> Gunner</label>
+					
+					<input type="radio" class="btn-check" name="classFilter" value="force" id="classFilter6" autocomplete="off" onclick="loadScores();">
+					<label class="btn btn-outline-secondary" for="classFilter6"><img src="img/class-force.png"> Force</label>
+					
+					<input type="radio" class="btn-check" name="classFilter" value="techter" id="classFilter7" autocomplete="off" onclick="loadScores();">
+					<label class="btn btn-outline-secondary" for="classFilter7"><img src="img/class-techter.png"> Techter</label>
+					
+					<input type="radio" class="btn-check" name="classFilter" value="braver" id="classFilter8" autocomplete="off" onclick="loadScores();">
+					<label class="btn btn-outline-secondary" for="classFilter8"><img src="img/class-braver.png"> Braver</label>
+					
+					<input type="radio" class="btn-check" name="classFilter" value="bouncer" id="classFilter9" autocomplete="off" onclick="loadScores();">
+					<label class="btn btn-outline-secondary" for="classFilter9"><img src="img/class-bouncer.png"> Bouncer</label>
+					
+					<input type="radio" class="btn-check" name="classFilter" value="waker" id="classFilter10" autocomplete="off" onclick="loadScores();">
+					<label class="btn btn-outline-secondary" for="classFilter10"><img src="img/class-waker.png"> Waker</label>
+				</div>
+			</div>
+		</div>
+		
 		<table class="table table-dark table-hover caption-top score-table-override" id="score-ranking">
 			<caption class="p-3 bg-dark bg-gradient text-white rounded-top"><strong></strong></caption>
 			<thead>

@@ -1,8 +1,11 @@
 var tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 var tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
+const scoretable = document.querySelector("#score-ranking");
 const scorebody = document.querySelector("#score-ranking > tbody");
 const scoretitle = document.querySelector("#score-ranking > caption > strong");
+const filterclassbuttons = document.querySelector("#buttons-classfilter");
+const filterallbutton = document.querySelector("#classFilter1");
 
 function reloadTooltips() {
 	tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
@@ -14,16 +17,36 @@ function checkScoreOptions() {
 	var partySize = document.querySelector('input[name="partysize"]:checked').value;
 	var primeCategory = document.querySelector('input[name="mainCategory"]:checked').value;
 	var patchNo = document.querySelector('input[name="gamepatch"]:checked').value;
+	var classNames = '';
+	var myCollapse = new bootstrap.Collapse(filterclassbuttons, { toggle: false } );
+	if (partySize != "solo") {
+		myCollapse.hide();
+		console.log("hide");
+	}
+	else if (partySize == "solo") {
+		console.log("SHOW");
+		myCollapse.show();
+		if (checkClassFilter() != "none") {
+			classNames = checkClassFilter();
+		}
+	}
 	console.log(mainCategory);
 	console.log(partySize);
 	console.log(primeCategory);
 	console.log(patchNo);
+	
 	var scoreCode = primeCategory+'-'+mainCategory+'-'+partySize+'-'+patchNo;
 	var categoryName = primeCategory+'-'+mainCategory;
-	var output = generateCategoryName(categoryName, partySize, patchNo);
+	var output = generateCategoryName(categoryName, partySize, patchNo, classNames);
 	scoretitle.innerHTML = output;
 	return scoreCode;
 }
+
+function checkClassFilter() {
+	var classFilter = document.querySelector('input[name="classFilter"]:checked').value;
+	return classFilter;
+}
+
 function getPartySize() {
 	var partySize = document.querySelector('input[name="partysize"]:checked').value;
 	return partySize;
@@ -31,8 +54,9 @@ function getPartySize() {
 
 // Time for the most sinful function in this file.
 
-function generateCategoryName(category,partysize,patch) {
+function generateCategoryName(category,partysize,patch,classFilter) {
 	
+	var mainClass = '';
 	// First, generate the category name. TODO: Scalability. Right now this is designed to do a switch case check, I could do a string split similar to the weapons generation to create a title.
 	switch(category) {
 		case "purple-ael":
@@ -70,8 +94,45 @@ function generateCategoryName(category,partysize,patch) {
 			break;
 	}
 	
+	// Whoops, one more. Build the class name, since other methods break things.
+	switch(classFilter) {
+		case "none":
+			mainClass = '';
+			break;
+		case "hunter":
+			mainClass = '<img src="img/class-hunter.png"> Hunters - ';
+			break;
+		case "fighter":
+			mainClass = '<img src="img/class-fighter.png"> Fighters - ';
+			break;
+		case "ranger":
+			mainClass = '<img src="img/class-ranger.png"> Rangers - ';
+			break;
+		case "gunner":
+			mainClass = '<img src="img/class-gunner.png"> Gunners - ';
+			break;
+		case "force":
+			mainClass = '<img src="img/class-force.png"> Forces - ';
+			break;
+		case "techter":
+			mainClass = '<img src="img/class-techter.png"> Techters - ';
+			break;
+		case "braver":
+			mainClass = '<img src="img/class-braver.png"> Bravers - ';
+			break;
+		case "bouncer":
+			mainClass = '<img src="img/class-bouncer.png"> Bouncers - ';
+			break;
+		case "waker":
+			mainClass = '<img src="img/class-waker.png"> Wakers - ';
+			break;
+		default:
+			mainClass = '';
+			break;
+	}
+	
 	// And now, put it all together.
-	result = categoryName + ' ' + partyName + ' </strong><small>' + patchNo + '</small><strong>';
+	result = mainClass + categoryName + ' ' + partyName + ' </strong><small>' + patchNo + '</small><strong>';
 	
 	console.log(result)
 	
@@ -82,7 +143,6 @@ function loadScores () {
 	
 	var boardref;
 	boardref = document.getElementById("score-ranking");
-	boardref.style.visibility = "visible";
 	
 	var jsonTarget = 'scores/' + checkScoreOptions() + '.json';
 	fetch(jsonTarget)
@@ -100,6 +160,7 @@ function loadScores () {
 		}
 	})
 }
+
 
 /* function ngsLoadScores (scoreID) {
 	var boardref;
@@ -214,13 +275,25 @@ function loadScores () {
 	
 } */
 
+
+// sinful IF in foreach messy function
+
 function populateRankings (json) {
     cleanupScore();
 	
 	var partySize = getPartySize();
-	
+	var autoRanker = 0;
     // Populate Leaderboard -- AKA the horrible elseif zone.
     json.forEach((row) => {
+		if (partySize == "solo"){
+			
+			if (checkClassFilter() != "none") {
+				if (row["Class"] != checkClassFilter()){
+					return;
+				}
+			}
+		}
+
         const tr = document.createElement("tr");
 
         Object.values(row).forEach((cell, index) => {
@@ -244,6 +317,28 @@ function populateRankings (json) {
 		            tr.appendChild(td);
 					td.appendChild(link);
 				}
+			}
+			else if (index == 0) {
+					if (partySize == "solo"){
+			
+						if (checkClassFilter() != "none") {
+							const td = document.createElement("td");
+							autoRanker += 1;
+							let text = autoRanker.toString()
+							td.textContent = text;
+							tr.appendChild(td);
+						}
+						else {
+							const td = document.createElement("td");
+							td.textContent = cell;
+							tr.appendChild(td);
+						}
+					}
+					else {
+						const td = document.createElement("td");
+						td.textContent = cell;
+						tr.appendChild(td);
+					}
 			}
 			// If we're on player... This is for party splits.
 			else if (index == 1) {
@@ -308,8 +403,10 @@ function populateRankings (json) {
 
         scorebody.appendChild(tr);
 		reloadTooltips();
+
     });
 }
+
 
 function splitPartyPlayers(input) {
 	var inputArray = input.split('@@@');
