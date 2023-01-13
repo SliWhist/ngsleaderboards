@@ -1,5 +1,5 @@
-Website is built on ducktape and superglue.
+PSO2NGS Unofficial Leaderboards
+Created by SliWhist
 
-Used stuff from W3Schools, various stackoverflow questions, and ripped out major parts of this: https://codepen.io/imisterk/pen/JwgQGZ to build it.
-
-I want to redo it as an actual, much better designed site later.
+This is an unofficial leaderboard for SEGA's PSO2: New Genesis.
+It's built in HTML, Javascript, CSS, and Bootstrap, so it shouldn't be too heavy.
