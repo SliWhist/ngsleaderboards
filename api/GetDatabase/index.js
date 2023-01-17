@@ -38,12 +38,12 @@ module.exports = async function (context, req) {
 		
 		if (mainclass != 'none' && partysize == 'solo') {
 			addQuery = ' AND mainclass = @classFilter ';
-			console.log("SOLO DETECTED, FILTERED");
+			//console.log("SOLO DETECTED, FILTERED");
 		}
 		
 		var poolConnection = await sql.connect(config);
 		
-		console.log("Connected to PSO2Central! Reading data...");
+		//console.log("Connected to PSO2Central! Reading data...");
 		
 		var sqlQuery = "";
 		
@@ -69,7 +69,7 @@ module.exports = async function (context, req) {
 		}
 		
 		var returner = results.recordset;
-		console.log(returner);
+		//console.log(returner);
 		poolConnection.close();
 		
 		//returner = context.req.body;
