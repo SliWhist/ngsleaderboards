@@ -27,11 +27,11 @@ const config = {
 
 module.exports = async function (context, req) {
 	try {
-		
-        	var mainclass = (context.req.body.mc);
-        	var region = (context.req.body.reg);
-        	var rank = (context.req.body.rnk);
-        	var partysize = (context.req.body.psize);
+		var parsedjsonmagic = JSON.parse(context.req.body);
+        	var mainclass = (parsedjsonmagic.mc);
+        	var region = (parsedjsonmagic.reg);
+        	var rank = (parsedjsonmagic.rnk);
+        	var partysize = (parsedjsonmagic.psize);
 
 		var addQuery = ' '
 		
