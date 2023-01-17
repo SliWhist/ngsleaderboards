@@ -22,8 +22,8 @@ function getDatabaseInfo(region,classIn,rank,party) {
 	}
 	
 	httpRequest.open('GET', request, true);
-	httpRequest.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
-	httpRequest.send(null);
+	//httpRequest.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
+	httpRequest.send();
 }
 
 function reloadTooltips() {
