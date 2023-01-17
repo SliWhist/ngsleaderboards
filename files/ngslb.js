@@ -25,7 +25,7 @@ function getDatabaseInfo(region,classIn,rank,party) {
 	}
 	
 	httpRequest.open('POST', '/api/purple', true);
-	httpRequest.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
+	httpRequest.setRequestHeader( "Content-type", "application/json" );
 	httpRequest.send(params);
 }
 
