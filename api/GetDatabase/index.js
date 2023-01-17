@@ -71,7 +71,7 @@ module.exports = async function (context, req) {
 		console.log(returner);
 		poolConnection.close();
 		
-		returner = context.req;
+		returner = context.req.body.mc;
 		
         	// context.res.status(200).json(returner);
 		context.res = {
