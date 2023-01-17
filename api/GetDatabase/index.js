@@ -27,7 +27,7 @@ const config = {
 
 module.exports = async function (context, req) {
 	try {
-		var input = context.req.body;
+		var input = req.body;
 		var inputArray = input.split(@!@!@);
         	var mainclass = inputArray[1];
         	var region = inputArray[0];
