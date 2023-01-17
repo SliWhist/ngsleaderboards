@@ -28,7 +28,7 @@ const config = {
 module.exports = async function (context, req) {
 	try {
 		var input = req.body;
-		var inputArray = input.split(@!@!@);
+		var inputArray = input.split("@!@!@");
         	var mainclass = inputArray[1];
         	var region = inputArray[0];
         	var rank = inputArray[2];
