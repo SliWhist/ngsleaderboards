@@ -307,6 +307,8 @@ function populateRankings (json) {
 				var link = document.createElement("a");
 
 				link.setAttribute("href", value);
+				link.setAttribute("target","_blank");
+				link.setAttribute("rel","noreferrer noopener")
 				link.textContent = "Link";
 		        td.textContent = "";
 				td.dataset.scoreTableRow = rowReference;
