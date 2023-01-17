@@ -16,9 +16,9 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'))
 });
 
-/* app.listen(5000, () => {
+app.listen(5000, () => {
   console.log('Listening on port ' + 5000);
-}); */
+});
 
 	
 const config = {
@@ -107,7 +107,7 @@ async function getPurpleFromDB(region,mainclass,rank,partysize) {
 		
 		
   
-app.post("/", (req, res) => {
+app.get("/purple/:region/:class/:rank/:party", (req, res) => {
 	console.log(req.body);
-	getPurpleFromDB(req.body.reg, req.body.mc, req.body.rnk, req.body.psize).then((value) => { res.json(value); });
+	getPurpleFromDB(req.params['region'], req.params['class'], req.params['rank'], req.params['party']).then((value) => { res.json(value); });
 })
