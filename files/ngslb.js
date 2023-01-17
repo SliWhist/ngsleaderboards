@@ -15,7 +15,7 @@ function getDatabaseInfo(region,classIn,rank,party) {
 	//console.log("params are here");
 	
 	var params = '[{"reg":"' + region + '","mc":"' + classIn + '","rnk":"' + rank + '","psize":"' + party + '"}]';
-	params = JSON.parse(params);
+	//params = JSON.parse(params);
 	console.log(params);
 	
 	// If this works, I'll probably scream.
