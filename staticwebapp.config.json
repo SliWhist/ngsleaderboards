@@ -8,5 +8,8 @@
   "platform": {
     "apiRuntime": "node:18"
   }
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  }
 
 }
