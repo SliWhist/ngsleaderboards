@@ -1,0 +1,10 @@
+{
+  "trailingSlash": "auto",
+  "routes": [
+    {
+      "route": "/purple*",
+      "methods": ["POST"],
+    }
+  ]
+
+}
