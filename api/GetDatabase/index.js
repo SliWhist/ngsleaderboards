@@ -25,14 +25,15 @@ const config = {
 	}
 }
 
-module.exports = async function (context) {
+module.exports = async function (context, req) {
 	try {
 		
-        	var mainclass = context.req.body.mc;
-        	var region = context.req.body.reg;
-        	var rank = context.req.body.rnk;
-        	var partysize = context.req.body.psize;
-
+        	var mainclass = req.body.mc;
+        	var region = req.body.reg;
+        	var rank = req.body.rnk;
+        	var partysize = req.body.psize;
+		context.log(partysize);
+		context.log(req.body.psize);
 		var addQuery = ' '
 		
 		console.log(mainclass);
