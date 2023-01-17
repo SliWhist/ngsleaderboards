@@ -17,12 +17,7 @@ function getDatabaseInfo(region,classIn,rank,party) {
 	//var params = '{"reg":"' + region + '","mc":"' + classIn + '","rnk":"' + rank + '","psize":"' + party + '"}';
 	//params = JSON.parse(params);
 	
-	var params = {
-	    "reg": region,
-	    "mc": classIn,
-	    "rnk": rank,
-	    "psize": party
-	};
+	var params = '{ "reg": region,"mc": classIn,"rnk": rank,"psize": party }';
 	console.log(params);
 	
 	// If this works, I'll probably scream.
@@ -38,7 +33,7 @@ function getDatabaseInfo(region,classIn,rank,party) {
 	}
 	
 	httpRequest.open('POST', '/api/purple', true);
-	httpRequest.setRequestHeader('Content-type', 'application/json');
+	httpRequest.setRequestHeader('Content-type', 'x-www-form-urlencoded');
 	httpRequest.send(params);
 }
 
