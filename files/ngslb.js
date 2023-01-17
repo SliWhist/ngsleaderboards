@@ -16,7 +16,8 @@ function getDatabaseInfo(region,classIn,rank,party) {
 	
 	httpRequest.onreadystatechange = () => {
 		if(httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
-			//console.log(httpRequest.response);
+			console.log("response returns here");
+			console.log(httpRequest.response);
 			loadScoresReady(httpRequest.response);
 		}
 	}
