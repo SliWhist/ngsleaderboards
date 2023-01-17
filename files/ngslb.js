@@ -15,6 +15,7 @@ function getDatabaseInfo(region,classIn,rank,party) {
 	//console.log("params are here");
 	
 	var params = '[{"reg":' + region + ',"mc":' + classIn + ',"rnk":' + rank + ',"psize":' + party + '}]';
+	params = JSON.parse(params);
 	console.log(params);
 	
 	// If this works, I'll probably scream.
@@ -30,7 +31,7 @@ function getDatabaseInfo(region,classIn,rank,party) {
 	}
 	
 	httpRequest.open('POST', '/api/purple', true);
-	httpRequest.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	httpRequest.setRequestHeader('Content-type', 'application/json');
 	httpRequest.send(params);
 }
 
