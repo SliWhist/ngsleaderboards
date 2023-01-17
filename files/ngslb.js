@@ -218,11 +218,11 @@ function populateRankings (json) {
 	var rank = 0;
 	var rowReference = 0;
 	
-	var jsonparse = JSON.parse(json);
+	//var jsonparse = JSON.parse(json);
 	
     // Populate Leaderboard.
 	
-	if (Object.keys(jsonparse).length === 0) {
+	if (Object.keys(json).length === 0) {
 		console.log("WE GOT NOTHING");
         const tr = document.createElement("tr");
 
@@ -248,7 +248,7 @@ function populateRankings (json) {
 	
 	console.log("WE GOT SOMETHING");
 	
-    jsonparse.forEach((row) => {
+    json.forEach((row) => {
 
         const tr = document.createElement("tr");
 		const tdwep = document.createElement("td");
