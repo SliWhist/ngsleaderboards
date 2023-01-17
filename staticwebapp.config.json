@@ -1,15 +1,12 @@
 {
   "trailingSlash": "auto",
-  "routes": [
-    {
-      "route": "/purple*",
-      "methods": ["POST"]
-    }
-  ],
   "globalHeaders": {
 	"Access-Control-Allow-Methods": "POST, GET, OPTIONS",
 	"Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
 	"Access-Control-Allow-Origin": "*"
+  },
+  "platform": {
+    "apiRuntime": "node:18"
   }
 
 }
