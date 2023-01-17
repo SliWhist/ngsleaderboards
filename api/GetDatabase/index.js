@@ -74,6 +74,8 @@ module.exports = async function (context, req) {
 					break;
 			}
 			
+			// This query handles party cases.
+
 			sqlQuery = `
 			SELECT MAX(PurpleTriggerPartyRuns.patch) as patch, 
 			COALESCE(STRING_AGG(PurpleTriggerRunners.runner,'@@@'),'No Scores') as runner, 
