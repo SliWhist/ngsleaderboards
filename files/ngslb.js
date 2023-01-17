@@ -134,31 +134,31 @@ function generateCategoryName(category,partysize,patch,classFilter) {
 			mainClass = '';
 			break;
 		case "hunter":
-			mainClass = '<img src="files/img/class-hunter.png"> Hunters - ';
+			mainClass = '<img src="img/class-hunter.png"> Hunters - ';
 			break;
 		case "fighter":
-			mainClass = '<img src="files/img/class-fighter.png"> Fighters - ';
+			mainClass = '<img src="img/class-fighter.png"> Fighters - ';
 			break;
 		case "ranger":
-			mainClass = '<img src="files/img/class-ranger.png"> Rangers - ';
+			mainClass = '<img src="img/class-ranger.png"> Rangers - ';
 			break;
 		case "gunner":
-			mainClass = '<img src="files/img/class-gunner.png"> Gunners - ';
+			mainClass = '<img src="img/class-gunner.png"> Gunners - ';
 			break;
 		case "force":
-			mainClass = '<img src="files/img/class-force.png"> Forces - ';
+			mainClass = '<img src="img/class-force.png"> Forces - ';
 			break;
 		case "techter":
-			mainClass = '<img src="files/img/class-techter.png"> Techters - ';
+			mainClass = '<img src="img/class-techter.png"> Techters - ';
 			break;
 		case "braver":
-			mainClass = '<img src="files/img/class-braver.png"> Bravers - ';
+			mainClass = '<img src="img/class-braver.png"> Bravers - ';
 			break;
 		case "bouncer":
-			mainClass = '<img src="files/img/class-bouncer.png"> Bouncers - ';
+			mainClass = '<img src="img/class-bouncer.png"> Bouncers - ';
 			break;
 		case "waker":
-			mainClass = '<img src="files/img/class-waker.png"> Wakers - ';
+			mainClass = '<img src="img/class-waker.png"> Wakers - ';
 			break;
 		default:
 			mainClass = '';
@@ -373,37 +373,37 @@ function generateClassImages(input) {
 	const input2 = input.toLowerCase();
 	switch (input2) {
 		case "hunter":
-			return '<img src="files/img/class-hunter.png"> Hunter';
+			return '<img src="img/class-hunter.png"> Hunter';
 			break;
 		case "fighter":
-			return '<img src="files/img/class-fighter.png"> Fighter';
+			return '<img src="img/class-fighter.png"> Fighter';
 			break;
 		case "ranger":
-			return '<img src="files/img/class-ranger.png"> Ranger';
+			return '<img src="img/class-ranger.png"> Ranger';
 			break;
 		case "gunner":
-			return '<img src="files/img/class-gunner.png"> Gunner';
+			return '<img src="img/class-gunner.png"> Gunner';
 			break;
 		case "force":
-			return '<img src="files/img/class-force.png"> Force';
+			return '<img src="img/class-force.png"> Force';
 			break;
 		case "techter":
-			return '<img src="files/img/class-techter.png"> Techter';
+			return '<img src="img/class-techter.png"> Techter';
 			break;
 		case "braver":
-			return '<img src="files/img/class-braver.png"> Braver';
+			return '<img src="img/class-braver.png"> Braver';
 			break;
 		case "bouncer":
-			return '<img src="files/img/class-bouncer.png"> Bouncer';
+			return '<img src="img/class-bouncer.png"> Bouncer';
 			break;
 		case "waker":
-			return '<img src="files/img/class-waker.png"> Waker';
+			return '<img src="img/class-waker.png"> Waker';
 			break;
 		case "gunblade-placeholder":
-			return '<img src="files/img/class-gunblade.png"> Gunblade';
+			return '<img src="img/class-gunblade.png"> Gunblade';
 			break;
 		case "?":
-			return '<img src="files/img/class-unknown.png"> Unknown';
+			return '<img src="img/class-unknown.png"> Unknown';
 			break;
 		default:
 			return '';
@@ -419,55 +419,55 @@ function generateWeaponImages(input) {
 	inputArray.forEach((weapon) => {
 		switch (weapon) {
 			case "sword":
-				result = result + '<img src="files/img/weapon-sword.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Sword">' + ' ';
+				result = result + '<img src="img/weapon-sword.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Sword">' + ' ';
 				break;
 			case "wl":
-				result = result + '<img src="files/img/weapon-wire.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Wired Lance">' + ' ';
+				result = result + '<img src="img/weapon-wire.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Wired Lance">' + ' ';
 				break;
 			case "partisan":
-				result = result + '<img src="files/img/weapon-partisan.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Partisan">' + ' ';
+				result = result + '<img src="img/weapon-partisan.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Partisan">' + ' ';
 				break;
 			case "td":
-				result = result + '<img src="files/img/weapon-daggers.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Twin Daggers">' + ' ';
+				result = result + '<img src="img/weapon-daggers.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Twin Daggers">' + ' ';
 				break;
 			case "ds":
-				result = result + '<img src="files/img/weapon-saber.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Dual Saber">' + ' ';
+				result = result + '<img src="img/weapon-saber.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Dual Saber">' + ' ';
 				break;
 			case "knuckles":
-				result = result + '<img src="files/img/weapon-knux.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Knuckles">' + ' ';
+				result = result + '<img src="img/weapon-knux.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Knuckles">' + ' ';
 				break;
 			case "katana":
-				result = result + '<img src="files/img/weapon-katana.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Katana">' + ' ';
+				result = result + '<img src="img/weapon-katana.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Katana">' + ' ';
 				break;
 			case "sb":
-				result = result + '<img src="files/img/weapon-blades.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Soaring Blades">' + ' ';
+				result = result + '<img src="img/weapon-blades.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Soaring Blades">' + ' ';
 				break;
 			case "rifle":
-				result = result + '<img src="files/img/weapon-rifle.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Assault Rifle">' + ' ';
+				result = result + '<img src="img/weapon-rifle.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Assault Rifle">' + ' ';
 				break;
 			case "launcher":
-				result = result + '<img src="files/img/weapon-launcher.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Launcher">' + ' ';
+				result = result + '<img src="img/weapon-launcher.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Launcher">' + ' ';
 				break;
 			case "tmg":
-				result = result + '<img src="files/img/weapon-tmg.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Twin Machine Guns">' + ' ';
+				result = result + '<img src="img/weapon-tmg.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Twin Machine Guns">' + ' ';
 				break;
 			case "bow":
-				result = result + '<img src="files/img/weapon-bow.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bow">' + ' ';
+				result = result + '<img src="img/weapon-bow.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Bow">' + ' ';
 				break;
 			case "rod":
-				result = result + '<img src="files/img/weapon-rod.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Rod">' + ' ';
+				result = result + '<img src="img/weapon-rod.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Rod">' + ' ';
 				break;
 			case "talis":
-				result = result + '<img src="files/img/weapon-talis.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Talis">' + ' ';
+				result = result + '<img src="img/weapon-talis.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Talis">' + ' ';
 				break;
 			case "wand":
-				result = result + '<img src="files/img/weapon-wand.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Wand">' + ' ';
+				result = result + '<img src="img/weapon-wand.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Wand">' + ' ';
 				break;
 			case "jb":
-				result = result + '<img src="files/img/weapon-boots.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Jet Boots">' + ' ';
+				result = result + '<img src="img/weapon-boots.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Jet Boots">' + ' ';
 				break;
 			case "takt":
-				result = result + '<img src="files/img/weapon-takt.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Harmonizer">' + ' ';
+				result = result + '<img src="img/weapon-takt.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Harmonizer">' + ' ';
 				break;
 			default:
 				return '';
