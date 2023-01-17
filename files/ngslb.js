@@ -21,7 +21,7 @@ function getDatabaseInfo(region,classIn,rank,party) {
 		}
 	}
 	
-	httpRequest.open('POST', 'purple', true);
+	httpRequest.open('POST', '/api/purple', true);
 	httpRequest.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
 	httpRequest.send(params);
 }
