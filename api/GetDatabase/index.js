@@ -28,16 +28,12 @@ const config = {
 module.exports = async function (context, req) {
 	try {
 		
-        	var mainclass = (req.body && req.body.mc);
-        	var region = (req.body && req.body.reg);
-        	var rank = (req.body && req.body.rnk);
-        	var partysize = (req.body && req.body.psize);
-		context.log(partysize);
-		context.log(req.body.psize);
+        	var mainclass = (context.req.body.mc);
+        	var region = (context.req.body.reg);
+        	var rank = (context.req.body.rnk);
+        	var partysize = (context.req.body.psize);
+
 		var addQuery = ' '
-		
-		console.log(mainclass);
-		console.log(partysize);
 		
 		if (mainclass != 'none' && partysize == 'solo') {
 			addQuery = ' AND mainclass = @classFilter ';
@@ -78,8 +74,7 @@ module.exports = async function (context, req) {
         	// context.res.status(200).json(returner);
 		context.res = {
     			status: 200, /* Defaults to 200 */
-    			body: returner,
-    			contentType: 'application/json'
+    			body: returner
 		};
 	
 	}
