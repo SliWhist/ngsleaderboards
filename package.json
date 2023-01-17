@@ -5,9 +5,9 @@
 	"node": ">=18.12.0"
   },
   "description": "NodeJS implementation for the NGS leaderboard",
-  "main": "nodejs.js",
+  "main": "app.js",
   "scripts": {
-    "build": "node nodejs.js"
+    "build": ""
   },
   "author": "SliWhist",
   "license": "ISC",
