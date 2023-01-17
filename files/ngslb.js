@@ -17,14 +17,7 @@ function getDatabaseInfo(region,classIn,rank,party) {
 	
 	// If this works, I'll probably scream.
 	
-	var params = '[
-		{
-		"reg":' + region + ', 
-		"mc":' + classIn +', 
-		"rnk":' + rank +', 
-		"psize":' + party +'
-		}
-	]';
+	var params = '[{"reg":' + region + ',"mc":' + classIn + ',"rnk":' + rank + ',"psize":' + party + '}]';
 	
 	const httpRequest = new XMLHttpRequest();
 	
