@@ -27,11 +27,12 @@ const config = {
 
 module.exports = async function (context, req) {
 	try {
-		var parsedjsonmagic = JSON.parse(context.req.body);
-        	var mainclass = (context.req.body.mc);
-        	var region = (context.req.body.reg);
-        	var rank = (context.req.body.rnk);
-        	var partysize = (context.req.body.psize);
+		var input = context.req.body;
+		var inputArray = input.split(@!@!@);
+        	var mainclass = myArray[0];
+        	var region = myArray[1];
+        	var rank = myArray[2];
+        	var partysize = myArray[3];
 
 		var addQuery = ' '
 		
@@ -71,7 +72,7 @@ module.exports = async function (context, req) {
 		console.log(returner);
 		poolConnection.close();
 		
-		returner = context.req.body;
+		//returner = context.req.body;
 		
         	// context.res.status(200).json(returner);
 		context.res = {
