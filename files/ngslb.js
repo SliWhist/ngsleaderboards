@@ -15,7 +15,7 @@ function getDatabaseInfo(region,classIn,rank,party) {
 	const httpRequest = new XMLHttpRequest();
 	
 	httpRequest.onreadystatechange = () => {
-		if(httpRequest.readyState === 4) {
+		if(httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
 			//console.log(httpRequest.response);
 			loadScoresReady(httpRequest.response);
 		}
