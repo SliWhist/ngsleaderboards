@@ -27,6 +27,6 @@
 
 /* Change color for noted rows. */
 .pso2-noted {
-  --bs-table-bg:#515337;
-  --bs-table-hover-bg:#85854a;
+  --bs-table-bg:#4c5037;
+  --bs-table-hover-bg:#5c6146;
 }
