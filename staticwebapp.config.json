@@ -5,6 +5,9 @@
       "route": "/purple*",
       "methods": ["POST"],
     }
-  ]
+  ],
+  "globalHeaders": {
+	"Access-Control-Allow-Methods": "POST, GET, OPTIONS"  
+  }
 
 }
