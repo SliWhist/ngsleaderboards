@@ -11,7 +11,7 @@ const modaltitle = document.querySelector("#ModalInformational-Title");
 const modalwhole = document.querySelector("#ModalInformational");
 
 function getDatabaseInfo(region,classIn,rank,party) {
-	var request = '/purple/' + region + '/' + classIn + '/' + rank + '/' + party;
+	var params = 'reg=' + region + '&mc=' + classIn + '&rnk=' + rank + '&psize=' + party;
 	const httpRequest = new XMLHttpRequest();
 	
 	httpRequest.onreadystatechange = () => {
@@ -21,9 +21,9 @@ function getDatabaseInfo(region,classIn,rank,party) {
 		}
 	}
 	
-	httpRequest.open('GET', request, true);
-	//httpRequest.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
-	httpRequest.send();
+	httpRequest.open('POST', 'purple', true);
+	httpRequest.setRequestHeader( "Content-type", "application/x-www-form-urlencoded" );
+	httpRequest.send(params);
 }
 
 function reloadTooltips() {
