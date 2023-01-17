@@ -85,7 +85,7 @@ module.exports = async function (context, req) {
 			MAX(PurpleTriggerPartyRuns.notes) as notes 
 			FROM dbo.PurpleTriggerPartyRuns 
 			INNER JOIN dbo.PurpleTriggerRunners ON PurpleTriggerPartyRuns.id=PurpleTriggerRunners.partyID 
-			WHERE PurpleTriggerPartyRuns.rank = @rankIn AND PurpleTriggerPartyRuns.region = @regionIn AND PurpleTriggerPartyRuns.partysize = @partySizeIn 
+			WHERE PurpleTriggerPartyRuns.rank = @rankIn AND PurpleTriggerPartyRuns.region = @regionIn AND PurpleTriggerPartyRuns.partysize = @partySizeIn GROUP BY PurpleTriggerRunners.partyID
 			ORDER BY MAX(PurpleTriggerPartyRuns.time) ASC`;
 			
 			var results = await poolConnection.request().input('classFilter', sql.VarChar, mainclass).input('rankIn', sql.Int, rank).input('regionIn', sql.VarChar, region).input('partySizeIn', sql.Int, partySizeQuery).query(sqlQuery);
