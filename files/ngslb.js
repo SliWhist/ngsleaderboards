@@ -11,7 +11,7 @@ const modaltitle = document.querySelector("#ModalInformational-Title");
 const modalwhole = document.querySelector("#ModalInformational");
 
 function getDatabaseInfo(region,classIn,rank,party) {
-	var request = 'purple/' + region + '/' + classIn + '/' + rank + '/' + party;
+	var request = '/purple/' + region + '/' + classIn + '/' + rank + '/' + party;
 	const httpRequest = new XMLHttpRequest();
 	
 	httpRequest.onreadystatechange = () => {
