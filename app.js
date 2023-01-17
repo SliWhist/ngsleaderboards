@@ -107,7 +107,7 @@ async function getPurpleFromDB(region,mainclass,rank,partysize) {
 		
 		
   
-app.post("/purple", (req, res) => {
+app.post("/", (req, res) => {
 	console.log(req.body);
 	getPurpleFromDB(req.body.reg, req.body.mc, req.body.rnk, req.body.psize).then((value) => { res.json(value); });
 })
