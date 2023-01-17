@@ -7,7 +7,7 @@
   "description": "NodeJS implementation for the NGS leaderboard",
   "main": "nodejs.js",
   "scripts": {
-    "build": ""
+    "build": "node nodejs.js"
   },
   "author": "SliWhist",
   "license": "ISC",
