@@ -29,8 +29,8 @@ module.exports = async function (context, req) {
 	try {
 		var input = context.req.body;
 		var inputArray = input.split(@!@!@);
-        	var mainclass = myArray[0];
-        	var region = myArray[1];
+        	var mainclass = myArray[1];
+        	var region = myArray[0];
         	var rank = myArray[2];
         	var partysize = myArray[3];
 
