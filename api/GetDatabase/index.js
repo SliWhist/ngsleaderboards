@@ -4,13 +4,13 @@ const sql = require('mssql');
 
 const path = require('path');
 
-const app = express();
+//const app = express();
 
 require('dotenv').config()
 
-app.use(express.static('files'))
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+//app.use(express.static('files'))
+//app.use(express.json());
+//app.use(express.urlencoded({ extended: true }));
 
 const config = {
 	user: process.env.DB_USER, // better stored in an app setting such as process.env.DB_USER
@@ -71,7 +71,7 @@ module.exports = async function (context, req) {
 		console.log(returner);
 		poolConnection.close();
 		
-		returner = context.req.params;
+		returner = 'Main Class:' + context.req.body.mc + ' Body:' + context.req.body;
 		
         	// context.res.status(200).json(returner);
 		context.res = {
