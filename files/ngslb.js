@@ -342,7 +342,7 @@ function populateRankings (json) {
 		
 		if (notesReference != null) {
 			const positionReference = document.querySelector('td[data-score-table-row="' + rowReference + '"]');
-			positionReference.innerHTML += ' <i class="bi-info-circle" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="' + notesReference + '"></i>';
+			positionReference.innerHTML += ' <i class="bi-info-circle" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="left" data-bs-title="' + notesReference + '"></i>';
 		}
 		
 		reloadTooltips();
