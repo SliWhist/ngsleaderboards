@@ -31,6 +31,12 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "/" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
+        env: # Add environment variables here
+          # Inject vars at build time
+          DB_USER: ${{ secrets.DBLOGIN }}
+          DB_PASSWORD: ${{ secrets.DBPASSWORD }}
+          DB_SERVER: ${{ secrets.DBSERVER }}
+          DB_NAME: ${{ secrets.DBDATABASE }}
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
