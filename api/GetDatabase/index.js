@@ -25,13 +25,13 @@ const config = {
 	}
 }
 
-module.exports = async function (context, req) {
+module.exports = async function (context) {
 	try {
 		
-        	var mainclass = req.body.mc;
-        	var region = req.body.reg;
-        	var rank = req.body.rnk;
-        	var partysize = req.body.psize;
+        	var mainclass = context.req.body.mc;
+        	var region = context.req.body.reg;
+        	var rank = context.req.body.rnk;
+        	var partysize = context.req.body.psize;
 
 		var addQuery = ' '
 		
@@ -51,11 +51,11 @@ module.exports = async function (context, req) {
 		
 		if (partysize == 'solo') {
 			sqlQuery = "SELECT patch, runner, mainclass, subclass, CONCAT_WS(' ', weapon1, weapon2, weapon3, weapon4, weapon5, weapon6) as weapon, CONVERT(VARCHAR(5), time, 108) as time, link, notes FROM dbo.PurpleTriggerRuns WHERE rank = @rankIn AND region = @regionIn" + addQuery + "ORDER BY time ASC";
-			var results = await poolConnection.request().input('classFilter', sql.VarChar, req.body.mc).input('rankIn', sql.Int, req.body.rnk).input('regionIn', sql.VarChar, req.body.reg).query(sqlQuery);
+			var results = await poolConnection.request().input('classFilter', sql.VarChar, mainclass).input('rankIn', sql.Int, rank).input('regionIn', sql.VarChar, region).query(sqlQuery);
 		}
 		else if (partysize != 'solo') {
 			var partySizeQuery = '';
-			switch (req.body.psize) {
+			switch (partysize) {
 				case "duo":
 					partySizeQuery = 2;
 					break;
@@ -67,7 +67,7 @@ module.exports = async function (context, req) {
 					break;
 			}
 			sqlQuery = "SELECT MAX(PurpleTriggerPartyRuns.patch) as patch, COALESCE(STRING_AGG(PurpleTriggerRunners.runner,'@@@'),'No Scores') as runner, COALESCE(STRING_AGG(PurpleTriggerRunners.mainclass,'@@@'),'') as mainclass, COALESCE(STRING_AGG(PurpleTriggerRunners.subclass,'@@@'),'') as subclass, COALESCE(STRING_AGG(CONCAT_WS(' ', weapon1, weapon2, weapon3, weapon4, weapon5, weapon6),'@@@'),'') as weapon, COALESCE(CONVERT(VARCHAR(5), MAX(PurpleTriggerPartyRuns.time), 108),'') as time, MAX(PurpleTriggerPartyRuns.link) as link, MAX(PurpleTriggerPartyRuns.notes) as notes FROM dbo.PurpleTriggerPartyRuns INNER JOIN dbo.PurpleTriggerRunners ON PurpleTriggerPartyRuns.id=PurpleTriggerRunners.partyID WHERE PurpleTriggerPartyRuns.rank = @rankIn AND PurpleTriggerPartyRuns.region = @regionIn AND PurpleTriggerPartyRuns.partysize = @partySizeIn ORDER BY MAX(PurpleTriggerPartyRuns.time) ASC";
-			var results = await poolConnection.request().input('classFilter', sql.VarChar, req.body.mc).input('rankIn', sql.Int, req.body.rnk).input('regionIn', sql.VarChar, req.body.reg).input('partySizeIn', sql.Int, partySizeQuery).query(sqlQuery);
+			var results = await poolConnection.request().input('classFilter', sql.VarChar, mainclass).input('rankIn', sql.Int, rank).input('regionIn', sql.VarChar, region).input('partySizeIn', sql.Int, partySizeQuery).query(sqlQuery);
 		}
 		
 		var returner = results.recordset;
