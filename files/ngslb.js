@@ -88,7 +88,9 @@ function checkScoreOptions() {
 	var categoryName = primeCategory+'-'+mainCategory;
 	var output = generateCategoryName(categoryName, partySize, patchNo, classNames);
 	scoretitle.innerHTML = output;
-	loadScoresPrepare(mainCategory,classFilter,rankSelected,partySize);
+	if(primeCategory != maincategory-ordinal) {
+		loadScoresPrepare(mainCategory,classFilter,rankSelected,partySize);
+	}
 }
 
 function getPartySize() {
