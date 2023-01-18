@@ -258,18 +258,18 @@ function populateRankings (json) {
 		const tdinit = document.createElement("td");
 		switch (rank) {
 			case 1:
-				rank = '<img src="img/scoreboard-rank1.png">';
+				tdinit.innerHTML = '<img src="img/scoreboard-rank1.png">';
 				break;
 			case 2:
-				rank = '<img src="img/scoreboard-rank2.png">';
+				tdinit.innerHTML = '<img src="img/scoreboard-rank2.png">';
 				break;
 			case 3:
-				rank = '<img src="img/scoreboard-rank3.png">';
+				tdinit.innerHTML = '<img src="img/scoreboard-rank3.png">';
 				break;
 			default:
+				tdinit.innerHTML = rank;
 				break;
 		}
-	    tdinit.innerHTML = rank;
 	    tr.appendChild(tdinit);
 
 
