@@ -19,14 +19,14 @@ function getDatabaseInfo(region,classIn,rank,party) {
 	
 	var params = region + "@!@!@" + classIn + "@!@!@" + rank + "@!@!@" + party;
 	
-	console.log(params);
+	//console.log(params);
 	
 	const httpRequest = new XMLHttpRequest();
 	
 	httpRequest.onreadystatechange = () => {
 		if(httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
-			console.log("response returns here");
-			console.log(httpRequest.response);
+			//console.log("response returns here");
+			//console.log(httpRequest.response);
 			loadScoresReady(httpRequest.response);
 		}
 	}
@@ -51,11 +51,11 @@ function checkScoreOptions() {
 	var myCollapse = new bootstrap.Collapse(filterclassbuttons, { toggle: false } );
 	if (partySize != "solo") {
 		myCollapse.hide();
-		console.log("hide");
+		//console.log("hide");
 		classFilter = "none";
 	}
 	else if (partySize == "solo") {
-		console.log("SHOW");
+		//console.log("SHOW");
 		myCollapse.show();
 		if (classFilter != "none") {
 			classNames = classFilter;
@@ -79,10 +79,10 @@ function checkScoreOptions() {
 			rankSelected = '1';
 			break;
 	}
-	console.log(mainCategory);
-	console.log(partySize);
-	console.log(primeCategory);
-	console.log(patchNo);
+	//console.log(mainCategory);
+	//console.log(partySize);
+	//console.log(primeCategory);
+	//console.log(patchNo);
 	
 	var scoreCode = primeCategory+'-'+mainCategory+'-'+partySize+'-'+patchNo;
 	var categoryName = primeCategory+'-'+mainCategory;
@@ -180,7 +180,7 @@ function generateCategoryName(category,partysize,patch,classFilter) {
 	// And now, put it all together.
 	result = mainClass + categoryName + ' ' + partyName + ' </strong><small>' + patchNo + '</small><strong>';
 	
-	console.log(result)
+	//console.log(result)
 	
 	return result;
 }
@@ -220,7 +220,7 @@ function populateRankings (json) {
     // Populate Leaderboard.
 	
 	if (Object.keys(jsonparse).length === 0) {
-		console.log("WE GOT NOTHING");
+		//console.log("WE GOT NOTHING");
         const tr = document.createElement("tr");
 
 		const tdemptyr = document.createElement("td");
@@ -230,7 +230,7 @@ function populateRankings (json) {
 		const tdempty4 = document.createElement("td");
 		const tdempty5 = document.createElement("td");
 		const tdempty6 = document.createElement("td");
-	    tdemptyr.textContent = "1";
+	    tdemptyr.innerHTML = '<img src="img/scoreboard-rank1.png">';
 		tdempty1.textContent = "No Scores";
 	    tr.appendChild(tdemptyr);
 		tr.appendChild(tdempty1);
@@ -243,12 +243,11 @@ function populateRankings (json) {
 		return;
 	}
 	
-	console.log("WE GOT SOMETHING");
+	//console.log("WE GOT SOMETHING");
 	
     jsonparse.forEach((row) => {
 
         const tr = document.createElement("tr");
-		const tdwep = document.createElement("td");
 		var notesReference = null;
 		
 		// First, generate a rank for the runner, starting from 1
@@ -270,6 +269,7 @@ function populateRankings (json) {
 				tdinit.innerHTML = rank;
 				break;
 		}
+		tdinit.classList.add("text-center");
 	    tr.appendChild(tdinit);
 
 
@@ -293,19 +293,20 @@ function populateRankings (json) {
 			
 			// We don't use the patch info here, so we get rid of it.
 			if (keyPatch == 0) {
-				console.log("Skipping column...");
+				//console.log("Skipping column...");
 				return;
 			}
 			
 			if(keyLink == 0 && value == null) {
 				const td = document.createElement("td");
 				td.textContent = value;
+				td.classList.add("text-center");
 				tr.appendChild(td);	
 			}
 			
 			// If the column value is null, we skip it.
 			if (value == null) {
-				console.log("NULL, so we skip...");
+				//console.log("NULL, so we skip...");
 				return;
 			}
 			
@@ -319,6 +320,7 @@ function populateRankings (json) {
 			
 			if (keyLink == 0) {
 				const td = document.createElement("td");
+				td.classList.add("text-center");
 				var link = document.createElement("a");
 
 				link.setAttribute("href", value);
@@ -337,16 +339,19 @@ function populateRankings (json) {
 			}
 			else if (keyMainClass == 0 || keySubClass == 0) {
 				const td = document.createElement("td");
+				td.classList.add("text-center");
 				td.innerHTML = splitPartyClasses(value);
 				tr.appendChild(td);
 			}
 			else if (keyWeapon == 0) {
 				const td = document.createElement("td");
+				td.classList.add("text-center");
 				td.innerHTML = splitPartyWeapons(value);
 				tr.appendChild(td);
 			}
 			else {
 				const td = document.createElement("td");
+				td.classList.add("text-center");
 				td.textContent = value;
 				tr.appendChild(td);
 			}
@@ -368,7 +373,7 @@ function populateRankings (json) {
 
 function splitPartyPlayers(input) {
 	var inputArray = input.split('@@@');
-	console.log(inputArray);
+	//console.log(inputArray);
 	let result = '';
 	inputArray.forEach((string) => {
 		result = result + string + '<br>';
@@ -378,7 +383,7 @@ function splitPartyPlayers(input) {
 
 function splitPartyWeapons(input) {
 	var inputArray = input.split('@@@');
-	console.log(inputArray);
+	//console.log(inputArray);
 	let result = '';
 	inputArray.forEach((string) => {
 		result = result + generateWeaponImages(string) + '<br>';
@@ -388,7 +393,7 @@ function splitPartyWeapons(input) {
 
 function splitPartyClasses(input) {
 	var inputArray = input.split('@@@');
-	console.log(inputArray);
+	//console.log(inputArray);
 	let result = '';
 	inputArray.forEach((string) => {
 		result = result + generateClassImages(string) + '<br>';
@@ -441,7 +446,7 @@ function generateClassImages(input) {
 function generateWeaponImages(input) {
 	const input2 = input.toLowerCase();
 	var inputArray = input2.split(' ');
-	console.log(inputArray);
+	//console.log(inputArray);
 	let result = '';
 	inputArray.forEach((weapon) => {
 		switch (weapon) {
@@ -495,6 +500,9 @@ function generateWeaponImages(input) {
 				break;
 			case "takt":
 				result = result + '<img src="img/weapon-takt.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Harmonizer">' + ' ';
+				break;
+			case "gunblade":
+				result = result + '<img src="img/weapon-gunblade.png" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Gunblade">' + ' ';
 				break;
 			default:
 				return '';
