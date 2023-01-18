@@ -88,7 +88,7 @@ function checkScoreOptions() {
 	var categoryName = primeCategory+'-'+mainCategory;
 	var output = generateCategoryName(categoryName, partySize, patchNo, classNames);
 	scoretitle.innerHTML = output;
-	if(primeCategory != maincategory-ordinal) {
+	if(primeCategory != 'maincategory-ordinal') {
 		loadScoresPrepare(mainCategory,classFilter,rankSelected,partySize);
 	}
 }
@@ -256,7 +256,20 @@ function populateRankings (json) {
 		rowReference += 1;
 
 		const tdinit = document.createElement("td");
-	    tdinit.textContent = rank;
+		switch (rank) {
+			case 1:
+				rank = '<img src="img/scoreboard-rank1.png">';
+				break;
+			case 2:
+				rank = '<img src="img/scoreboard-rank2.png">';
+				break;
+			case 3:
+				rank = '<img src="img/scoreboard-rank3.png">';
+				break;
+			default:
+				break;
+		}
+	    tdinit.innerHTML = rank;
 	    tr.appendChild(tdinit);
 
 
