@@ -8,12 +8,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 	<link rel="stylesheet" href="ngslb.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
   </head>
   <body style="background-color:#2B2B2B;" onload="loadScoresBegin()">
 	<div class="container">
 		<div class="row my-2">
 			<div class="col">
-				<h1 class="text-center text-light display-3 mt-5">PSO2NGS Unofficial Leaderboards</h1>
+				<h1 class="text-center mt-5"><img src="img/logo.png" alt="PSO2NGS Unofficial Leaderboards"></h1>
 				<p class="text-center text-light lead my-5">This is an unofficial leaderboard for SEGA's PSO2: New Genesis.<br>
 				<br>
 				<!-- It's built in HTML, Javascript, CSS, and Bootstrap, so it shouldn't be too heavy.<br> -->
@@ -26,44 +27,20 @@
 		<div class="row my-2">
 			<div class="col">
 				<p class="text-center text-light"><strong>Categories</strong></p>
-				<div class="btn-group d-flex" role="group" aria-label="Main Category">
+				<div class="btn-group d-flex" role="group" aria-label="Main Category" id="group-maincategory">
 					<input type="radio" class="btn-check" name="mainCategory" id="maincategory-purple" value="purple" autocomplete="off" checked>
 					<label class="btn btn-primary w-100" for="maincategory-purple">Purple Triggers</label>
-					<input type="radio" class="btn-check" name="mainCategory" id="maincategory-ordinal" value="ordinal" autocomplete="off">
-					<label class="btn btn-primary w-100" for="maincategory-ordinal">Ordinal Tower</label>
+					<!-- <input type="radio" class="btn-check" name="mainCategory" id="maincategory-ordinal" value="ordinal" autocomplete="off"> -->
+					<!-- <label class="btn btn-primary w-100" for="maincategory-ordinal">Ordinal Tower</label> -->
 				</div>
 			</div>
 		</div>
 		
 		
-<!-- THIS IS COMMENTED OUT BECAUSE WE DON'T USE IT YET. THIS SHOULD BE FOR INDEPTH WEAPON/CLASS INFO LATER! -->
-<!-- Button trigger modal --><!--
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalInformational">
-  Launch demo modal
-</button>-->
-
-<!-- Modal --><!--
-<div class="modal fade" id="ModalInformational" tabindex="-1" aria-labelledby="Information Pop-up" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="ModalInformational-Title">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" id="ModalInformational-Body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-		
 		<div class="row my-2 align-content-center">
 			<div class="col">
 				<p class="text-center text-light"><strong>Subcategory</strong></p>
-				<div class="btn-group d-flex" role="group" aria-label="Category">
+				<div class="btn-group d-flex" style="overflow-x: auto" role="group" aria-label="Category" id="group-category">
 					<input type="radio" class="btn-check" name="category-purple" value="aelio" id="category-purple1" autocomplete="off" onclick="loadScoresBegin();">
 					<label class="btn btn-secondary" for="category-purple1">Aelio Devastators R.3</label>
 
@@ -81,7 +58,7 @@
 		<div class="row my-2 align-content-center">
 			<div class="col">
 				<p class="text-center text-light"><strong>Party Size</strong></p>
-				<div class="btn-group d-flex" role="group" aria-label="Party Size">
+				<div class="btn-group d-flex" role="group" aria-label="Party Size" id="group-partysize">
 					<input type="radio" class="btn-check" name="partysize" value="solo" id="partysize1" autocomplete="off" onclick="loadScoresBegin();" checked>
 					<label class="btn btn-outline-secondary" for="partysize1">Solo</label>
 
@@ -96,10 +73,13 @@
 				</div>
 			</div>
 			<div class="col">
-				<p class="text-center text-light"><strong>Game Version (Patch) </strong><i class="bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="This option exists because of balance updates, bugfixes, and enemy adjustments that come with some patches. All of these can drastically affect times/scores, causing the most major patches to be split into new versions."></i></p>
-				<div class="btn-group d-flex" role="group" aria-label="Game Version">
+				<p class="text-center text-light d-sm-block d-md-none"><strong>Patch </strong><i class="bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="This option exists because of balance updates, bugfixes, and enemy adjustments that come with some patches. All of these can drastically affect times/scores, causing the most major patches to be split into new versions."></i></p>
+				<p class="text-center text-light d-none d-md-block"><strong>Game Version (Patch) </strong><i class="bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="This option exists because of balance updates, bugfixes, and enemy adjustments that come with some patches. All of these can drastically affect times/scores, causing the most major patches to be split into new versions."></i></p>
+				<div class="btn-group d-flex" role="group" aria-label="Game Version" id="group-patch">
 					<input type="radio" class="btn-check" name="gamepatch" id="gamepatch1" value="NULL" autocomplete="off" onclick="loadScoresBegin();" checked>
-					<label class="btn btn-outline-secondary" for="gamepatch1">No Patch Given</label>
+					<label class="btn btn-outline-secondary" for="gamepatch1">Pre-+60 Release</label>
+					<input type="radio" class="btn-check" name="gamepatch" id="gamepatch2" value="60r" autocomplete="off" onclick="loadScoresBegin();" checked>
+					<label class="btn btn-outline-secondary" for="gamepatch2">+60 Release</label>
 				</div>
 			</div>
 		</div>
@@ -107,7 +87,7 @@
 		<div class="row my-2 align-content-center" id="buttons-classfilter">
 			<div class="col">
 				<p class="text-center text-light"><strong>Main Class Filters</strong></p>
-				<div class="btn-group d-flex" role="group" aria-label="Main Class Filters">
+				<div class="btn-group d-flex" style="overflow-x: auto" role="group" aria-label="Main Class Filters" id="group-classfilter">
 					<input type="radio" class="btn-check" name="classFilter" value="none" id="classFilter1" autocomplete="off" onclick="loadScoresBegin();" checked>
 					<label class="btn btn-outline-secondary" for="classFilter1">All</label>
 
@@ -137,32 +117,34 @@
 					
 					<input type="radio" class="btn-check" name="classFilter" value="waker" id="classFilter10" autocomplete="off" onclick="loadScoresBegin();">
 					<label class="btn btn-outline-secondary" for="classFilter10"><img src="img/class-waker.png"> Waker</label>
+					
 				</div>
 			</div>
 		</div>
-		
-		<table class="table table-dark table-hover caption-top score-table-override" id="score-ranking" data-tester='<th scope="col">Sub-class</th>'>
-			<caption class="p-3 bg-dark bg-gradient text-white rounded-top"><strong></strong></caption>
-			<thead>
-				<tr>
-					<th scope="col">Rank</th>
-					<th scope="col">Player</th>
-					<th scope="col">Main Class</th>
-					<th scope="col">Sub-class</th>
-					<th scope="col">Weapon(s) <i class="bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="These are the weapons that were in use on the run shown."></i></th>
-					<th scope="col">In-Game Time <i class="bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Displayed in MM:SS. This is either the time shown by the game, or the total time taken based on the in-game timer."></i></th>
-					<th scope="col">Video Link</th>
-				</tr>
-			</thead>
-			<tbody>
-			</tbody>
-		</table>
+		<div class="table-responsive">
+			<table class="table table-dark table-hover caption-top score-table-override" id="score-ranking">
+				<container><caption class="p-3 bg-dark bg-gradient text-white rounded-top "><strong></strong></caption></container>
+				<thead>
+					<tr class="sticky-top">
+						<th scope="col" class="text-center">#</th>
+						<th scope="col">Player(s)</th>
+						<th scope="col">Main Class</th>
+						<th scope="col">Sub-class</th>
+						<th scope="col">Weapon(s) <i class="bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="These are the weapons that were in use on the run shown."></i></th>
+						<th scope="col">In-Game Time <i class="bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Displayed in MM:SS. This is either the time shown by the game, or the total time taken based on the in-game timer."></i></th>
+						<th scope="col">Video Link(s)</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+
 	</div>
 	<div class="container">
 		<div class="row my-2">
 			<div class="col">
-				<a class="text-light" href=https://docs.google.com/spreadsheets/d/1EObhN-uAbA8H-tvsSrrpogM7l3nP4U3LdiZZS_DSG9c><p class="text-center">Stia Devastators Solo times sourced from this Google doc by 'Big Daddy Cool'</p></a>
-				<p class="text-secondary text-center">Leaderboard Created by SliWhist, Website/Hosting/Database Provided by Big Daddy Cool</p>
+				<p class="text-secondary text-center">Leaderboard Created by SliWhist<br>Website Hosting/Database/Original Stia Times provided by Big Daddy Cool<br>Leaderboard Logo by Sukeboy</p>
 				<p class="text-secondary text-center">ⒸSEGA PHANTASY STAR ONLINE 2 <a href=http://pso2.com>http://pso2.com</a>.<br>
 All rights to the copyrighted works (images, data, audios, texts, etc.) used in PSO2 are owned by SEGA Corporation.<br>
 All other trademarks, logos and copyrights are property of their respective owners<br>

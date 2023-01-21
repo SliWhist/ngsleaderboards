@@ -1,16 +1,8 @@
-const express = require("express");
-
 const sql = require('mssql');
 
 const path = require('path');
 
-//const app = express();
-
 require('dotenv').config()
-
-//app.use(express.static('files'))
-//app.use(express.json());
-//app.use(express.urlencoded({ extended: true }));
 
 const config = {
 	user: process.env.DB_USER, // better stored in an app setting such as process.env.DB_USER
