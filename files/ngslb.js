@@ -25,7 +25,7 @@ function Solo_Purple_SendRequest (region,classIn,rank,party,patch,serverFilter) 
 	
 	httpRequest.onreadystatechange = () => {
 		if(httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
-			console.log(httpRequest.response);
+			//console.log(httpRequest.response);
 			enableButtons();
 			Solo_Purple_LoadRankings(httpRequest.response);
 		}
@@ -44,7 +44,7 @@ function Party_Purple_SendRequest (region,classIn,rank,party,patch,serverFilter)
 	
 	httpRequest.onreadystatechange = () => {
 		if(httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
-			console.log(httpRequest.response);
+			//console.log(httpRequest.response);
 			enableButtons();
 			Party_Purple_LoadRankings(httpRequest.response);
 		}
@@ -166,7 +166,7 @@ function Solo_Purple_LoadRankings (data) {
 				break;
 			// Glow Color
 			case 3:
-				console.log(row.NameColor1);
+				//console.log(row.NameColor1);
 				buttonref.style.cssText += `text-shadow: 0px 0px 5px #` + row.NameColor1 + `, 0px 0px 5px #` + row.NameColor1 + `, 0px 0px 5px #` + row.NameColor1 + `;`;
 				break;
 			default:
@@ -434,7 +434,7 @@ function Party_Purple_LoadRankings (data) {
 					break;
 				// Glow Color
 				case 3:
-					console.log(partyNameColor1[index]);
+					//console.log(partyNameColor1[index]);
 					buttonref.style.cssText += `text-shadow: 0px 0px 5px #` + partyNameColor1[index] + `, 0px 0px 5px #` + partyNameColor1[index] + `, 0px 0px 5px #` + partyNameColor1[index] + `;`;
 					break;
 				default:
@@ -529,8 +529,8 @@ function Party_Purple_LoadRankings (data) {
 				link.textContent = "No POV";
 			}
 			tdlink.appendChild(link);
-			console.log(index);
-			console.log(partyLinkPOVs.length);
+			//console.log(index);
+			//console.log(partyLinkPOVs.length);
 			if (partyLinkPOVs[index] != null && partyLinkPOVs[index] != 'partynull') {
 				tdlink.innerHTML += '<br>';
 			}
@@ -601,7 +601,7 @@ function createRanking(tr,rank) {
 
 function testLocale() {
 	const regionNamesInEnglish = new Intl.DisplayNames(['ja-JP'], { type: 'region' });
-	console.log(regionNamesInEnglish.of('CA'));
+	//console.log(regionNamesInEnglish.of('CA'));
 }
 
 function generateRunnerInfoSolo (data) {
