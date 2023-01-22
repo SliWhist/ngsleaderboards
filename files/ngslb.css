@@ -5,26 +5,31 @@
 .score-table-override tbody td:nth-of-type(6) {
   border-right:1px solid #373b3e;
 }
+.score-table-override thead tr {
+  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.5);
+  clip-path: inset(0px 0px -15px 0px);
+  border-bottom: none !important;
+}
+.score-table-override thead tr th {
+  border-bottom: none;
+}
 
-/* Color ranks 1 - 3 in Gold, Silver, and Bronze. */
+/* Color ranks 1 - 3 in Gold, Silver, and Bronze. */ /* We don't do this anymore.
 .score-table-override tbody tr:nth-child(1) td:nth-of-type(1) {
   --bs-table-bg:#908147;
   --bs-table-hover-bg:#A8995F;
-  font-weight:bold;
 }
 
 .score-table-override tbody tr:nth-child(2) td:nth-of-type(1) {
   --bs-table-bg:#87898B;
   --bs-table-hover-bg:#A2A4A6;
-  font-weight:bold;
 }
 
 .score-table-override tbody tr:nth-child(3) td:nth-of-type(1) {
   --bs-table-bg:#684438;
   --bs-table-hover-bg:#856155;
-  font-weight:bold;
 }
-
+*/
 /* Change color for noted rows. */
 .pso2-noted {
   --bs-table-bg:#4c5037;
