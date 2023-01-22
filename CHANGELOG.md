@@ -1,12 +1,10 @@
 1.1:
 
-Added Ordinal Tower rankings.
-As of release, there aren't any runs logged. This will likely change when sega runs the cancelled arks record.
-
 Added custom trophy icons for Rankings 1 - 3. Just a small bit of visual flair!
 
 Added support for setting a runner's name to one of three options based on runner preference: Player Name, (Primary) Character Name, and In-Video Name.
     - As a result of this feature, you can now highlight names for their in-video name, assuming they don't have it set as their default.
+    - This feature is very unwieldy on mobile. A future update will instead add greyed out character names next to the runner name when on mobile.
 
 Added runner information! You can now click on some names for more information about a runner!
     - This only has a lot of info if a runner asks for it to be added right now!
@@ -17,7 +15,7 @@ Psst! If you submit a run and include a country, I'll give you a flag if you wan
 
 Added (Optional!) ship indicators! Much like country flags, these are mostly unused. They'll come in Global ship 1-4 flavor and Japan Ship 1-??? flavor.
 
-Added additional mobile support. (Made some things scrollable and/or smaller on mobile.) It's still far from perfect.
+Added additional mobile support. (Made some things scrollable and/or smaller on mobile.) It's still far, far from perfect.
 
 1.0b:
 

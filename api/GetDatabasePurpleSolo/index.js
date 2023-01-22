@@ -25,17 +25,22 @@ module.exports = async function (context, req) {
         	var region = inputArray[0];
         	var rank = inputArray[2];
             var gamepatch = inputArray[4];
+            var serverFilter = inputArray[5];
 		var poolConnection = await sql.connect(config);
 		
-        var patchQuery = 'AND Patch IS NULL';
+        var patchQuery = 'AND Patch IS NULL ';
         var classQuery = '';
+        var serverQuery = '';
 
         if(mainclass != 'none') {
             classQuery = ` AND MainClass = @ClassInput `;
         }
 
         if(gamepatch != 'none') {
-            patchQuery = "AND Patch = @PatchInput";
+            patchQuery = "AND Patch = @PatchInput ";
+        }
+        if(serverFilter != 'none') {
+            serverQuery = "AND Server = @ServerInput ";
         }
 
 		var sqlQuery = `
@@ -82,11 +87,11 @@ module.exports = async function (context, req) {
             Rank = @RankInput
             AND
             Region = @RegionInput
-            ` + classQuery + patchQuery + `
+            ` + classQuery + patchQuery + serverQuery + `
             
         ORDER BY time ASC`;
 			
-		var results = await poolConnection.request().input('ClassInput', sql.VarChar, mainclass).input('RegionInput', sql.VarChar, region).input('RankInput', sql.Int, rank).input('PatchInput', sql.VarChar, gamepatch).query(sqlQuery);
+		var results = await poolConnection.request().input('ServerInput',sql.VarChar, serverFilter).input('ClassInput', sql.VarChar, mainclass).input('RegionInput', sql.VarChar, region).input('RankInput', sql.Int, rank).input('PatchInput', sql.VarChar, gamepatch).query(sqlQuery);
 		
 		var returner = results.recordset;
 		//console.log(returner);

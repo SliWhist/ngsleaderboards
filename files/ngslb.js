@@ -14,11 +14,12 @@ const buttongroupPatch = document.querySelectorAll("#group-patch *");
 const buttongroupCategory = document.querySelectorAll("#group-maincategory *");
 const buttongroupSubcategory = document.querySelectorAll("#group-category *");
 const buttongroupParty = document.querySelectorAll("#group-partysize *");
+const buttongroupServer = document.querySelectorAll("#group-serverfilter *");
 
 // This function requests Solo purple rankings
-function Solo_Purple_SendRequest (region,classIn,rank,party,patch) {
+function Solo_Purple_SendRequest (region,classIn,rank,party,patch,serverFilter) {
 	
-	var params = region + "@!@!@" + classIn + "@!@!@" + rank + "@!@!@" + party + "@!@!@" + patch;
+	var params = region + "@!@!@" + classIn + "@!@!@" + rank + "@!@!@" + party + "@!@!@" + patch + "@!@!@" + serverFilter;
 
 	const httpRequest = new XMLHttpRequest();
 	
@@ -35,9 +36,9 @@ function Solo_Purple_SendRequest (region,classIn,rank,party,patch) {
 	httpRequest.send(params);
 }
 
-function Party_Purple_SendRequest (region,classIn,rank,party,patch) {
+function Party_Purple_SendRequest (region,classIn,rank,party,patch,serverFilter) {
 	
-	var params = region + "@!@!@" + classIn + "@!@!@" + rank + "@!@!@" + party + "@!@!@" + patch;
+	var params = region + "@!@!@" + classIn + "@!@!@" + rank + "@!@!@" + party + "@!@!@" + patch + "@!@!@" + serverFilter;
 
 	const httpRequest = new XMLHttpRequest();
 	
@@ -113,6 +114,8 @@ function Solo_Purple_LoadRankings (data) {
 				name = row.RunCharacterName;
 				break;
 		}
+		if (name != row.RunCharacterName)
+				name = '<span data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="' + row.RunCharacterName + '">' + name + '</span>';
 
 		// With the name set, we enter the H O R R O R Z O N E (generating the modal)
 
@@ -373,6 +376,9 @@ function Party_Purple_LoadRankings (data) {
 					name = partyRunCharacterName[index];
 					break;
 			}
+			if (name != partyRunCharacterName[index])
+				name = '<span data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="' + partyRunCharacterName[index] + '">' + name + '</span>';
+				//name = name + ' <span class="text-secondary">' + partyRunCharacterName[index] + '</span>';
 
 			// With the name set, we enter the H O R R O R Z O N E (generating the modal) -- Since this is parties, it's E V E N W O R S E.
 
@@ -535,7 +541,7 @@ function Party_Purple_LoadRankings (data) {
 
 		if (row.Notes != null) {
 			tr.classList.add("pso2-noted");
-			tdlink.innerHTML += ' <i class="bi-info-circle" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="left" data-bs-title="' + row.Notes + '"></i>';
+			tdlink.innerHTML += ' <i class="bi-info-circle text-light" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="left" data-bs-title="' + row.Notes + '"></i>';
 		}
 
 		// Finally, add the row.
@@ -553,6 +559,7 @@ function createNoScores() {
 	const tr = document.createElement("tr");
 
 	const tdemptyr = document.createElement("td");
+	tdemptyr.classList.add("text-center");
 	const tdempty1 = document.createElement("td");
 	const tdempty2 = document.createElement("td");
 	const tdempty3 = document.createElement("td");
@@ -693,7 +700,7 @@ function generateRunnerInfoParty (PreferredName,CharacterName,PlayerName,Twitch,
 			break;
 		default:
 			name = PlayerName;
-			if (CharacterName != null) {
+			if (CharacterName != null && CharacterName != 'partynull') {
 				name2 = CharacterName;
 			}
 			else {
@@ -765,6 +772,7 @@ function checkScoreOptions() {
 	var primeCategory = document.querySelector('input[name="mainCategory"]:checked').value;
 	var patchNo = document.querySelector('input[name="gamepatch"]:checked').value;
 	var classFilter = document.querySelector('input[name="classFilter"]:checked').value;
+	var serverFilter = document.querySelector('input[name="serverFilter"]:checked').value;
 	var classNames = '';
 	var myCollapse = new bootstrap.Collapse(filterclassbuttons, { toggle: false } );
 	if (partySize != "solo") {
@@ -804,16 +812,16 @@ function checkScoreOptions() {
 	
 	var scoreCode = primeCategory+'-'+mainCategory+'-'+partySize+'-'+patchNo;
 	var categoryName = primeCategory+'-'+mainCategory;
-	var output = generateCategoryName(categoryName, partySize, patchNo, classNames);
+	var output = generateCategoryName(categoryName, partySize, patchNo, classNames,serverFilter);
 	scoretitle.innerHTML = output;
 	if(primeCategory != 'maincategory-ordinal') {
-		loadScoresPrepare(mainCategory,classFilter,rankSelected,partySize,patchNo);
+		loadScoresPrepare(mainCategory,classFilter,rankSelected,partySize,patchNo,serverFilter);
 	}
 }
 
 // Time for the most sinful function in this file.
 
-function generateCategoryName(category,partysize,patch,classFilter) {
+function generateCategoryName(category,partysize,patch,classFilter,serverFilter) {
 	
 	var mainClass = '';
 	// First, generate the category name. TODO: Scalability. Right now this is designed to do a switch case check, I could do a string split similar to the weapons generation to create a title.
@@ -892,9 +900,21 @@ function generateCategoryName(category,partysize,patch,classFilter) {
 			mainClass = '';
 			break;
 	}
+	switch (serverFilter)
+	{
+		case "none":
+			serverName = '';
+			break;
+		case "global":
+			serverName = ' - Global';
+			break;
+		case "japan":
+			serverName = ' - Japan';
+			break;
+	}
 	
 	// And now, put it all together.
-	result = mainClass + categoryName + ' ' + partyName + ' </strong><br><small>' + patchNo + '</small><strong>';
+	result = mainClass + categoryName + ' ' + partyName + serverName + ' </strong><br><small>' + patchNo + '</small><strong>';
 	
 	//console.log(result)
 	
@@ -917,6 +937,9 @@ function disableButtons() {
 	buttongroupParty.forEach((element) => {
 		element.setAttribute("disabled",'');
 	});
+	buttongroupServer.forEach((element) => {
+		element.setAttribute("disabled",'');
+	});
 }
 
 function enableButtons() {
@@ -935,6 +958,9 @@ function enableButtons() {
 	buttongroupParty.forEach((element) => {
 		element.removeAttribute("disabled");
 	});
+	buttongroupServer.forEach((element) => {
+		element.removeAttribute("disabled");
+	});
 }
 
 function loadScoresBegin() {
@@ -942,15 +968,15 @@ function loadScoresBegin() {
 	checkScoreOptions();
 }
 
-function loadScoresPrepare (region,mainclass,rank,partySize,patch) {
+function loadScoresPrepare (region,mainclass,rank,partySize,patch,serverFilter) {
 	
 	if (partySize != 'solo')
 	{
-		Party_Purple_SendRequest(region,mainclass,rank,partySize,patch);
+		Party_Purple_SendRequest(region,mainclass,rank,partySize,patch,serverFilter);
 	}
 	else
 	{
-		Solo_Purple_SendRequest(region,mainclass,rank,partySize,patch);
+		Solo_Purple_SendRequest(region,mainclass,rank,partySize,patch,serverFilter);
 	}
 	
 }

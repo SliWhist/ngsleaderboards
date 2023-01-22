@@ -25,12 +25,17 @@ module.exports = async function (context, req) {
         	var region = inputArray[0];
         	var rank = inputArray[2];
             var gamepatch = inputArray[4];
+            var serverFilter = inputArray[5];
 		var poolConnection = await sql.connect(config);
 		
-        var patchQuery = 'AND Patch IS NULL';
+        var patchQuery = 'AND Patch IS NULL ';
+        var serverQuery = '';
 
         if(gamepatch != 'none') {
-            patchQuery = "AND Patch = @PatchInput";
+            patchQuery = "AND Patch = @PatchInput ";
+        }
+        if(serverFilter != 'none') {
+            serverQuery = "AND RunServer = @ServerInput ";
         }
 
 		switch (partysize) {
@@ -61,7 +66,7 @@ module.exports = async function (context, req) {
 
             STRING_AGG([Players].[Information].[PlayerID], '@@@') as PlayerID,
             STRING_AGG([Players].[Information].[PlayerName], '@@@') as PlayerName,
-            STRING_AGG([Players].[Information].[CharacterName], '@@@') as CharacterName,
+            STRING_AGG(COALESCE([Players].[Information].[CharacterName], 'partynull'), '@@@') as CharacterName,
             STRING_AGG(COALESCE([Players].[Information].[Description], 'partynull'), '@@@') as Description,
             STRING_AGG(COALESCE([Players].[Information].[Youtube], 'partynull'), '@@@') as Youtube,
             STRING_AGG(COALESCE([Players].[Information].[Twitch], 'partynull'), '@@@') as Twitch,
@@ -93,14 +98,14 @@ module.exports = async function (context, req) {
             Region = @RegionInput
 			AND
             PartySize = @PartySize
-			`+ patchQuery +`
+			`+ patchQuery + serverQuery + `
 
         GROUP BY Purples.Party.RunID
 
         ORDER BY MAX(time) ASC
 		`;
 			
-		var results = await poolConnection.request().input('PartySize', sql.Int, partysize).input('RegionInput', sql.VarChar, region).input('RankInput', sql.Int, rank).input('PatchInput', sql.VarChar, gamepatch).query(sqlQuery);
+		var results = await poolConnection.request().input('ServerInput',sql.VarChar, serverFilter).input('PartySize', sql.Int, partysize).input('RegionInput', sql.VarChar, region).input('RankInput', sql.Int, rank).input('PatchInput', sql.VarChar, gamepatch).query(sqlQuery);
 		
 		var returner = results.recordset;
 		//console.log(returner);
