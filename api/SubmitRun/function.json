@@ -6,10 +6,9 @@
       "direction": "in",
       "name": "req",
       "methods": [
-        "get",
         "post"
       ],
-      "route": "purple"
+      "route": "submitrun"
     },
     {
       "type": "http",

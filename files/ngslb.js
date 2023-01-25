@@ -810,7 +810,6 @@ function checkScoreOptions() {
 	//console.log(primeCategory);
 	//console.log(patchNo);
 	
-	var scoreCode = primeCategory+'-'+mainCategory+'-'+partySize+'-'+patchNo;
 	var categoryName = primeCategory+'-'+mainCategory;
 	var output = generateCategoryName(categoryName, partySize, patchNo, classNames,serverFilter);
 	scoretitle.innerHTML = output;

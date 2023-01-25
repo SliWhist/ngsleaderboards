@@ -1,0 +1,72 @@
+{
+    "auth": {
+      "identityProviders": {
+        "customOpenIdConnectProviders": {
+          "aadb2c": {
+            "registration": {
+              "clientIdSettingName": "AADB2C_PROVIDER_CLIENT_ID",
+              "clientCredential": {
+                "clientSecretSettingName": "AADB2C_PROVIDER_CLIENT_SECRET"
+              },
+              "openIdConnectConfiguration": {
+                "wellKnownOpenIdConfiguration": "https://pso2centralb2c.b2clogin.com/pso2centralb2c.onmicrosoft.com/B2C_1_SignUpSignInFlow/v2.0/.well-known/openid-configuration"
+              }
+            },
+            "login": {
+              "nameClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+              "scopes": [],
+              "loginParameterNames": []
+            }
+          }
+        }
+      }
+    },
+    "trailingSlash": "never",
+    "routes": [
+      {
+        "route": "/profile/index.html",
+        "allowedRoles": ["authenticated"]
+      },
+      {
+        "route": "/profile*",
+        "allowedRoles": ["authenticated"]
+      },
+      {
+        "route": "/admin*",
+        "allowedRoles": ["administrator"]
+      },
+      {
+        "route": "/moderation*",
+        "allowedRoles": ["pso2moderator","administrator"]
+      },
+      {
+        "route": "/submit/index.html",
+        "allowedRoles": ["authenticated"]
+      },
+      {
+        "route": "/submit*",
+        "allowedRoles": ["authenticated"]
+      },
+      {
+        "route": "/login",
+        "rewrite": "/.auth/login/github"
+      },
+      {
+        "route": "/.auth/login/twitter",
+        "statusCode": 404
+      },
+      {
+        "route": "/logout",
+        "redirect": "/.auth/logout"
+      },
+      {
+        "route": "/calendar*",
+        "rewrite": "/calendar.html"
+      },
+      {
+        "route": "/specials",
+        "redirect": "/deals",
+        "statusCode": 301
+      }
+    ]
+  }
