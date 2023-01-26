@@ -100,7 +100,7 @@ module.exports = async function (context, req) {
             "extension_playerDisplayname": `"` + displayName + `"`, // return claim
             "extension_playerNametype" : `"` + nameType + `"`,
             "extension_playerNamecolor1" : `"` + nameColor1 + `"`,
-            "extension_playerNamecolor2" : `"` + nameColor2 + `"`
+            "extension_playerNamecolor2" : `burp`
         }
 
         //data = JSON.stringify(data);
