@@ -2,7 +2,7 @@
   "name": "leaderboard",
   "version": "1.0.0",
   "engines": {
-	"node": ">=16.16.0"
+    "node": ">=16.16.0"
   },
   "description": "NodeJS implementation for the NGS leaderboard",
   "scripts": {
