@@ -1,4 +1,4 @@
-const sql = require('mssql');
+/*const sql = require('mssql');
 
 const path = require('path');
 
@@ -29,4 +29,4 @@ module.exports = async function (context, req) {
             r = urls[i].match(rx);
             console.log(r[1]);
         }
-}
+}*/

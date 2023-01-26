@@ -1,5 +1,6 @@
 {
     "auth": {
+      "rolesSource": "/api/LoginGetRolesPSO2",
       "identityProviders": {
         "customOpenIdConnectProviders": {
           "aadb2c": {
@@ -13,7 +14,7 @@
               }
             },
             "login": {
-              "nameClaimType": "email",
+              "nameClaimType": "emails",
               "scopes": ["openid","profile","email"],
               "loginParameterNames": []
             }
@@ -37,7 +38,7 @@
       },
       {
         "route": "/moderation*",
-        "allowedRoles": ["pso2moderator","administrator"]
+        "allowedRoles": ["administrator"]
       },
       {
         "route": "/submit/index.html",
@@ -49,7 +50,15 @@
       },
       {
         "route": "/login",
-        "rewrite": "/.auth/login/github"
+        "rewrite": "/.auth/login/aadb2c"
+      },
+      {
+        "route": "/.auth/login/aad",
+        "statusCode": 404
+      },
+      {
+        "route": "/.auth/login/github",
+        "statusCode": 404
       },
       {
         "route": "/.auth/login/twitter",
