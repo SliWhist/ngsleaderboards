@@ -3,6 +3,7 @@ module.exports = async function (context, req) {
     var data = {
         "version": "1.0.0",
         "action": "Continue",
+        "displayName": "test",
         "extension_playerIdentifier": 1 // return claim
     }
 
