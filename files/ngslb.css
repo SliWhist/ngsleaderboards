@@ -42,3 +42,27 @@
 .pso2-noted a:hover {
   color:#dadcec;
 }
+
+/*
+.pso2-submitoverride {
+  color:#d6d6d6;
+  background-color:#141414;
+  border:var(--bs-border-width) solid #000000;
+}
+
+.pso2-submitoverride:disabled {
+  color:#d6d6d6;
+  background-color:#313131;
+  border:var(--bs-border-width) solid #000000;
+}
+
+.pso2-submitoverride:focus {
+  color:#d6d6d6;
+  background-color:#141414;
+  border:var(--bs-border-width) solid #000000;
+}
+
+.pso2-submitoverride::placeholder {
+  color:#696969;
+}
+*/

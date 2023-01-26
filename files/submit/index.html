@@ -13,7 +13,7 @@
   <header class="sticky-top">
 	<div class="text-bg-dark px-3 py-2">
 		<div class="container">
-			<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+			<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" id="lbHeader">
 				<a href="localhost:4280" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
 					<div class= "d-flex" style="background:url(../img/scoreboard-rank2.png) no-repeat scroll left center/auto 1rem; height:1rem; width:1.25rem;"></div>
 					<div class= "d-flex">Unofficial Leaderboards</div>
@@ -43,19 +43,19 @@
 		</div>
 	</div>
     <div class="container">
-		<form class="bg-dark px-4 py-3 mx-3 rounded needs-validation" action="../api/submitrun" method="post">
+		<form class="bg-light px-4 py-3 mx-3 rounded needs-validation" action="../api/submitrun" method="post">
 			<div class="mb-3">
-				<p class="text-center text-secondary"><strong>Run Information</strong></p>
-				<label for="submitFormMainCategory" class="form-label text-secondary">Run Category (Required)</label>
+				<p class="text-center"><strong>Run Information</strong></p>
+				<label for="submitFormMainCategory" class="form-label">Run Category (Required)</label>
 				<select class="form-select" id="submitFormMainCategory" aria-describedby="submitFormMainCategoryHelp" disabled>
 					<option value="purple" selected>Purple Triggers</option>
 				</select>
-				<div id="submitFormMainCategoryHelp" class="form-text text-secondary">Select the main category for your run. This is useless right now, so don't worry about it.</div>
+				<div id="submitFormMainCategoryHelp" class="form-text">Select the main category for your run. This is useless right now, so don't worry about it.</div>
 			</div>
 			<div class="mb-3">
 				<div class="row">
 					<div class="col">
-						<label for="submitFormRegion" class="form-label text-secondary">Region (Required)</label>
+						<label for="submitFormRegion" class="form-label">Region (Required)</label>
 						<select class="form-select" id="submitFormRegion" aria-describedby="submitFormRegionHelp" required>
 							<option selected disabled value="">Select the run's region...</option>
 							<option value="stia">Stia (Rank 1)</option>
@@ -63,10 +63,10 @@
 							<option value="retem">Retem (Rank 3)</option>
 							<option value="aelio">Aelio (Rank 3)</option>
 						</select>
-						<div id="submitFormRegionHelp" class="form-text text-secondary">Select the region for your run.</div>
+						<div id="submitFormRegionHelp" class="form-text">Select the region for your run.</div>
 					</div>
 					<!-- <div class="col">
-						<label for="submitFormPartysize" class="form-label text-secondary">Party Size (Required)</label>
+						<label for="submitFormPartysize" class="form-label">Party Size (Required)</label>
 						<select class="form-select" id="submitFormPartysize" aria-describedby="submitFormPartysizeHelp" required>
 							<option selected disabled value="">Select the run's party size...</option>
 							<option value="solo">Solo</option>
@@ -74,55 +74,50 @@
 							<option value="trio">Trio</option>
 							<option value="fullparty">Full Party</option>
 						</select>
-						<div id="submitFormPartysizeHelp" class="form-text text-secondary">Select the party size for your run.</div>
+						<div id="submitFormPartysizeHelp" class="form-text">Select the party size for your run.</div>
 					</div> -->
 					<div class="col">
-						<label for="submitFormPartysize" class="form-label text-secondary">Game Version (Required)</label>
+						<label for="submitFormPartysize" class="form-label">Game Version (Required)</label>
 						<select class="form-select" id="submitFormPartysize" aria-describedby="submitFormPartysizeHelp" required>
 							<option selected disabled value="">Select the run's game version...</option>
 							<option value="duo">+60 Release (Newest)</option>
 							<option value="solo">Pre-+60 Release</option>
 						</select>
-						<div id="submitFormPartysizeHelp" class="form-text text-secondary">Select the game version for your run.</div>
+						<div id="submitFormPartysizeHelp" class="form-text">Select the game version for your run.</div>
 					</div>
 				</div>
 			</div>
 			<div class="mb-3">
 				<div class="row">
 					<div class="col">
-						<label for="submitFormYoutube" class="form-label text-secondary">Youtube Link (Required)</label>
+						<label for="submitFormYoutube" class="form-label">Youtube Link (Required)</label>
 						<input type="url" class="form-control" id="submitFormYoutube" aria-describedby="submitFormYoutubeHelp" pattern="^(?:https?:)?(?:[/][/])?(?:youtu[.]be[/]|(?:www[.]|m[.])?youtube[.]com[/](?:watch|v|embed)(?:[.]php)?(?:[?].*v=|[/]))([a-zA-Z0-9[\]_-]{7,15})(?:[\?&][a-zA-Z0-9[\]_-]+=[a-zA-Z0-9[\]_-]+)*$" title="Link must be a valid Youtube link." required></input>
-						<div id="submitFormYoutubeHelp" class="form-text text-secondary">Accepts any youtube link. (Youtube.com, Youtu.be...)</div>
+						<div id="submitFormYoutubeHelp" class="form-text">Accepts any youtube link. (Youtube.com, Youtu.be...)</div>
 					</div>
 					<div class="col">
-						<label for="submitFormRegion" class="form-label text-secondary">Run Time (Required)</label>
+						<label for="submitFormRegion" class="form-label">Run Time (Required)</label>
 						<div class="input-group">
 							<input type="number" min="0" max="20" class="form-control" placeholder="20" aria-label="Username" required>
 							<span class="input-group-text">:</span>
 							<input type="number" min="0" max="59" class="form-control" placeholder="00" aria-label="Server" required>
 						</div>
-						<div id="submitFormRegionHelp" class="form-text text-secondary">Your final time in minutes and seconds. This is not the time left at the end of the run.</div>
+						<div id="submitFormRegionHelp" class="form-text">Your final time in minutes and seconds. This is not the time left at the end of the run.</div>
 					</div>
 				</div>
 			</div>
 			<div class="mb-3">
-				<p class="text-center text-secondary"><strong>Runner Information</strong></p>
+				<p class="text-center"><strong>Runner Information</strong></p>
 				<div class="row">
 					<div class="col">
-						<label for="submitFormRegion" class="form-label text-secondary">Runner Name (Required)</label>
-						<input type="text" class="form-control" id="submitFormRegion" aria-describedby="submitFormRegionHelp" placeholder="Runner or Youtube name..." required></input>
-						<div id="submitFormRegionHelp" class="form-text text-secondary">Case-Sensitive. The runner name or youtube channel name. Exclude 'ship #' if applicable.</div>
-					</div>
-					<div class="col">
-						<label for="submitFormPartysize" class="form-label text-secondary">Character Name (Required)</label>
+						<label for="submitFormPartysize" class="form-label">Character Name (Required)</label>
 						<input type="text" class="form-control" id="submitFormPartysize" aria-describedby="submitFormPartysizeHelp" placeholder="Character name..." required></input>
-						<div id="submitFormPartysizeHelp" class="form-text text-secondary">Case-Sensitive. The name of the character.</div>
+						<div id="submitFormPartysizeHelp" class="form-text">Case-Sensitive. The name of your character for identification purposes.</div>
 					</div>
 				</div>
 			</div>
 			<div class="row mb-3">
 				<div class="col">
-					<label for="submitFormPartysize" class="form-label text-secondary" required>Main Class (Required)</label>
+					<label for="submitFormPartysize" class="form-label" required>Main Class (Required)</label>
 					<select class="form-select" id="submitFormPartysize">
 						<option selected disabled value="">Select a main class...</option>
 						<option value="1">Hunter</option>
@@ -138,7 +133,7 @@
 					</select>
 				</div>
 				<div class="col">
-					<label for="submitFormPartysize" class="form-label text-secondary" required>Sub-Class (Required)</label>
+					<label for="submitFormPartysize" class="form-label" required>Sub-Class (Required)</label>
 					<select class="form-select" id="submitFormPartysize">
 						<option selected disabled value="">Select a sub-class...</option>
 						<option value="1">Hunter</option>
@@ -156,7 +151,7 @@
 			</div>
 			<div class="row mb-3">
 				<div class="col">
-					<label for="submitFormPartysize" class="form-label text-secondary" required>Weapon 1 (Required)</label>
+					<label for="submitFormPartysize" class="form-label" required>Weapon 1 (Required)</label>
 					<select class="form-select" id="submitFormPartysize">
 						<option selected disabled value="">None</option>
 						<option value="1">Sword</option>
@@ -179,7 +174,7 @@
 					</select>
 				</div>
 				<div class="col">
-					<label for="submitFormPartysize" class="form-label text-secondary">Weapon 2</label>
+					<label for="submitFormPartysize" class="form-label">Weapon 2</label>
 					<select class="form-select" id="submitFormPartysize">
 						<option selected value="0">None</option>
 						<option value="1">Sword</option>
@@ -202,7 +197,7 @@
 					</select>
 				</div>
 				<div class="col">
-					<label for="submitFormPartysize" class="form-label text-secondary">Weapon 3</label>
+					<label for="submitFormPartysize" class="form-label">Weapon 3</label>
 					<select class="form-select" id="submitFormPartysize">
 						<option selected value="0">None</option>
 						<option value="1">Sword</option>
@@ -227,7 +222,7 @@
 			</div>
 			<div class="row mb-3">
 				<div class="col">
-					<label for="submitFormPartysize" class="form-label text-secondary">Weapon 4</label>
+					<label for="submitFormPartysize" class="form-label">Weapon 4</label>
 					<select class="form-select" id="submitFormPartysize">
 						<option selected value="0">None</option>
 						<option value="1">Sword</option>
@@ -250,7 +245,7 @@
 					</select>
 				</div>
 				<div class="col">
-					<label for="submitFormPartysize" class="form-label text-secondary">Weapon 5</label>
+					<label for="submitFormPartysize" class="form-label">Weapon 5</label>
 					<select class="form-select" id="submitFormPartysize">
 						<option selected value="0">None</option>
 						<option value="1">Sword</option>
@@ -273,7 +268,7 @@
 					</select>
 				</div>
 				<div class="col">
-					<label for="submitFormPartysize" class="form-label text-secondary">Weapon 6</label>
+					<label for="submitFormPartysize" class="form-label">Weapon 6</label>
 					<select class="form-select" id="submitFormPartysize">
 						<option selected value="0">None</option>
 						<option value="1">Sword</option>
@@ -297,7 +292,7 @@
 				</div>
 			</div>
 			<div class="mb-3 text-center">
-				<button type="submit" class="btn btn-primary">Submit Run</button>
+				<button type="submit" class="btn btn-secondary">Submit Run</button>
 			</div>
 		</form>
 	</div>
