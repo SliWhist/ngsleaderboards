@@ -118,10 +118,7 @@ module.exports = async function (context, req) {
         var data = {
             "version": "1.0.0",
             "action": "Continue",
-            "extension_playerDisplayname": "Error Happened My Guy", // return claim
-            "extension_playerNametype" : nameType,
-            "extension_playerNamecolor1" : nameColor1,
-            "extension_playerNamecolor2" : nameColor2
+            "extension_playerDisplayname": "Error Happened My Guy"
         }
 	}
 
