@@ -101,7 +101,7 @@ module.exports = async function (context, req) {
             "extension_playerNametype" : nameType,
             "extension_playerNamecolor1" : nameColor1,
             "extension_playerNamecolor2" : nameColor2,
-            "dumbthing" : req.body
+            "dumbthing" : userID.userId
         }
 
         //data = JSON.stringify(data);
