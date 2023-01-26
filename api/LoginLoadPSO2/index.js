@@ -5,10 +5,10 @@ const path = require('path');
 require('dotenv').config()
 
 const config = {
-	user: process.env.DB_USER, // better stored in an app setting such as process.env.DB_USER
-	password: process.env.DB_PASSWORD, // better stored in an app setting such as process.env.DB_PASSWORD
-	server: process.env.DB_SERVER, // better stored in an app setting such as process.env.DB_SERVER
-	database: process.env.DB_NAME, // better stored in an app setting such as process.env.DB_NAME
+	user: process.env["DB_USER"], // better stored in an app setting such as process.env.DB_USER
+	password: process.env["DB_PASSWORD"], // better stored in an app setting such as process.env.DB_PASSWORD
+	server: process.env["DB_SERVER"], // better stored in an app setting such as process.env.DB_SERVER
+	database: process.env["DB_NAME"], // better stored in an app setting such as process.env.DB_NAME
 	authentication: {
 		type: 'default'
 	},
@@ -55,10 +55,10 @@ module.exports = async function (context, req) {
 		//console.log(results);
 		poolConnection.close();
 
-        var displayName = '';
-        var nameType = '';
-        var nameColor1 = '';
-        var nameColor2 = '';
+        var displayName = 'b';
+        var nameType = 'b';
+        var nameColor1 = 'b';
+        var nameColor2 = 'b';
         //console.log(returner);
 
         nameType = returner[0].NameType;
@@ -97,11 +97,10 @@ module.exports = async function (context, req) {
         var data = {
             "version": "1.0.0",
             "action": "Continue",
-            "extension_playerDisplayname": displayName, // return claim
-            "extension_playerNametype" : nameType,
-            "extension_playerNamecolor1" : nameColor1,
-            "extension_playerNamecolor2" : nameColor2,
-            "dumbthing" : userID.userId
+            "extension_playerDisplayname": `"` + displayName + `"`, // return claim
+            "extension_playerNametype" : `"` + nameType + `"`,
+            "extension_playerNamecolor1" : `"` + nameColor1 + `"`,
+            "extension_playerNamecolor2" : `"` + nameColor2 + `"`
         }
 
         //data = JSON.stringify(data);
@@ -119,7 +118,6 @@ module.exports = async function (context, req) {
         var data = {
             "version": "1.0.0",
             "action": "Continue",
-            "extension_playerDisplayname": "Error Happened My Guy"
         }
 	}
 
