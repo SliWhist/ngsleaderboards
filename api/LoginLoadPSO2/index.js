@@ -55,8 +55,15 @@ module.exports = async function (context, req) {
 		//console.log(results);
 		poolConnection.close();
 
+        var displayName = '';
+        var nameType = '';
+        var nameColor1 = '';
+        var nameColor2 = '';
         //console.log(returner);
         returner.forEach((row) => {
+            nameType = row.NameType;
+            nameColor1 = row.NameColor1;
+            nameColor2 = row.NameColor2;
             switch (row.PreferredName) {
                 // Player Name
                 case 0:
@@ -84,24 +91,25 @@ module.exports = async function (context, req) {
                     break;
             }
     
-            var data = {
-                "version": "1.0.0",
-                "action": "Continue",
-                "extension_playerDisplayname": displayName, // return claim
-                "extension_playerNametype" : row.NameType,
-                "extension_playerNamecolor1" : row.NameColor1,
-                "extension_playerNamecolor2" : row.NameColor2
-            }
-
-            data = JSON.stringify(data);
-            data = JSON.parse(data);
-            console.log(data);
-            context.res = {
-                contentType: "application/json",
-                    status: 200, /* Defaults to 200 */
-                    body: data
-            };
         });
+        
+        var data = {
+            "version": "1.0.0",
+            "action": "Continue",
+            "extension_playerDisplayname": displayName, // return claim
+            "extension_playerNametype" : nameType,
+            "extension_playerNamecolor1" : nameColor1,
+            "extension_playerNamecolor2" : nameColor2
+        }
+
+        //data = JSON.stringify(data);
+        //data = JSON.parse(data);
+        console.log(data);
+        context.res = {
+            contentType: "application/json",
+                status: 200, /* Defaults to 200 */
+                body: data
+        };
 
     }
     catch (err) {
