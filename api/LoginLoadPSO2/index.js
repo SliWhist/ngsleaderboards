@@ -60,39 +60,40 @@ module.exports = async function (context, req) {
         var nameColor1 = '';
         var nameColor2 = '';
         //console.log(returner);
-        returner.forEach((row) => {
-            nameType = row.NameType;
-            nameColor1 = row.NameColor1;
-            nameColor2 = row.NameColor2;
-            switch (row.PreferredName) {
-                // Player Name
-                case 0:
-                    displayName = row.PlayerName;
-                    break;
-                // (Main) Character Name
-                case 1:
-                    if (row.CharacterName != null) {
-                        displayName = row.CharacterName;
-                    }
-                    else
-                    {
-                        displayName = row.PlayerName;
-                    }
-                    break;
-                // In-Video Character Name
-                case 2:
-                    if (row.CharacterName != null) {
-                        displayName = row.CharacterName;
-                    }
-                    else
-                    {
-                        displayName = row.PlayerName;
-                    }
-                    break;
-            }
+
+        nameType = returner[0].NameType;
+        nameColor1 = returner[0].NameColor1;
+        nameColor2 = returner[0].NameColor2;
+        switch (returner[0].PreferredName) {
+            // Player Name
+            case 0:
+                displayName = returner[0].PlayerName;
+                break;
+            // (Main) Character Name
+            case 1:
+                if (returner[0].CharacterName != null) {
+                    displayName = returner[0].CharacterName;
+                }
+                else
+                {
+                    displayName = returner[0].PlayerName;
+                }
+                break;
+            // In-Video Character Name
+            case 2:
+                if (returner[0].CharacterName != null) {
+                    displayName = returner[0].CharacterName;
+                }
+                else
+                {
+                    displayName = returner[0].PlayerName;
+                }
+                break;
+        }
     
-        });
-        
+
+        console.log(returner[0]);
+
         var data = {
             "version": "1.0.0",
             "action": "Continue",
