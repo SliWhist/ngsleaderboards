@@ -98,7 +98,7 @@ module.exports = async function (context, req) {
             "version": "1.0.0",
             "action": "Continue",
             "extension_playerDisplayname": displayName, // return claim
-            "extension_playerNametype" : nameType,
+            "extension_playerNametype" : toString(nameType),
             "extension_playerNamecolor1" : nameColor1,
             "extension_playerNamecolor2" : nameColor2
         }
