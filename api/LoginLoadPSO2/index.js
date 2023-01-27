@@ -91,7 +91,7 @@ module.exports = async function (context, req) {
                 break;
         }
     
-        nameType = toString(nameType);
+        nameType = nameType.toString();
         console.log(returner[0]);
 
         var data = {
