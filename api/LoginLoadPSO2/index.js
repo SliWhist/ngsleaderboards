@@ -91,14 +91,14 @@ module.exports = async function (context, req) {
                 break;
         }
     
-
+        nameType = toString(nameType);
         console.log(returner[0]);
 
         var data = {
             "version": "1.0.0",
             "action": "Continue",
             "extension_playerDisplayname": displayName, // return claim
-            "extension_playerNametype" : toString(nameType),
+            "extension_playerNametype" : nameType,
             "extension_playerNamecolor1" : nameColor1,
             "extension_playerNamecolor2" : nameColor2
         }
