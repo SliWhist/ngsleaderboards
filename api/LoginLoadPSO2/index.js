@@ -98,9 +98,9 @@ module.exports = async function (context, req) {
             "version": "1.0.0",
             "action": "Continue",
             "extension_playerDisplayname": displayName, // return claim
-            "extension_playerNametype" : "b",
-            "extension_playerNamecolor1" : "b",
-            "extension_playerNamecolor2" : "burp"
+            "extension_playerNametype" : nameType,
+            "extension_playerNamecolor1" : nameColor1,
+            "extension_playerNamecolor2" : nameColor2
         }
 
         data = JSON.stringify(data);
