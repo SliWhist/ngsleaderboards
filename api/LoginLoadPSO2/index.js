@@ -97,10 +97,10 @@ module.exports = async function (context, req) {
         var data = {
             "version": "1.0.0",
             "action": "Continue",
-            "playerDisplayname": `"` + displayName + `"`, // return claim
-            "playerNametype" : `"` + nameType + `"`,
-            "playerNamecolor1" : `"` + nameColor1 + `"`,
-            "playerNamecolor2" : "burp"
+            "extension_playerDisplayname": "b", // return claim
+            "extension_playerNametype" : "b",
+            "extension_playerNamecolor1" : "b",
+            "extension_playerNamecolor2" : "burp"
         }
 
         data = JSON.stringify(data);
