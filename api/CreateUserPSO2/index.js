@@ -22,7 +22,7 @@ module.exports = async function (context, req) {
 	try {
 		var poolConnection = await sql.connect(config);
         //console.log(req.body);
-        const newUser = req.body;
+        const newUser = JSON.parse(req.body);
         //console.log(userID.userId);
         //console.log("BLEP")
 
@@ -31,13 +31,13 @@ module.exports = async function (context, req) {
         INSERT INTO Players.Information(PlayerName)
         VALUES(@name)`;
 			
-		await poolConnection.request().input('name',sql.NVarChar, newUser.name).query(sqlQuery);
+		await poolConnection.request().input('name',sql.NVarChar, newUser.displayName).query(sqlQuery);
 
         sqlQuery = `
         
         SELECT PlayerID FROM Players.Information WHERE PlayerName = @name
         `;
-        var results = await poolConnection.request().input('name',sql.NVarChar, newUser.name).query(sqlQuery);
+        var results = await poolConnection.request().input('name',sql.NVarChar, newUser.displayName).query(sqlQuery);
 		
 		var playerIDRef = results.recordset[0].PlayerID;
 
