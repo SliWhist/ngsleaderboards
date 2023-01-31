@@ -5,8 +5,8 @@ const path = require('path');
 require('dotenv').config()
 
 const config = {
-	user: process.env["DB_SUBMIT_USER"], // better stored in an app setting such as process.env.DB_USER
-	password: process.env["DB_SUBMIT_PASSWORD"], // better stored in an app setting such as process.env.DB_PASSWORD
+	user: process.env["DB_USER"], // better stored in an app setting such as process.env.DB_USER
+	password: process.env["DB_PASSWORD"], // better stored in an app setting such as process.env.DB_PASSWORD
 	server: process.env["DB_SERVER"], // better stored in an app setting such as process.env.DB_SERVER
 	database: process.env["DB_NAME"], // better stored in an app setting such as process.env.DB_NAME
 	authentication: {
@@ -25,23 +25,6 @@ module.exports = async function (context, req) {
         const userID = req.body;
         //console.log(userID.userId);
         //console.log("BLEP")
-
-
-        var sqlQuery = `
-        
-            IF EXISTS (SELECT * FROM dbo.TestTable WHERE TestCharacter = @Id)
-            BEGIN
-            END
-            ELSE
-            BEGIN
-
-            INSERT INTO dbo.TestTable(TestName)
-            VALUES(@name)
-
-            END
-
-        `
-        var results = await poolConnection.request().input('Id',sql.NVarChar, userID.objectId).input('name',sql.NVarChar, userID.objectId).query(sqlQuery);
 
 		var sqlQuery = `
 
@@ -66,7 +49,7 @@ module.exports = async function (context, req) {
         WHERE
             ui.UserID = @UserID`;
 			
-		results = await poolConnection.request().input('UserID',sql.NVarChar, userID.objectId).query(sqlQuery);
+		var results = await poolConnection.request().input('UserID',sql.NVarChar, userID.objectId).query(sqlQuery);
 		
 		var returner = results.recordset;
 		//console.log(results);

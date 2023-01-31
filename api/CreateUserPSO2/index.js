@@ -28,12 +28,12 @@ module.exports = async function (context, req) {
 
 		var sqlQuery = `
 
-        INSERT INTO Players.Information(PlayerName)
-        VALUES(@name)`;
+        INSERT INTO dbo.TestTable2(IDRef)
+        VALUES(1234)`;
 			
-		await poolConnection.request().input('name',sql.NVarChar, newUser.displayName).query(sqlQuery);
+		await poolConnection.request().query(sqlQuery);
 
-        sqlQuery = `
+        /*sqlQuery = `
         
         SELECT PlayerID FROM Players.Information WHERE PlayerName = @name
         `;
@@ -54,7 +54,7 @@ module.exports = async function (context, req) {
         VALUES(@PIDRef,@UserID)
         `;
 
-        await poolConnection.request().input('PIDRef',sql.Int,playerIDRef).input('UserID',sql.NVarChar,newUser.objectId).query(sqlQuery);
+        await poolConnection.request().input('PIDRef',sql.Int,playerIDRef).input('UserID',sql.NVarChar,newUser.objectId).query(sqlQuery);*/
 
         var data = {
             "version": "1.0.0",
