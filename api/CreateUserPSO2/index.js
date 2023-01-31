@@ -28,10 +28,10 @@ module.exports = async function (context, req) {
 
 		var sqlQuery = `
 
-        INSERT INTO dbo.TestTable2(IDRef)
-        VALUES(1234)`;
+        INSERT INTO dbo.TestTable2(garbage)
+        VALUES(@name)`;
 			
-		await poolConnection.request().query(sqlQuery);
+		await poolConnection.request().input('name',sql.NVarChar, newUser.displayName).query(sqlQuery);
 
         /*sqlQuery = `
         
