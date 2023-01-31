@@ -31,13 +31,13 @@ module.exports = async function (context, req) {
         INSERT INTO Players.Information(PlayerName)
         VALUES(@name)`;
 			
-		await poolConnection.request().input('name',sql.NVarChar, newUser.displayName).query(sqlQuery);
+		await poolConnection.request().input('name',sql.NVarChar, newUser.name).query(sqlQuery);
 
         sqlQuery = `
         
         SELECT PlayerID FROM Players.Information WHERE PlayerName = @name
         `;
-        var results = await poolConnection.request().input('name',sql.NVarChar, newUser.displayName).query(sqlQuery);
+        var results = await poolConnection.request().input('name',sql.NVarChar, newUser.name).query(sqlQuery);
 		
 		var playerIDRef = results.recordset[0].PlayerID;
 
