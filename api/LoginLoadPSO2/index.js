@@ -5,8 +5,8 @@ const path = require('path');
 require('dotenv').config()
 
 const config = {
-	user: process.env["DB_USER"], // better stored in an app setting such as process.env.DB_USER
-	password: process.env["DB_PASSWORD"], // better stored in an app setting such as process.env.DB_PASSWORD
+	user: process.env["DB_SUBMIT_USER"], // better stored in an app setting such as process.env.DB_USER
+	password: process.env["DB_SUBMIT_PASSWORD"], // better stored in an app setting such as process.env.DB_PASSWORD
 	server: process.env["DB_SERVER"], // better stored in an app setting such as process.env.DB_SERVER
 	database: process.env["DB_NAME"], // better stored in an app setting such as process.env.DB_NAME
 	authentication: {
