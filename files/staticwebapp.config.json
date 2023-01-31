@@ -14,7 +14,7 @@
               }
             },
             "login": {
-              "nameClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier",
+              "nameClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
               "scopes": ["openid","profile","email"],
               "loginParameterNames": []
             }
@@ -22,7 +22,7 @@
         }
       }
     },
-    "trailingSlash": "never",
+    "trailingSlash": "always",
     "routes": [
       {
         "route": "/profile/index.html",
@@ -33,12 +33,44 @@
         "allowedRoles": ["authenticated"]
       },
       {
+        "route": "/profile/*",
+        "allowedRoles": ["authenticated"]
+      },
+      {
+        "route": "/admin/index.html",
+        "allowedRoles": ["administrator"]
+      },
+      {
         "route": "/admin*",
         "allowedRoles": ["administrator"]
       },
       {
-        "route": "/moderation*",
+        "route": "/admin/*",
         "allowedRoles": ["administrator"]
+      },
+      {
+        "route": "/moderator/index.html",
+        "allowedRoles": ["administrator","moderator"]
+      },
+      {
+        "route": "/moderator*",
+        "allowedRoles": ["administrator","moderator"]
+      },
+      {
+        "route": "/moderator/*",
+        "allowedRoles": ["administrator","moderator"]
+      },
+      {
+        "route": "/moderator/submissions/index.html",
+        "allowedRoles": ["administrator","moderator"]
+      },
+      {
+        "route": "/moderator/submissions*",
+        "allowedRoles": ["administrator","moderator"]
+      },
+      {
+        "route": "/moderator/submissions/*",
+        "allowedRoles": ["administrator","moderator"]
       },
       {
         "route": "/submit/index.html",
@@ -77,5 +109,15 @@
         "redirect": "/deals",
         "statusCode": 301
       }
-    ]
+    ],
+    "responseOverrides": {
+      "404": {
+        "rewrite": "/404.html",
+        "statusCode": 200
+      },
+      "401": {
+        "rewrite": "/401.html",
+        "statusCode": 200
+      }
+    }
   }

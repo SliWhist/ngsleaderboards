@@ -5,3 +5,8 @@ node_modules
 .env
 local.settings.json
 package.json
+files/submit/index.html.old
+files/index.html.old
+api/GetPlayerNamesIDs/sample.dat
+api/ReadSubmissions/sample.dat
+api/UpdateProfile/sample.dat

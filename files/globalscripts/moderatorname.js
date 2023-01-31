@@ -1,5 +1,6 @@
 const HeaderMain = document.querySelector("#lbHeader");
 const HeaderUserbuttons = document.querySelector("#lbHeader > ul");
+const UserName = document.querySelector("#username");
 
 document.body.onload = LoadAll();
 
@@ -13,7 +14,6 @@ function LoadAll()
 {
 
     headerGenerate();
-    loadScoresBegin();
 
 }
 
@@ -50,19 +50,15 @@ async function headerGenerate () {
 
     }
 
-    if (userInfo == null) {
-        HeaderUserbuttons.innerHTML += `<li>
-        <a class="btn btn-outline-secondary" href="/login" role="button">Login</a>
-        </li>`;
-    }
     if (userInfo != null) {
         if (userInfo.userId != null) {
-            createNameButton();
+            customizeNameButton ();
         }
     }
 
     
 }
+
 
 async function getUserInfo() {
     const response = await fetch('/.auth/me');
@@ -71,36 +67,28 @@ async function getUserInfo() {
     return clientPrincipal;
 }
 
-function createNameButton() {
-    const li = document.createElement("li")
-  // Create the 'button'. Really just a clickable name.
-  const buttonref = document.createElement("a");
+function customizeNameButton () {
   // Set the default name customization.
-  buttonref.style.cssText = `background-color: #0000; --bs-btn-color: #FFFFFF; --bs-btn-hover-color: #FFFFFF; --bs-btn-active-color: #FFFFFF; text-decoration: none; font-weight: bold;`;
+  UserName.style.cssText = `background-color: #0000; --bs-btn-color: #FFFFFF; --bs-btn-hover-color: #FFFFFF; --bs-btn-active-color: #FFFFFF; text-decoration: none; font-weight: bold;`;
   // Check the name customization setting.
   switch (userinfoNametype) {
       // Flat Color
       case 1:
-          buttonref.style.cssText += `--bs-btn-color: #` + userinfoColor1 + `; --bs-btn-hover-color: #` + userinfoColor1 + `; --bs-btn-active-color: #` + userinfoColor1 + `;`;
+        UserName.style.cssText += `--bs-btn-color: #` + userinfoColor1 + `; --bs-btn-hover-color: #` + userinfoColor1 + `; --bs-btn-active-color: #` + userinfoColor1 + `;`;
           break;
       // Gradient Color
       case 2:
-          buttonref.style.cssText += `background: -webkit-linear-gradient(0deg, #` + userinfoColor1 + `, #` + userinfoColor2 + `);
+        UserName.style.cssText += `background: -webkit-linear-gradient(0deg, #` + userinfoColor1 + `, #` + userinfoColor2 + `);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;`;
           break;
       // Glow Color
       case 3:
           //console.log(row.NameColor1);
-          buttonref.style.cssText += `text-shadow: 0px 0px 5px #` + userinfoColor1 + `, 0px 0px 5px #` + userinfoColor1 + `, 0px 0px 5px #` + userinfoColor1 + `;`;
+          UserName.style.cssText += `text-shadow: 0px 0px 5px #` + userinfoColor1 + `, 0px 0px 5px #` + userinfoColor1 + `, 0px 0px 5px #` + userinfoColor1 + `;`;
           break;
       default:
           break;
   }
-  buttonref.classList.add("btn","btn-link");
-  buttonref.setAttribute("role","button");
-  buttonref.setAttribute("href","/logout");
-  buttonref.innerHTML = userinfoName;
-  li.appendChild(buttonref);
-  HeaderUserbuttons.appendChild(li);
+  UserName.textContent = userinfoName;
 }
