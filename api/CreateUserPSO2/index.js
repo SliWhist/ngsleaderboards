@@ -19,6 +19,9 @@ const config = {
 
 module.exports = async function (context, req) {
 
+
+    context.log('test');
+
 	try {
 		var poolConnection = await sql.connect(config);
         //console.log(req.body);
