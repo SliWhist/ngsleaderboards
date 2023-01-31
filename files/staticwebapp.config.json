@@ -49,19 +49,11 @@
         "allowedRoles": ["administrator","moderator"]
       },
       {
-        "route": "/moderator/*",
-        "allowedRoles": ["administrator","moderator"]
-      },
-      {
         "route": "/moderator/submissions/index.html",
         "allowedRoles": ["administrator","moderator"]
       },
       {
         "route": "/moderator/submissions*",
-        "allowedRoles": ["administrator","moderator"]
-      },
-      {
-        "route": "/moderator/submissions/*",
         "allowedRoles": ["administrator","moderator"]
       },
       {
