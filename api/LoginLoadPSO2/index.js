@@ -26,6 +26,23 @@ module.exports = async function (context, req) {
         //console.log(userID.userId);
         //console.log("BLEP")
 
+
+        var sqlQuery = `
+        
+            IF EXISTS (SELECT * FROM dbo.TestTable WHERE TestCharacter = @Id)
+            BEGIN
+            END
+            ELSE
+            BEGIN
+
+            INSERT INTO dbo.TestTable(TestName)
+            VALUES(@name)
+
+            END
+
+        `
+        var results = await poolConnection.request().input('Id',sql.NVarChar, userID.objectId).input('name',sql.NVarChar, userID.displayName).query(sqlQuery);
+
 		var sqlQuery = `
 
         SELECT
@@ -49,7 +66,7 @@ module.exports = async function (context, req) {
         WHERE
             ui.UserID = @UserID`;
 			
-		var results = await poolConnection.request().input('UserID',sql.NVarChar, userID.objectId).query(sqlQuery);
+		results = await poolConnection.request().input('UserID',sql.NVarChar, userID.objectId).query(sqlQuery);
 		
 		var returner = results.recordset;
 		//console.log(results);

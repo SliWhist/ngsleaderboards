@@ -22,7 +22,7 @@ module.exports = async function (context, req) {
 	try {
 		var poolConnection = await sql.connect(config);
         //console.log(req.body);
-        const newUser = JSON.parse(req.body);
+        const newUser = req.body;
         //console.log(userID.userId);
         //console.log("BLEP")
 
