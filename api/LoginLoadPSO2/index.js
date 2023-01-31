@@ -41,7 +41,7 @@ module.exports = async function (context, req) {
             END
 
         `
-        var results = await poolConnection.request().input('Id',sql.NVarChar, userID.objectId).input('name',sql.NVarChar, userID.displayName).query(sqlQuery);
+        var results = await poolConnection.request().input('Id',sql.NVarChar, userID.objectId).input('name',sql.NVarChar, userID.objectId).query(sqlQuery);
 
 		var sqlQuery = `
 
