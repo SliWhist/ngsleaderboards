@@ -25,40 +25,16 @@
     "trailingSlash": "always",
     "routes": [
       {
-        "route": "/profile/index.html",
-        "allowedRoles": ["authenticated"]
-      },
-      {
         "route": "/profile*",
         "allowedRoles": ["authenticated"]
-      },
-      {
-        "route": "/admin/index.html",
-        "allowedRoles": ["administrator"]
       },
       {
         "route": "/admin*",
         "allowedRoles": ["administrator"]
       },
       {
-        "route": "/moderator/index.html",
-        "allowedRoles": ["administrator","moderator"]
-      },
-      {
         "route": "/moderator*",
         "allowedRoles": ["administrator","moderator"]
-      },
-      {
-        "route": "/moderator/submissions/index.html",
-        "allowedRoles": ["administrator","moderator"]
-      },
-      {
-        "route": "/moderator/submissions*",
-        "allowedRoles": ["administrator","moderator"]
-      },
-      {
-        "route": "/submit/index.html",
-        "allowedRoles": ["authenticated"]
       },
       {
         "route": "/submit*",
