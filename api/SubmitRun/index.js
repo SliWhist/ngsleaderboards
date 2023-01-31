@@ -74,16 +74,16 @@ module.exports = async function (context, req) {
 	
 		var strsec = Number(timeSecs).toString();
 		if (strsec.length < 2) {
-			console.log("REE");
+			//console.log("REE");
 			strsec = '0' + strsec;
 		}
 		var strmin = Number(timeMins).toString();
 		if (strmin.length < 2) {
-			console.log("REE");
+			//console.log("REE");
 			strmin = '0' + strmin;
 		}
 		var time = strmin+':'+strsec+':00';
-		console.log(time);
+		//console.log(time);
 		// For testing.
 		var urls = [
 				link
@@ -97,7 +97,7 @@ module.exports = async function (context, req) {
 			youtubeCode = r[1];
 		}
 
-		console.log(youtubeCode);
+		//console.log(youtubeCode);
 		var youtubeLink = `https://youtu.be/` + youtubeCode;
 
 		var poolConnectionRead = await sql.connect(configread);
@@ -106,7 +106,7 @@ module.exports = async function (context, req) {
 
 		var results = await poolConnectionRead.request().input('Link',sql.NVarChar, youtubeLink).query(sqlQuery);
 
-		console.log(results.rowsAffected[0]);
+		//console.log(results.rowsAffected[0]);
 
 		if (results.rowsAffected != 0) {
 			poolConnectionRead.close();

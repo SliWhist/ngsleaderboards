@@ -19,9 +19,9 @@ async function translatePage() {
   
     translationTable = await res.json();
   
-    console.log(translationTable)
+    //console.log(translationTable)
 
-    console.log(translationTable['testValue'])
+    //console.log(translationTable['testValue'])
 
     translateable.forEach((tl) => {
 

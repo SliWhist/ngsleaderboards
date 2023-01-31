@@ -37,7 +37,7 @@ myModal.addEventListener('hide.bs.modal', function (event) {
 function sendApprove(event)
 {
 	var button = submitButton;
-	console.log(button);
+	//console.log(button);
     var runID = button.getAttribute('data-bs-runid');
 	GetApprovedRun(runID);
 }
@@ -91,7 +91,7 @@ function RefreshSubmissionsBegin() {
 	
 	httpRequest.onreadystatechange = () => {
 		if(httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
-            console.log(httpRequest.response);
+            //console.log(httpRequest.response);
             RefreshSubmissions(httpRequest.response);
 		}
 	}
@@ -104,7 +104,7 @@ function RefreshSubmissionsBegin() {
 function RefreshSubmissions(input) {
 	CleanRows();
     var data = JSON.parse(input);
-    console.log(data);
+    //console.log(data);
 	if (Object.keys(data).length === 0) {
         CreateRowNone();
 		return;
@@ -232,7 +232,7 @@ function generateInfo(event) {
 	
 	httpRequest.onreadystatechange = () => {
 		if(httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
-			console.log(httpRequest.response);
+			//console.log(httpRequest.response);
             enableButtons();
             setInfo(httpRequest.response);
 		}
@@ -248,7 +248,7 @@ function setInfo(input) {
     var data = JSON.parse(input);
 
     data.forEach((row) => {
-        console.log(row);
+        //console.log(row);
         createVideo(row.Link);
         createRegion(row.Region);
         createRank(row.Rank);
@@ -305,7 +305,7 @@ function createPlayerName(playername,cname,prefname,type,color1,color2) {
 		// (Main) Character Name
 		case 1:
 			pnHTML.innerHTML = cname;
-			console.log('?')
+			//console.log('?')
 			break;
 		// In-Video Character Name
 		case 2:
@@ -488,10 +488,10 @@ function createVideo(url) {
     
     for (i = 0; i < urls.length; ++i) {
         r = urls[i].match(rx);
-        console.log(r[1]);
+        //console.log(r[1]);
     }
 
-    console.log(r[1]);
+    //console.log(r[1]);
 
     videoHTML.innerHTML = `<a href='https://youtu.be/` + r[1] + `'>Video Link</a>`
 

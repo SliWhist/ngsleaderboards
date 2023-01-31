@@ -45,7 +45,7 @@ module.exports = async function (context, req) {
 		//console.log(results);
 		poolConnection.close();
 
-        console.log(returner[0]);
+        //console.log(returner[0]);
 
         var data = {
           "roles": [
@@ -58,7 +58,7 @@ module.exports = async function (context, req) {
 
         //data = JSON.stringify(data);
         //data = JSON.parse(data);
-        console.log(data);
+        //console.log(data);
         context.res = {
             contentType: "application/json",
                 status: 200, /* Defaults to 200 */

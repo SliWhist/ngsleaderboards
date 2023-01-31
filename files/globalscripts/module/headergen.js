@@ -14,11 +14,11 @@ export async function headerGenerate () {
 
         if (userInfo != null)
         {
-            console.log(userInfo);
+            //console.log(userInfo);
             const iterator = userInfo.claims.values();
     
             for (const value of iterator) {
-                console.log(value.typ);
+                //console.log(value.typ);
                 if (value.typ == "extension_playerDisplayname")
                 {
                     userinfoName = value.val;
@@ -70,7 +70,7 @@ async function getUserInfo() {
 function createSubmitButton() {
     const li = document.createElement("li");
     li.classList.add("nav-item");
-    console.log(window.location.pathname.match(/submit/gi));
+    //console.log(window.location.pathname.match(/submit/gi));
     const ahref = document.createElement("a");
     ahref.classList.add("nav-link");
     ahref.href = "/submit";

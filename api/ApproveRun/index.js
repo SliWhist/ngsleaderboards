@@ -20,7 +20,7 @@ const config = {
 
 module.exports = async function (context, req) {
 	try {
-        console.log(req.body);
+        //console.log(req.body);
         var input = req.body;
 		var inputArray = input.split("@!@!@");
             var runID = inputArray[0];
@@ -63,18 +63,18 @@ module.exports = async function (context, req) {
             var submitter = inputArray[19];
 
             if (userinfo == null) {
-                console.log("RETURNED A");
+                //console.log("RETURNED A");
                 return;
-                console.log("I never appear, hopefully!");
+                //console.log("I never appear, hopefully!");
             }
             else if (userinfo != null)
             {
 
                 if (!userinfo.includes('moderator') && !userinfo.includes('administrator')) {
-                    console.log(userinfo);
-                    console.log("RETURNED B");
+                    //console.log(userinfo);
+                    //console.log("RETURNED B");
                     return;
-                    console.log("I never appear, hopefully!");
+                    //console.log("I never appear, hopefully!");
 
                 }
             }
@@ -90,7 +90,7 @@ module.exports = async function (context, req) {
     
         await poolConnection.request().input('0',sql.Int,runID).query(sqlRemove);
 
-        console.log("PASSED");
+        //console.log("PASSED");
 		
 		var sqlQuery = `
 

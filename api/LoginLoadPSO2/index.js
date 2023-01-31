@@ -92,7 +92,7 @@ module.exports = async function (context, req) {
         }
     
         nameType = nameType.toString();
-        console.log(returner[0]);
+        //console.log(returner[0]);
 
         var data = {
             "version": "1.0.0",
@@ -108,7 +108,7 @@ module.exports = async function (context, req) {
 
         //data = JSON.stringify(data);
         //data = JSON.parse(data);
-        console.log(data);
+        //console.log(data);
         context.res = {
             contentType: "application/json",
                 status: 200, /* Defaults to 200 */

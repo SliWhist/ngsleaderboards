@@ -79,11 +79,11 @@ function setActiveButtons() {
         category = 'stia';
     }
 	
-    console.log(category);
+    //console.log(category);
     
     rank = checkFilters('rank',rank,category);
 
-    console.log(rank);
+    //console.log(rank);
 
     globalPatch = filter.get('patch');
 	if (globalPatch == null) {
@@ -241,7 +241,7 @@ function checkFilters(type,check,check2) {
             }
         case 'rank':
             if (check2 == 'stia' && (check == null || parseInt(check) > 1 || parseInt(check) < 1)) {
-                console.log(check);
+               // console.log(check);
                 return '1';
                 break;
             }
@@ -395,7 +395,7 @@ function cleanupScore() {
 
 function applyFilters() {
 
-    console.log('--')
+    //console.log('--')
     var playerclass = document.querySelector('input[name="category-class"]:checked').value;
     var patch = document.querySelector('input[name="category-patch"]:checked').value;
     var server = document.querySelector('input[name="category-server"]:checked').value;
@@ -479,7 +479,7 @@ function getDatabase () {
 	
 	httpRequest.onreadystatechange = () => {
 		if(httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
-			console.log(httpRequest.response);
+			//console.log(httpRequest.response);
 			enableButtons();
 			loadScores(httpRequest.response);
 		}
@@ -751,14 +751,14 @@ function loadScores (data) {
 
 function generateInfo(event) {
     var button = event.relatedTarget;
-	console.log(button);
+	//console.log(button);
     var runID = button.getAttribute('data-bs-submitid');
 
 	const httpRequest = new XMLHttpRequest();
 	
 	httpRequest.onreadystatechange = () => {
 		if(httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
-			console.log(httpRequest.response);
+			//console.log(httpRequest.response);
             setInfo(httpRequest.response);
 		}
 	}
@@ -773,7 +773,7 @@ function setInfo(input) {
     var data = JSON.parse(input);
 
     data.forEach((row) => {
-        console.log(row);
+        //console.log(row);
         createInfoNamesPlayer(row);
 		createInfoNameSubmitter(row);
 		createInfoRunNotes(row.Notes);
@@ -831,7 +831,7 @@ function createInfoRunNotes(row) {
 
 function createInfoSocials(row) {
 
-	console.log(row);
+	//console.log(row);
 	var socialTwitch = '';
 	var socialYoutube = '';
 	var socialYoutube2 = '';

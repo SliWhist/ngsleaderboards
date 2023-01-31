@@ -310,7 +310,7 @@ async function sendSaveRequest (params) {
 	
 	httpRequest.onreadystatechange = () => {
 		if(httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
-			console.log(httpRequest.response);
+			//console.log(httpRequest.response);
             window.location.replace("/profile");
 		}
 	}
@@ -335,7 +335,7 @@ async function loadProfile () {
 	
 	httpRequest.onreadystatechange = () => {
 		if(httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
-			console.log(httpRequest.response);
+			//console.log(httpRequest.response);
 			data = JSON.parse(httpRequest.response);
 			userData = data;
 			enableButtons();
@@ -452,7 +452,7 @@ function enableShips(input,ship) {
 		<option value="8">Ship 8</option>
 		<option value="9">Ship 9</option>`;
 	}
-    console.log(ship);
+    //console.log(ship);
     if(ship != null) {
         var active = document.querySelector('#shippicker option[value=' + CSS.escape(ship) + ']');
         active.setAttribute('selected','');
@@ -460,7 +460,7 @@ function enableShips(input,ship) {
 }
 
 function prepareCountries(input) {
-	console.log(input);
+	//console.log(input);
 	countries.forEach(function(country, index) {
 		var opt = document.createElement('option');
 		opt.innerHTML = country.text;
@@ -476,9 +476,9 @@ function prepareCountries(input) {
 }
 
 function updateNameColor() {
-	console.log('blep');
+	//console.log('blep');
 	var nameType = document.querySelector('input[name="nameThemeSelectorRadio"]:checked').value;
-	console.log(nameType);
+	//console.log(nameType);
 	switch(nameType) {
 		case '1':
 			namer.style.cssText = defaultCSS + `color:` + color1 + `;`;

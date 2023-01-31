@@ -20,11 +20,11 @@ async function headerGenerate () {
 
         if (userInfo != null)
         {
-            console.log(userInfo);
+            //console.log(userInfo);
             const iterator = userInfo.claims.values();
     
             for (const value of iterator) {
-                console.log(value.typ);
+                //console.log(value.typ);
                 if (value.typ == "extension_playerDisplayname")
                 {
                     userinfoName = value.val;

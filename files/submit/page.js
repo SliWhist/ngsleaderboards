@@ -18,7 +18,7 @@ function prepareDatalist()
 	httpRequest.onreadystatechange = () => {
 		if(httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
             var data = JSON.parse(httpRequest.response);
-			console.log(data);
+			//console.log(data);
 			loadDatalist(data);
 		}
 	}

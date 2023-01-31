@@ -20,7 +20,7 @@ function Pick404()
     ]
 
     var randomPick = array404s[array404s.length * Math.random() | 0]
-    console.log(randomPick);
+    //console.log(randomPick);
 
     switch (randomPick) {
         case "HelvianSnoruq":

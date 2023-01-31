@@ -30,7 +30,7 @@ async function loadProfile () {
 	
 	httpRequest.onreadystatechange = () => {
 		if(httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
-			console.log(httpRequest.response);
+			//console.log(httpRequest.response);
 			setupProfile(httpRequest.response);
 		}
 	}

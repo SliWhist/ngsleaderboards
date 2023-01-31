@@ -20,7 +20,7 @@ const config = {
 
 module.exports = async function (context, req) {
 	try {
-        console.log(req.body);
+        //console.log(req.body);
         var input = req.body;
 		var inputArray = input.split("@!@!@!@");
         var CharacterName = inputArray[0];
@@ -100,7 +100,7 @@ module.exports = async function (context, req) {
     
         await poolConnection.request().input('0',sql.Int, results.recordset[0].PlayerID).input('1',sql.NVarChar,CharacterName).input('2',sql.NVarChar,YT1Link).input('3',sql.NVarChar,YT2Link).input('4',sql.NVarChar,TwitchLink).input('5',sql.NVarChar,TwitterLink).input('6',sql.NVarChar,DiscordLink).query(sqlUpdate);
 
-        console.log("PASSED");
+        //console.log("PASSED");
 		
 		sqlUpdate = `
         
