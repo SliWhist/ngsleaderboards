@@ -732,7 +732,7 @@ function loadScores (data) {
 		tdlink.appendChild(link);
 
         const tdnote = document.createElement("td");
-		if (row.Notes != null) {
+		if (row.Notes != null && row.Notes != '') {
 
 			tdnote.innerHTML += ' <i class="bi bi-sticky" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="left" data-bs-title="' + row.Notes + '"></i>';
 		}
