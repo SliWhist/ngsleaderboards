@@ -26,7 +26,7 @@
     "routes": [
       {
         "route": "/profile*",
-        "allowedRoles": ["authenticated"]
+        "allowedRoles": ["user"]
       },
       {
         "route": "/admin*",
@@ -38,7 +38,7 @@
       },
       {
         "route": "/submit*",
-        "allowedRoles": ["authenticated"]
+        "allowedRoles": ["user"]
       },
       {
         "route": "/login",

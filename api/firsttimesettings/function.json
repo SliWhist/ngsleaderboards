@@ -6,10 +6,10 @@
       "direction": "in",
       "name": "req",
       "methods": [
-        "post",
-        "get"
+        "get",
+        "post"
       ],
-      "route": "pso2newuser"
+      "route": "firstSettings"
     },
     {
       "type": "http",

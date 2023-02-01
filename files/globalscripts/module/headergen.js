@@ -46,14 +46,24 @@ export async function headerGenerate () {
       </li>`;
     }
     if (userInfo != null) {
-        if (userInfo.userId != null) {
-            if (userInfo.userRoles.includes('authenticated')) {
+        if (userInfo.userId != null && userInfo.userRoles.includes('user')) {
+            if (userInfo.userRoles.includes('user')) {
                 createSubmitButton();
             }
             if (userInfo.userRoles.includes('moderator') || userInfo.userRoles.includes('administrator')) {
                 createModeratorButton();
             }
             createNameButton();
+        }
+        if (userInfo.userId != null && !userInfo.userRoles.includes('user')) {
+            HeaderUserbuttons.innerHTML += `<li class="nav-item">
+            <a class="nav-link" href="/setup"><i class="bi bi-gear me-2"></i>Finish Setup</a>
+          </li>`;
+        }
+        if (userInfo.userId != null && !userInfo.userRoles.includes('user')) {
+            HeaderUserbuttons.innerHTML += `<li class="nav-item">
+            <a class="nav-link" href="/logout"><i class="bi bi-box-arrow-right me-2"></i>Log out</a>
+          </li>`;
         }
     }
 
