@@ -51,7 +51,7 @@ module.exports = async function (context, req) {
 
 		sqlTest = `
         
-        SELECT PlayerName FROM Players.Information WHERE PlayerName = @test
+        SELECT PlayerName FROM Players.Information WHERE PlayerName = @test AND PlayerID > 107
 
         `;
 
