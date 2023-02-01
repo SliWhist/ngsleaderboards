@@ -48,10 +48,20 @@ module.exports = async function (context, req) {
 
         //console.log(returner[0]);
 
+        var exrole = returner[0].ExtraRole;
+        var role = returner[0].Role;
+
+        if (role == null) {
+            role = ' ';
+        }
+        if (exrole == null) {
+            exrole = ' ';
+        }
+
         var data = {
           "roles": [
-            returner[0].Role,
-            returner[0].ExtraRole
+            role,
+            exrole
           ]
         }
 
