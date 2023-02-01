@@ -148,11 +148,5 @@ function disableButtons() {
 	document.getElementById('submitrun').classList.add("disabled");
 }
 
-window.addEventListener("load", (event) => {
-    if (getUserInfo().userRoles.includes('user')) {
-        window.location.replace("/");
-    }
-});
-
 </script>
 </html>
