@@ -36,7 +36,7 @@ module.exports = async function (context, req) {
 
         `;
 
-        await poolConnection.request().input('test',sql.NVarChar, userID).query(sqlTest);
+        testresults = await poolConnection.request().input('test',sql.NVarChar, userID).query(sqlTest);
 
 		if (testresults.rowsAffected != 0) {
 			poolConnectionRead.close();
