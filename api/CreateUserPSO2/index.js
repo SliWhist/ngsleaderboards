@@ -26,32 +26,12 @@ module.exports = async function (context, req) {
         //console.log(userID.userId);
         //console.log("BLEP")
 
-        if (newUser==null) {
-
-            var sqlQuery = `
+        var sqlQuery = `
 
             INSERT INTO dbo.TestTable2(IDRef,garbage)
-            VALUES(13854,'Azure sent no data.')`;
+            VALUES(5555,'` + req.body + `')`;
                 
             await poolConnection.request().query(sqlQuery);
-
-        }
-        else if (newUser != null) {
-            var sqlQuery = `
-
-            INSERT INTO dbo.TestTable2(IDRef,garbage)
-            VALUES(13854,'Azure sent data.')`;
-                
-            await poolConnection.request().query(sqlQuery);
-        }
-        else {
-            var sqlQuery = `
-
-            INSERT INTO dbo.TestTable2(IDRef,garbage)
-            VALUES(13854,'We skipped null and not null, somehow?')`;
-                
-            await poolConnection.request().query(sqlQuery);
-        }
 
         /*sqlQuery = `
         
