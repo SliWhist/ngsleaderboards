@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unofficial NGS Leaderboards - Solo Purple Runs</title>
+	<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
+  <link rel="stylesheet" href="/ngslb.css">
+</head>
+
+<!-- Universal Header for NGS Leaderboards -->
+
+<header class="sticky-top">
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark border-bottom border-secondary pso2-comfy-1" id="lbHeader" aria-label="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="/" style="background:url(/img/logo.png) no-repeat scroll left center/auto 2rem; height:2.25rem; width:10.25em;"></a>
+      <!-- <a class="navbar-brand" href="/">Unofficial NGS Leaderboards</a> -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample04">
+        <ul class="navbar-nav ms-auto mb-2 mb-md-0 align-items-center">
+          <li class="nav-item">
+            <a class="nav-link active" href="/run/purple"><i class="bi bi-card-list me-2"></i>View Runs</a>
+          </li>
+         <!-- <li class="nav-item">
+            <a class="nav-link" href="/guides"><i class="bi bi-book-half me-2"></i>Class Guides</a>
+          </li> -->
+        </ul> 
+      </div>
+    </div>
+  </nav>
+
+</header>
+<!-- End Universal Header-->
+
+<!-- Begin Body Content -->
+
+<body class="d-flex flex-column flex-grow min-vh-100 text-light" style="box-shadow: inset 0 0 0 100vmax rgba(0, 0, 0, .2); background-attachment:fixed; background-color:black; background-repeat: no-repeat;background-size:cover;">
+
+    <div class="container flex-column px-3 py-4 d-flex flex-grow-1 flex-fill">
+        <div class="row gap-2 text-bg-dark rounded pso2-comfy-3 p-2 mb-2 border border-secondary">
+                <h1 class="display-1 text-center mt-2 mb-3" style="filter: drop-shadow(2px 4px 6px black);">Purple Triggers - Solo</h1>
+        </div>
+        <div class="row d-flex flex-fill gap-2 text-bg-dark rounded pso2-comfy-3 p-1 border border-secondary">
+            <div class="col-sm text-bg-dark rounded pso2-comfy-2 border border-secondary p-3">
+
+                    <!-- Categories/Regions Row -->
+
+                    <div class="row d-flex justify-content-center">
+                        <div class="btn-group row gap-2" role="group" aria-label="Category" id="group-category">
+                            <input type="radio" class="btn-check" name="category-purple" value="aelio" id="category-purple1" autocomplete="off" onclick="changeCategory('aelio');">
+                            <label class="btn rounded btn-outline-info col-sm-2 d-flex justify-content-center align-items-center" for="category-purple1">Aelio Devastators</label>
+            
+                            <input type="radio" class="btn-check" name="category-purple" value="retem" id="category-purple2" autocomplete="off" onclick="changeCategory('retem');">
+                            <label class="btn rounded btn-outline-info col-sm-2 d-flex justify-content-center align-items-center" for="category-purple2">Retem Devastators</label>
+            
+                            <input type="radio" class="btn-check" name="category-purple" value="kvaris" id="category-purple3" autocomplete="off" onclick="changeCategory('kvaris');">
+                            <label class="btn rounded btn-outline-info col-sm-2 d-flex justify-content-center align-items-center" for="category-purple3">Kvaris Devastators</label>
+                                
+                            <input type="radio" class="btn-check" name="category-purple" value="stia" id="category-purple4" autocomplete="off" onclick="changeCategory('stia');">
+                            <label class="btn rounded btn-outline-info col-sm-2 d-flex justify-content-center align-items-center" for="category-purple4">Stia Devastators</label>
+                        
+                            <label class="btn rounded btn-secondary dropdown-toggle col-sm-2 d-flex justify-content-center align-items-center" id="dropdownRanksReference" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span id="RankButtonText">Rank 1</span>
+                            </label>
+                            <ul class="dropdown-menu dropdown-menu-dark col-sm-2">
+                                <li><a class="dropdown-item disabled" name='rankbuttons' id="rank-1" onclick="changeRank('1');">Rank 1</a></li>
+                                <li><a class="dropdown-item disabled" name='rankbuttons' id="rank-2" onclick="changeRank('2');">Rank 2</a></li>
+                                <li><a class="dropdown-item disabled" name='rankbuttons' id="rank-3" onclick="changeRank('3');">Rank 3</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Filters and Rules Row -->
+
+                    <div class="row d-flex text-bg-dark py-2 mt-2 mx-3 rounded pso2-comfy-4 border border-secondary">
+                        <div class="col-sm d-flex flex-fill">
+                            <button type="button" class="me-auto btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#filtersModal"><i class="bi bi-funnel me-2"></i><span>Filters</span></button>
+                            <button type="button" class="ms-auto btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#rulesModal"><i class="bi bi-journal-check me-2"></i><span>Rules</span></button>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2 d-flex justify-content-center">
+
+                        <!-- JP Names make this Horrid :) <div class="col-7 col-sm-2 me-0 pe-0" style="overflow:hidden">
+                            <table class="table table-dark table-borderless" style="--bs-table-bg:#0c274b; --bs-table-border-color:#2B487A;">
+                                <thead style="border:var(--bs-border-width) var(--bs-border-style) #2B487A!important; border-right:0!important">
+                                    <tr>
+                                        <th scope="col" class="text-center">#</th>
+                                        <th scope="col">Player</th>
+                                    </tr>
+                                </thead>
+                                 <tbody style="--bs-table-bg: #2D3338;" id="pidrankTable">
+
+                                </tbody>
+                            </table>
+                        </div> -->
+                        
+                        <div class="table-responsive text-nowrap px-0 px-sm-2 mx-0 mx-sm-2">
+                            <table class="table table-dark table-hover table-borderless table-striped" style="--bs-table-striped-bg: #2d333859;">
+                                <thead style="--bs-table-bg:#0c274b; border:var(--bs-border-width) var(--bs-border-style) #2B487A!important">
+                                    <tr>
+                                        <th scope="col" class="text-center">#</th>
+                                        <th scope="col">Player</th>
+                                        <th scope="col" class="text-center">Main Class</th>
+                                        <th scope="col" class="text-center">Sub-Class</th>
+                                        <th scope="col" class="text-center">Weapon(s)</th>
+                                        <th scope="col" class="text-center">IGT<i class="bi-question-circle ms-2" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="top" data-bs-title="<strong>In-Game Time</strong><br>This is the total time taken based on the in-game timer."></i></th>
+                                        <th scope="col" class="text-center">Video</th>
+                                        <th scole="col" class="text-center"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="scoreTable">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- Modal Filters -->
+<div class="modal fade" id="filtersModal" data-bs-theme="dark" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Filters</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <strong>Main Class</strong>
+          <br>
+            <input type="radio" class="btn-check" name="category-class" value="NULL" id="category-class-nofilter" autocomplete="off">
+            <label class="btn btn-sm rounded btn-outline-secondary justify-content-center align-items-center d-inline-flex col-sm-2 mt-1" for="category-class-nofilter">No Filter</label>
+            <input type="radio" class="btn-check" name="category-class" value="hunter" id="category-class-hunter" autocomplete="off">
+            <label class="btn btn-sm rounded btn-outline-secondary justify-content-center align-items-center d-inline-flex col-sm-2 mt-1" for="category-class-hunter"><img src="/img/class-hunter.png" class="me-1">Hunter</label>
+            <input type="radio" class="btn-check" name="category-class" value="fighter" id="category-class-fighter" autocomplete="off">
+            <label class="btn btn-sm rounded btn-outline-secondary justify-content-center align-items-center d-inline-flex col-sm-2 mt-1" for="category-class-fighter"><img src="/img/class-fighter.png" class="me-1">Fighter</label>
+            <input type="radio" class="btn-check" name="category-class" value="ranger" id="category-class-ranger" autocomplete="off">
+            <label class="btn btn-sm rounded btn-outline-secondary justify-content-center align-items-center d-inline-flex col-sm-2 mt-1" for="category-class-ranger"><img src="/img/class-ranger.png" class="me-1">Ranger</label>
+            <input type="radio" class="btn-check" name="category-class" value="gunner" id="category-class-gunner" autocomplete="off">
+            <label class="btn btn-sm rounded btn-outline-secondary justify-content-center align-items-center d-inline-flex col-sm-2 mt-1" for="category-class-gunner"><img src="/img/class-gunner.png" class="me-1">Gunner</label>
+            <input type="radio" class="btn-check" name="category-class" value="force" id="category-class-force" autocomplete="off">
+            <label class="btn btn-sm rounded btn-outline-secondary justify-content-center align-items-center d-inline-flex col-sm-2 mt-1" for="category-class-force"><img src="/img/class-force.png" class="me-1">Force</label>
+            <input type="radio" class="btn-check" name="category-class" value="techter" id="category-class-techter" autocomplete="off">
+            <label class="btn btn-sm rounded btn-outline-secondary justify-content-center align-items-center d-inline-flex col-sm-2 mt-1" for="category-class-techter"><img src="/img/class-techter.png" class="me-1">Techter</label>
+            <input type="radio" class="btn-check" name="category-class" value="braver" id="category-class-braver" autocomplete="off">
+            <label class="btn btn-sm rounded btn-outline-secondary justify-content-center align-items-center d-inline-flex col-sm-2 mt-1" for="category-class-braver"><img src="/img/class-braver.png" class="me-1">Braver</label>
+            <input type="radio" class="btn-check" name="category-class" value="bouncer" id="category-class-bouncer" autocomplete="off">
+            <label class="btn btn-sm rounded btn-outline-secondary justify-content-center align-items-center d-inline-flex col-sm-2 mt-1" for="category-class-bouncer"><img src="/img/class-bouncer.png" class="me-1">Bouncer</label>
+            <input type="radio" class="btn-check" name="category-class" value="waker" id="category-class-waker" autocomplete="off">
+            <label class="btn btn-sm rounded btn-outline-secondary justify-content-center align-items-center d-inline-flex col-sm-2 mt-1" for="category-class-waker"><img src="/img/class-waker.png" class="me-1">Waker</label>
+            <br>
+          <hr>
+          <strong>Patch</strong>
+          <br>
+          <input type="radio" class="btn-check" name="category-patch" value="P60" id="category-patch-pre60" autocomplete="off">
+          <label class="btn btn-sm rounded btn-outline-secondary justify-content-center align-items-center d-inline-flex col-sm-2 mt-1" for="category-patch-pre60">Pre-+60 Release</label>
+          <input type="radio" class="btn-check" name="category-patch" value="60R" id="category-patch-60r" autocomplete="off">
+          <label class="btn btn-sm rounded btn-outline-secondary justify-content-center align-items-center d-inline-flex col-sm-2 mt-1" for="category-patch-60r">+60 Release</label>
+          <hr>
+          <strong>Server</strong>
+          <br>
+          <input type="radio" class="btn-check" name="category-server" value="NULL" id="category-server-nofilter" autocomplete="off">
+          <label class="btn btn-sm rounded btn-outline-secondary justify-content-center align-items-center d-inline-flex col-sm-2 mt-1" for="category-server-nofilter">No Filter</label>
+          <input type="radio" class="btn-check" name="category-server" value="global" id="category-server-global" autocomplete="off">
+          <label class="btn btn-sm rounded btn-outline-secondary justify-content-center align-items-center d-inline-flex col-sm-2 mt-1" for="category-server-global"><img src="/img/server-global.png" class="me-1">Global</label>
+          <input type="radio" class="btn-check" name="category-server" value="japan" id="category-server-japan" autocomplete="off">
+          <label class="btn btn-sm rounded btn-outline-secondary justify-content-center align-items-center d-inline-flex col-sm-2 mt-1" for="category-server-japan"><img src="/img/server-japan.png" class="me-1">Japan</label>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="applyFiltersButton" class="btn btn-outline-info" data-bs-dismiss="modal" onclick="(applyFilters())">Apply Filters</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- Modal Rules -->
+<div class="modal fade" id="rulesModal" data-bs-theme="dark" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Rules</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li><strong>Do not abuse bugs or exploits.</strong></li>
+            <li>A run must primarily use main class weapons.</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- RUN INFO MODAL -->
+  <div class="modal fade" id="runInfoModal" tabindex="-1" aria-labelledby="submissionModalLabel" aria-hidden="true" data-bs-theme="dark">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content border border-secondary">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="submissionModalLabel">Run Info</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row d-flex justify-content-center">
+            <div class="col rounded p-2 m-2 text-center">
+              <strong>Player</strong>
+              <div id="submittedPlayerName" class="d-flex justify-content-center"></div>
+            </div>
+            <div class="col rounded p-2 m-2 text-center">
+              <strong>Submitted By</strong>
+              <div id="runSubmitter" class="d-flex justify-content-center"></div>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="col-sm rounded p-2 m-2 border border-secondary" style="background-color:rgba(73, 80, 87, 0.5)">
+              <strong><h4>Runner's Notes</h4></strong>
+              <div id="runNotes"></div>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="col-sm rounded p-2 m-2 border border-secondary" style="background-color:rgba(73, 80, 87, 0.5)">
+              <div class="d-flex"><strong><h4>Runner Profile</h4></strong><span class="ms-auto" id="profileSocials"></span></div>
+              <div class="col flex-column d-flex">
+                <div class="d-flex"><span id="profileName1"></span></div>
+                <div class="d-flex"><span id="profileName2"></span></div>
+                <hr>
+                <div class="d-flex"><span id="profileDescription"></span></div>
+                <hr>
+                <div class="d-flex"><span id="profileLocations"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="col d-flex flex-wrap">
+            <button type="button" class="btn btn-secondary ms-auto mx-1" data-bs-dismiss="modal" id="closeButton">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+<!-- End Body Content -->
+
+<!-- Begin Universal Footer -->
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-auto border-top border-secondary bg-dark pso2-comfy-1">
+    <div class="container mb-2 mb-md-0 d-flex align-items-center">
+      <span class="col text-light px-3 text-start"><strong>This website has no affiliation with SEGA, and is not an official website.</strong><br>ⒸSEGA PHANTASY STAR ONLINE 2 <a href=http://pso2.com>http://pso2.com</a>.<br>
+                      All rights to the copyrighted works (images, data, audios, texts, etc.) used in PSO2 are owned by SEGA Corporation.<br>
+                      All other trademarks, logos and copyrights are property of their respective owners.</p></span>
+      <span class="col text-light px-3 text-end"><strong>PSO2Central</strong><br>Leaderboard Website by SliWhist.<br>Hosting & Database provided by BigDaddyCool.<br>Logo and Background Screenshots by Sukeboy.</span>
+    </div>
+  
+  </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+  <script src="scoreboard.js"></script>
+  <script type="module" src="/globalscripts/module/translate.js"></script>
+  <script type="module" src="page.js"></script>
+  <script type="module" src="/globalscripts/module/backgroundrandom.js"></script>
+  </html>

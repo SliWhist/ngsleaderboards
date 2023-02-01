@@ -42,3 +42,70 @@
 .pso2-noted a:hover {
   color:#dadcec;
 }
+
+
+.pso2-submitoverride {
+  color:#d6d6d6;
+  background-color:#141414;
+  border:var(--bs-border-width) solid #000000;
+}
+
+.pso2-submitoverride:disabled {
+  color:#d6d6d6;
+  background-color:#313131;
+  border:var(--bs-border-width) solid #000000;
+}
+
+.pso2-submitoverride:focus {
+  color:#d6d6d6;
+  background-color:#141414;
+  border:var(--bs-border-width) solid #000000;
+}
+
+.pso2-submitoverride::placeholder {
+  color:#696969;
+}
+
+.pso2-submitoverride:checked {
+  color:#696969;
+  background-color:#696969;
+  border: #696969;
+}
+
+.pso2-comfy-1 {
+  --bs-bg-opacity:0.8;
+  background-color:RGBA(5,15,29,var(--bs-bg-opacity,0.8))!important;
+  --bs-card-bg:transparent;
+}
+
+.pso2-comfy-3 {
+  --bs-bg-opacity:0.6;
+  background-color:RGBA(33,37,41,var(--bs-bg-opacity,0.6))!important;
+  --bs-card-bg:transparent;
+}
+
+.pso2-comfy-2 {
+  --bs-bg-opacity:1;
+  background-color:RGBA(33,37,41,var(--bs-bg-opacity,1))!important;
+  --bs-card-bg:transparent;
+}
+
+.pso2-comfy-4 {
+  --bs-bg-opacity:0.6;
+  background-color:RGBA(53, 60, 66,var(--bs-bg-opacity,0.6))!important;
+  --bs-card-bg:transparent;
+}
+
+.pso2-hr {
+  margin-left: calc(var(--bs-gutter-x) * -.5);
+  margin-right: calc(var(--bs-gutter-x) * -.5);
+}
+
+body::after{
+  position:absolute; width:0; height:0; overflow:hidden; z-index:-1;
+  content: url('/img/background/aelio-purp.png') url('/img/background/aelio-purp-night.png') url('/img/background/kvaris-purp.png') url('/img/background/kvaris-purp-night.png') url('/img/background/retem-purp.png') url('/img/background/retem-purp-night.png') url('/img/background/stia-purp.png') url('/img/background/stia-purp-night.png');
+}
+
+.pso2-tableRow {
+  font-size:14px;
+}

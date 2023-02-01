@@ -1,0 +1,83 @@
+{
+    "auth": {
+      "rolesSource": "/api/pso2getroles",
+      "identityProviders": {
+        "customOpenIdConnectProviders": {
+          "aadb2c": {
+            "registration": {
+              "clientIdSettingName": "AADB2C_PROVIDER_CLIENT_ID",
+              "clientCredential": {
+                "clientSecretSettingName": "AADB2C_PROVIDER_CLIENT_SECRET"
+              },
+              "openIdConnectConfiguration": {
+                "wellKnownOpenIdConfiguration": "https://pso2centralb2c.b2clogin.com/pso2centralb2c.onmicrosoft.com/B2C_1_SignUpSignInFlow/v2.0/.well-known/openid-configuration"
+              }
+            },
+            "login": {
+              "nameClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+              "scopes": ["openid","profile","email"],
+              "loginParameterNames": []
+            }
+          }
+        }
+      }
+    },
+    "trailingSlash": "always",
+    "routes": [
+      {
+        "route": "/profile*",
+        "allowedRoles": ["user"]
+      },
+      {
+        "route": "/admin*",
+        "allowedRoles": ["administrator"]
+      },
+      {
+        "route": "/moderator*",
+        "allowedRoles": ["administrator","moderator"]
+      },
+      {
+        "route": "/submit*",
+        "allowedRoles": ["user"]
+      },
+      {
+        "route": "/login",
+        "rewrite": "/.auth/login/aadb2c"
+      },
+      {
+        "route": "/.auth/login/aad",
+        "statusCode": 404
+      },
+      {
+        "route": "/.auth/login/github",
+        "statusCode": 404
+      },
+      {
+        "route": "/.auth/login/twitter",
+        "statusCode": 404
+      },
+      {
+        "route": "/logout",
+        "redirect": "/.auth/logout"
+      },
+      {
+        "route": "/calendar*",
+        "rewrite": "/calendar.html"
+      },
+      {
+        "route": "/specials",
+        "redirect": "/deals",
+        "statusCode": 301
+      }
+    ],
+    "responseOverrides": {
+      "404": {
+        "rewrite": "/404.html",
+        "statusCode": 200
+      },
+      "401": {
+        "rewrite": "/401.html",
+        "statusCode": 200
+      }
+    }
+  }

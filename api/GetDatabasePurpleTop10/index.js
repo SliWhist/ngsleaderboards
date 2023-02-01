@@ -19,33 +19,12 @@ const config = {
 
 module.exports = async function (context, req) {
 	try {
-        var input = req.body;
-		var inputArray = input.split("@!@!@");
-        	var region = inputArray[0];
-        	var rank = inputArray[1];
-        	var mainclass = inputArray[2];
-            var gamepatch = inputArray[3];
-            var serverFilter = inputArray[4];
 		var poolConnection = await sql.connect(config);
 		
-        var patchQuery = 'AND Patch IS NULL ';
-        var classQuery = '';
-        var serverQuery = '';
-
-        if(mainclass != 'null') {
-            classQuery = ` AND MainClass = @ClassInput `;
-        }
-
-        if(gamepatch != 'null') {
-            patchQuery = "AND Patch = @PatchInput ";
-        }
-        if(serverFilter != 'null') {
-            serverQuery = "AND Server = @ServerInput ";
-        }
 
 		var sqlQuery = `
 
-        SELECT
+        SELECT TOP(10)
             [Players].[Information].[PlayerID],
             [Players].[Information].[PlayerName],
             [Players].[Information].[CharacterName],
@@ -65,6 +44,8 @@ module.exports = async function (context, req) {
             NameType,
             NameColor1,
             NameColor2,
+            Rank,
+            Region,
 
             RunID,
             [RunCharacterName],
@@ -83,15 +64,10 @@ module.exports = async function (context, req) {
 
         WHERE
             Players.Information.PlayerID = Purples.Solo.PlayerID
-            AND
-            Rank = @RankInput
-            AND
-            Region = @RegionInput
-            ` + classQuery + patchQuery + serverQuery + `
             
-        ORDER BY time ASC, SubmissionTime ASC`;
+        ORDER BY SubmissionTime DESC`;
 
-		var results = await poolConnection.request().input('ServerInput',sql.VarChar, serverFilter).input('ClassInput', sql.VarChar, mainclass).input('RegionInput', sql.VarChar, region).input('RankInput', sql.Int, rank).input('PatchInput', sql.VarChar, gamepatch).query(sqlQuery);
+		var results = await poolConnection.request().query(sqlQuery);
 		
 		var returner = results.recordset;
 		//console.log(returner);

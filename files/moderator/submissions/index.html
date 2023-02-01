@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unofficial NGS Leaderboards - Submission Queue</title>
+	<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"/>
+  <link rel="stylesheet" href="/ngslb.css">
+</head>
+
+<!-- Universal Header for NGS Leaderboards -->
+
+<header class="sticky-top">
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark border-bottom border-secondary pso2-comfy-1" id="lbHeader" aria-label="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="/" style="background:url(/img/logo.png) no-repeat scroll left center/auto 2rem; height:2.25rem; width:10.25em;"></a>
+      <!-- <a class="navbar-brand" href="/">Unofficial NGS Leaderboards</a> -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample04">
+        <ul class="navbar-nav ms-auto mb-2 mb-md-0 align-items-center">
+          <li class="nav-item">
+            <a class="nav-link" href="/run/purple"><i class="bi bi-card-list me-2"></i>View Runs</a>
+          </li>
+         <!-- <li class="nav-item">
+            <a class="nav-link" href="/guides"><i class="bi bi-book-half me-2"></i>Class Guides</a>
+          </li> -->
+        </ul> 
+      </div>
+    </div>
+  </nav>
+
+</header>
+<!-- End Universal Header-->
+<!-- Begin Body Content -->
+
+<body class="d-flex flex-column flex-grow min-vh-100 text-light" style="box-shadow: inset 0 0 0 100vmax rgba(0, 0, 0, .2); background-attachment:fixed; background-color:black; background-repeat: no-repeat;background-size:cover;">
+
+  <div class="container flex-column px-4 py-4 d-flex flex-grow-1 flex-fill">
+    <div class="row d-flex flex-fill">
+      <div class="col-sm my-2">
+        <div class="card h-100 border-secondary">
+          <h5 class="card-header text-bg-dark d-flex align-items-center border-bottom border-secondary">
+            <div class="col-sm display-6">
+              Awaiting Approval
+            </div>
+          </h5>
+          <div class="card-body text-bg-dark">
+            <div class="col-sm">
+              <div class="my-2"><strong>Click or tap a row to view additional information and approve or reject a run.</strong></div>
+              <div class="table-responsive">
+                <table class="table table-dark" id="submissions-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Submitted By</th>
+                      <th scope="col">Player</th>
+                      <th scope="col">Region</th>
+                      <th scope="col">Rank</th>
+                      <th scope="col">Patch</th>
+                      <th scope="col">Character</th>
+                      <th scope="col">Main Class</th>
+                      <th scope="col">Sub Class</th>
+                      <th scope="col">Weapon(s)</th>
+                      <th scope="col">Time</th>
+                      <th scope="col">Submission Time</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</body>
+<div class="modal fade" id="submissionModal" tabindex="-1" aria-labelledby="submissionModalLabel" aria-hidden="true" data-bs-theme="dark">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content border border-secondary">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="submissionModalLabel">Submission Info</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="bg-black rounded p-2 m-2 border border-secondary" style="text-align: center">
+          <div class="text-light mt-2 mb-3"><strong>Submitted Video</strong></div>
+          <div id="runVideoPreview"></div>
+        </div>
+        <div class="col d-flex flex-wrap justify-content-center fs-5">
+          <span class="badge text-light m-1" style="background-color:rgba(255, 255, 255, 0.1)">Version: <span class="text-info-emphasis" id="runPatch"></span></span>
+          <span class="badge text-light m-1" style="background-color:rgba(255, 255, 255, 0.1)">Region: <span class="text-info-emphasis" id="runRegion"></span></span>
+          <span class="badge text-light m-1" style="background-color:rgba(255, 255, 255, 0.1)">Rank: <span class="text-info-emphasis" id="runRank"></span></span>
+          <span class="badge text-light m-1" style="background-color:rgba(255, 255, 255, 0.1)">Time: <span class="text-info-emphasis" id="runTime"></span></span>
+          <span class="badge text-light m-1" style="background-color:rgba(255, 255, 255, 0.1)">Server: <span class="text-info-emphasis" id="runServer"></span></span>
+        </div>
+        <div class="row d-flex justify-content-center">
+          <div class="col-sm rounded p-2 m-2 text-center">
+            <strong>Submitted By</strong>
+            <div id="runSubmitter"></div>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+          <div class="col-sm rounded p-2 m-2 border border-secondary" style="background-color:rgba(73, 80, 87, 0.5)">
+            <strong><h4>Runner's Notes</h4></strong>
+            <div id="runNotes">N/A</div>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+          <div class="col-sm rounded p-2 m-2 border border-secondary" style="background-color:rgba(73, 80, 87, 0.5)">
+            <strong><h4>Weapon Info</h4></strong>
+            <div id="runWeapons" class="col flex-column d-flex">
+            </div>
+          </div>
+          <div class="col-sm rounded p-2 m-2 border border-secondary" style="background-color:rgba(73, 80, 87, 0.5)">
+            <strong><h4>Runner Info</h4></strong>
+            <div class="col flex-column d-flex">
+              <div class="d-flex"><span>Player:</span><span class="ms-auto" id="runPlayername"></span></div>
+              <div class="d-flex"><span>Character:</span><span class="ms-auto" id="runCharactername"></span></div>
+              <div class="d-flex"><span>Main Class:</span><span class="ms-auto" id="runMainclass"></span></div>
+              <div class="d-flex"><span>Sub Class:</span><span class="ms-auto" id="runSubclass"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="col d-flex flex-wrap">
+          <button type="button" class="btn btn-success mx-1" id="approveButton"><i class="bi bi-check-square"></i> Approve</button>
+          <button type="button" class="btn btn-danger mx-1" id="denyButton"><i class="bi bi-x-square"></i> Reject</button>
+          <!-- I'll work on the edit function later -->
+          <!--<button type="button" class="btn btn-info mx-1" data-bs-dismiss="modal"><i class="bi bi-pencil-square"></i> Edit</button>-->
+          <button type="button" class="btn btn-secondary ms-auto mx-1" data-bs-dismiss="modal" id="closeButton">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End Body Content -->
+<!-- Begin Universal Footer -->
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-auto border-top border-secondary bg-dark pso2-comfy-1">
+  <div class="container mb-2 mb-md-0 d-flex align-items-center">
+    <span class="col text-light px-3 text-start"><strong>This website has no affiliation with SEGA, and is not an official website.</strong><br>ⒸSEGA PHANTASY STAR ONLINE 2 <a href=http://pso2.com>http://pso2.com</a>.<br>
+                    All rights to the copyrighted works (images, data, audios, texts, etc.) used in PSO2 are owned by SEGA Corporation.<br>
+                    All other trademarks, logos and copyrights are property of their respective owners.</p></span>
+    <span class="col text-light px-3 text-end"><strong>PSO2Central</strong><br>Leaderboard Website by SliWhist.<br>Hosting & Database provided by BigDaddyCool.<br>Logo and Background Screenshots by Sukeboy.</span>
+  </div>
+
+</footer>
+
+<script type="module" src="page.js"></script>
+<script type="module" src="/globalscripts/module/backgroundrandom.js"></script>
+<script src="submission.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</html>
