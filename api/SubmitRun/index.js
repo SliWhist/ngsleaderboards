@@ -138,16 +138,18 @@ module.exports = async function (context, req) {
 
 		results = await poolConnectionRead.request().input('pn',sql.NVarChar,playerName).query(sqlQuery);
 
+		var playerID = 0;
+
 		if (results.rowsAffected[0] == 0) {
 			if(region == 'japan') {
-				var playerID = 107;
+				playerID = 107;
 			}
 			if(region == 'global') {
-				var playerID = 106;
+				playerID = 106;
 			}
 		}
 		else {
-			var playerID = results.recordset[0].PlayerID;
+			playerID = results.recordset[0].PlayerID;
 		}
 
 		sqlQuery = `
