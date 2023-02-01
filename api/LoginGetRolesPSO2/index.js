@@ -50,8 +50,8 @@ module.exports = async function (context, req) {
 
         var data = {
           "roles": [
-            '"' + returner[0].Role + '","' +
-            returner[0].ExtraRole + '"'
+            returner[0].Role,
+            returner[0].ExtraRole
           ]
         }
 
