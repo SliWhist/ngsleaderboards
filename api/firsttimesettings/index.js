@@ -49,6 +49,24 @@ module.exports = async function (context, req) {
 			return;
 		}
 
+		sqlTest = `
+        
+        SELECT PlayerName FROM Players.Information WHERE PlayerName = @test
+
+        `;
+
+        var testresults = await poolConnection.request().input('test',sql.NVarChar, PlayerName).query(sqlTest);
+
+		if (testresults.rowsAffected != 0) {
+			poolConnectionRead.close();
+			context.res = {
+				contentType: "application/json",
+					status: 200, /* Defaults to 200 */
+					body: "Error"
+			};
+			return;
+		}
+
 
         var sqlAdd = `
         
