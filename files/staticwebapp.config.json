@@ -29,6 +29,10 @@
         "allowedRoles": ["user"]
       },
       {
+        "route": "/setup*",
+        "allowedRoles": ["authenticated"]
+      },
+      {
         "route": "/admin*",
         "allowedRoles": ["administrator"]
       },
