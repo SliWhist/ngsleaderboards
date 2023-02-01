@@ -74,5 +74,6 @@ async function ConfirmRun (i) {
 }
 
 function disableButtons() {
-	document.getElementById('submitrun').classList.add("disabled");
+    r = document.getElementById('submitrun')
+	r.classList.add("disabled");
 }

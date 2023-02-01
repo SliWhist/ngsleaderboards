@@ -38,5 +38,6 @@ async function ConfirmSettings (characterName,serverID) {
 
 
 function disableButtons() {
-	document.getElementById('submitrun').classList.add("disabled");
+    r = document.getElementById('submitrun')
+	r.classList.add("disabled");
 }
