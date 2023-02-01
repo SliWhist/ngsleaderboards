@@ -77,11 +77,11 @@ module.exports = async function (context, req) {
         sqlAdd = `
         
         INSERT INTO Users.Information(PlayerID,UserID,Role)
-        VALUES(@pid,@uid,"user")
+        VALUES(@pid,@uid,@newuser)
 
         `;
 
-        await poolConnection.request().input('pid',sql.Int, results.recordset[0].PlayerID).input('uid',sql.NVarChar, userID).query(sqlAdd);
+        await poolConnection.request().input('pid',sql.Int, results.recordset[0].PlayerID).input('uid',sql.NVarChar, userID).input('newuser',sql.NVarChar, "user").query(sqlAdd);
 
 		//console.log(returner);
 		poolConnection.close();
