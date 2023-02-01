@@ -29,7 +29,8 @@ module.exports = async function (context, req) {
 		var sqlQuery = `
 
         SELECT
-            ui.Role
+            ui.Role,
+            ui.ExtraRole
 
         FROM Users.Information as ui
             INNER JOIN Players.Information AS pi
@@ -49,7 +50,8 @@ module.exports = async function (context, req) {
 
         var data = {
           "roles": [
-            returner[0].Role
+            '"' + returner[0].Role + '","' +
+            returner[0].ExtraRole + '"'
           ]
         }
 
