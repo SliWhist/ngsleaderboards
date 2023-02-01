@@ -68,10 +68,9 @@
 
             </div>
             
-            <button type="submit" id="submitrun" class="btn btn-outline-info">Submit</button>
+            <a role="button" class="btn btn-outline-info" id="applychanges" onclick="finishSetup()">Apply Changes</button></a>
             <div id="serverSelectorHelp" class="form-text text-warning text-center">You will be logged out to confirm your settings.</div>
-
-          </div>
+        </div>
     </div>
   </div>
 
@@ -91,62 +90,5 @@
 </footer>
 <script type="module" src="/globalscripts/module/backgroundrandom.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-<script>
-
-document.addEventListener( 'submit', (event) => {
-    
-    disableButtons();
-    characterName = document.getElementById('characterNameInput').value;
-    //console.log(characterName);
-    serverID = document.querySelector('input[name="serverRadio"]:checked').value;
-    //console.log(serverID);
-    ConfirmSettings(characterName,serverID);
-
-});
-
-
-document.addEventListener( 'submit', (event) => {
-    
-    disableButtons();
-    characterName = document.getElementById('characterNameInput').value;
-    //console.log(characterName);
-    serverID = document.querySelector('input[name="serverRadio"]:checked').value;
-    //console.log(serverID);
-    ConfirmSettings(characterName,serverID);
-
-});
-
-async function getUserInfo() {
-    const response = await fetch('/.auth/me');
-    const payload = await response.json();
-    const { clientPrincipal } = payload;
-    return clientPrincipal;
-}
-
-async function ConfirmSettings (characterName,serverID) {
-	
-    var userkey = await getUserInfo();
-
-	const httpRequest = new XMLHttpRequest();
-	
-	httpRequest.onreadystatechange = () => {
-		if(httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
-			//console.log(httpRequest.response);
-            window.location.replace("/logout");
-		}
-	}
-
-    var param = characterName + '@!@!@' + serverID + '@!@!@' + userkey;
-	
-	httpRequest.open('POST', '/api/firstSettings', true);
-	httpRequest.setRequestHeader('Content-type', 'x-www-form-urlencoded');
-	httpRequest.send(param);
-}
-
-
-function disableButtons() {
-	document.getElementById('submitrun').classList.add("disabled");
-}
-
-</script>
+<script src="setup.js"></script>
 </html>
