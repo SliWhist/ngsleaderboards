@@ -19,9 +19,6 @@ const config = {
 
 module.exports = async function (context, req) {
 
-
-    context.log('test');
-
 	try {
 		var poolConnection = await sql.connect(config);
         //console.log(req.body);
@@ -29,12 +26,32 @@ module.exports = async function (context, req) {
         //console.log(userID.userId);
         //console.log("BLEP")
 
-		var sqlQuery = `
+        if (newUser==null) {
 
-        INSERT INTO dbo.TestTable2(IDRef,garbage)
-        VALUES(777,@name)`;
-			
-		await poolConnection.request().input('name',sql.NVarChar,req.body).query(sqlQuery);
+            var sqlQuery = `
+
+            INSERT INTO dbo.TestTable2(IDRef,garbage)
+            VALUES(13854,'Azure sent no data.')`;
+                
+            await poolConnection.request().query(sqlQuery);
+
+        }
+        else if (newUser != null) {
+            var sqlQuery = `
+
+            INSERT INTO dbo.TestTable2(IDRef,garbage)
+            VALUES(13854,'Azure sent data.')`;
+                
+            await poolConnection.request().query(sqlQuery);
+        }
+        else {
+            var sqlQuery = `
+
+            INSERT INTO dbo.TestTable2(IDRef,garbage)
+            VALUES(13854,'We skipped null and not null, somehow?')`;
+                
+            await poolConnection.request().query(sqlQuery);
+        }
 
         /*sqlQuery = `
         
