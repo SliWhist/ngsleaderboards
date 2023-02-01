@@ -133,15 +133,12 @@ module.exports = async function (context, req) {
 		SELECT Players.Information.PlayerID
 		FROM Players.Information
 
-		INNER JOIN
-		Players.Customization ON Players.Customization.PlayerID = [Players].[Information].[PlayerID]
-		
 		WHERE
 		Players.Information.PlayerName = @pn`;
 
 		results = await poolConnectionRead.request().input('pn',sql.NVarChar,playerName).query(sqlQuery);
 
-		if (results.rowsAffected == 0) {
+		if (results.rowsAffected[0] == 0) {
 			if(region == 'japan') {
 				var playerID = 107;
 			}
