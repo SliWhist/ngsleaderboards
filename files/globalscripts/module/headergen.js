@@ -129,7 +129,7 @@ function createNameButton() {
   switch (userinfoNametype) {
       // Flat Color
       case 1:
-          buttonref.style.cssText += `--bs-btn-color: #` + userinfoColor1 + `; --bs-btn-hover-color: #` + userinfoColor1 + `; --bs-btn-active-color: #` + userinfoColor1 + `;`;
+          buttonref.style.cssText += `--color: #` + userinfoColor1 + `; --bs-btn-color: #` + userinfoColor1 + `; --bs-btn-hover-color: #` + userinfoColor1 + `; --bs-btn-active-color: #` + userinfoColor1 + `;`;
           break;
       // Gradient Color
       case 2:
@@ -140,7 +140,7 @@ function createNameButton() {
       // Glow Color
       case 3:
           //console.log(row.NameColor1);
-          buttonref.style.cssText += `text-shadow: 0px 0px 5px #` + userinfoColor1 + `, 0px 0px 5px #` + userinfoColor1 + `, 0px 0px 5px #` + userinfoColor1 + `;`;
+          buttonref.style.cssText += `--color: #FFFFFF; text-shadow: 0px 0px 5px #` + userinfoColor1 + `, 0px 0px 5px #` + userinfoColor1 + `, 0px 0px 5px #` + userinfoColor1 + `;`;
           break;
       default:
           break;
