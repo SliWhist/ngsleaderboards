@@ -12,6 +12,12 @@ submitButton.addEventListener("click", function (event) {
 	sendApprove();
 });
 
+denyButton.addEventListener("click", function (event) {
+	disableButtons();
+	sendDeny();
+});
+
+
 window.addEventListener("load", (event) => {
     disableButtons();
 });
@@ -36,10 +42,18 @@ myModal.addEventListener('hide.bs.modal', function (event) {
 
 function sendApprove(event)
 {
-	var button = submitButton;
+	var button = denyButton;
 	//console.log(button);
     var runID = button.getAttribute('data-bs-runid');
 	GetApprovedRun(runID);
+}
+
+function sendDeny(event)
+{
+	var button = submitButton;
+	//console.log(button);
+    var runID = button.getAttribute('data-bs-runid');
+	GetDeniedRun(runID);
 }
 
 async function getUserInfo() {
@@ -66,6 +80,23 @@ async function GetApprovedRun(runID) {
 	httpRequest.send(runID);
 }
 
+async function GetDeniedRun(runID) {
+
+	var userkey = await getUserInfo();
+	const httpRequest = new XMLHttpRequest();
+	
+	httpRequest.onreadystatechange = () => {
+		if(httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
+            var data = JSON.parse(httpRequest.response);
+			DenyRun(runID,data[0].PlayerID,data[0].RunCharacter,data[0].Patch,data[0].Region,data[0].Rank,data[0].Time,data[0].MainClass,data[0].SubClass,data[0].W1,data[0].W2,data[0].W3,data[0].W4,data[0].W5,data[0].W6,data[0].Link,data[0].Notes,data[0].SubmissionTime,userkey.userRoles,data[0].SubmitterID);
+		}
+	}
+	
+	httpRequest.open('POST', '/api/getSubmissionInfo', true);
+	httpRequest.setRequestHeader('Content-type', 'x-www-form-urlencoded');
+	httpRequest.send(runID);
+}
+
 function ApproveRun (runID,playerID,characterName,patch,region,rank,time,mainClass,subClass,w1,w2,w3,w4,w5,w6,link,notes,submitTime,userkey,subID) {
 	
 	var params = runID + "@!@!@" + playerID + "@!@!@" + characterName + "@!@!@" + patch + "@!@!@" + region + "@!@!@" + rank + "@!@!@" + time + "@!@!@" + mainClass + "@!@!@" + subClass + "@!@!@" + w1 + "@!@!@" + w2 + "@!@!@" + w3 + "@!@!@" + w4 + "@!@!@" + w5 + "@!@!@" + w6 + "@!@!@" + link + "@!@!@" + notes + "@!@!@" + submitTime + "@!@!@" + userkey + "@!@!@" + subID;
@@ -81,6 +112,25 @@ function ApproveRun (runID,playerID,characterName,patch,region,rank,time,mainCla
 	}
 	
 	httpRequest.open('POST', '/api/approveRun', true);
+	httpRequest.setRequestHeader('Content-type', 'x-www-form-urlencoded');
+	httpRequest.send(params);
+}
+
+function DenyRun (runID,playerID,characterName,patch,region,rank,time,mainClass,subClass,w1,w2,w3,w4,w5,w6,link,notes,submitTime,userkey,subID) {
+	
+	var params = runID + "@!@!@" + playerID + "@!@!@" + characterName + "@!@!@" + patch + "@!@!@" + region + "@!@!@" + rank + "@!@!@" + time + "@!@!@" + mainClass + "@!@!@" + subClass + "@!@!@" + w1 + "@!@!@" + w2 + "@!@!@" + w3 + "@!@!@" + w4 + "@!@!@" + w5 + "@!@!@" + w6 + "@!@!@" + link + "@!@!@" + notes + "@!@!@" + submitTime + "@!@!@" + userkey + "@!@!@" + subID;
+
+	const httpRequest = new XMLHttpRequest();
+	
+	httpRequest.onreadystatechange = () => {
+		if(httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
+			var modal = bootstrap.Modal.getInstance(myModal)
+			modal.hide();
+			RefreshSubmissionsBegin();
+		}
+	}
+	
+	httpRequest.open('POST', '/api/denyRun', true);
 	httpRequest.setRequestHeader('Content-type', 'x-www-form-urlencoded');
 	httpRequest.send(params);
 }
