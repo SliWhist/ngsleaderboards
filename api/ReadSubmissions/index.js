@@ -68,7 +68,7 @@ module.exports = async function (context, req) {
         INNER JOIN
         Players.Customization AS sc ON submit.SubmitterID = sc.PlayerID
 
-        WHERE SubmissionStatus != 1
+        WHERE SubmissionStatus = 0
 
         ORDER BY SubmissionTime ASC`;
 			
