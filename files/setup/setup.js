@@ -1,6 +1,11 @@
 function finishSetup() {
     disableButtons();
     characterName = document.getElementById('characterNameInput').value;
+    if(characterName == '' || characterName == null) {
+        enableButtons();
+        warnName();
+        return
+    }
     //console.log(characterName);
     serverID = document.querySelector('input[name="serverRadio"]:checked').value;
     //console.log(serverID);
@@ -20,6 +25,8 @@ async function ConfirmSettings (characterName,serverID) {
 	
     var userkey = await getUserInfo();
 
+    //console.log(userkey);
+
 	const httpRequest = new XMLHttpRequest();
 	
 	httpRequest.onreadystatechange = () => {
@@ -29,15 +36,27 @@ async function ConfirmSettings (characterName,serverID) {
 		}
 	}
 
-    var param = characterName + '@!@!@' + serverID + '@!@!@' + userkey;
+    var param = characterName + '@!@!@' + serverID + '@!@!@' + userkey.userId + '@!@!@' + userkey.userDetails;
 	
+    //console.log(param);
+
 	httpRequest.open('POST', '/api/firstSettings', true);
 	httpRequest.setRequestHeader('Content-type', 'x-www-form-urlencoded');
 	httpRequest.send(param);
 }
 
 
+function warnName() {
+    var cname = document.getElementById('characterNameInputNotice')
+    cname.classList.remove('invisible')
+}
+
+function enableButtons() {
+    var r = document.getElementById('submitrun')
+	r.classList.remove("disabled");
+}
+
 function disableButtons() {
-    r = document.getElementById('submitrun')
+    var r = document.getElementById('submitrun')
 	r.classList.add("disabled");
 }

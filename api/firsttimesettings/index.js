@@ -20,13 +20,14 @@ const config = {
 
 module.exports = async function (context, req) {
 	try {
-        //console.log(req.body);
+        console.log(req.body);
         var input = req.body;
 		var inputArray = input.split("@!@!@");
         var CharacterName = inputArray[0];
         var ServerID = inputArray[1];
-        var PlayerName = inputArray[2].userDetails;
-        var userID = inputArray[2].userID;
+        var PlayerName = inputArray[3];
+        var userID = inputArray[2];
+		console.log(inputArray[3]);
 
         var poolConnection = await sql.connect(config);
 
@@ -36,7 +37,7 @@ module.exports = async function (context, req) {
 
         `;
 
-        testresults = await poolConnection.request().input('test',sql.NVarChar, userID).query(sqlTest);
+        var testresults = await poolConnection.request().input('test',sql.NVarChar, userID).query(sqlTest);
 
 		if (testresults.rowsAffected != 0) {
 			poolConnectionRead.close();
@@ -51,16 +52,18 @@ module.exports = async function (context, req) {
 
         var sqlAdd = `
         
-        INSERT INTO Players.Information(PlayerName,CharacterName)
-        VALUES(@pn,@cn)
+        INSERT INTO Players.Information (PlayerName,CharacterName)
+		VALUES (@PlayerName,@CharacterName)
 
         `;
 
-        await poolConnection.request().input('pn',sql.NVarChar, PlayerName).input('cn',sql.NVarChar, CharacterName).query(sqlAdd);
+        await poolConnection.request().input('PlayerName',sql.NVarChar, PlayerName).input('CharacterName',sql.NVarChar, CharacterName).query(sqlAdd);
 
-        sqlAdd = `SELECT PlayerID FROM Players.Information WHERE PlayerName = @pn`
+        sqlAdd = `SELECT PlayerID FROM Players.Information 
+		WHERE PlayerName = @PlayerName 
+		AND CharacterName = @CharacterName AND PlayerID > 107`
 
-        var results = await poolConnection.request().input('pn',sql.NVarChar, PlayerName).query(sqlAdd);
+        var results = await poolConnection.request().input('PlayerName',sql.NVarChar, PlayerName).input('CharacterName',sql.NVarChar, CharacterName).query(sqlAdd);
         
         sqlAdd = `
         
@@ -73,8 +76,8 @@ module.exports = async function (context, req) {
 
         sqlAdd = `
         
-        INSERT INTO Players.Customization(PlayerID,UserID,Role)
-        VALUES(@pid,@uid,'user')
+        INSERT INTO Users.Information(PlayerID,UserID,Role)
+        VALUES(@pid,@uid,"user")
 
         `;
 

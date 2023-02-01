@@ -14,7 +14,7 @@ export async function headerGenerate () {
 
         if (userInfo != null)
         {
-            //console.log(userInfo);
+            //console.log(userInfo.userDetails);
             const iterator = userInfo.claims.values();
     
             for (const value of iterator) {
