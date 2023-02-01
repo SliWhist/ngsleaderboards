@@ -38,11 +38,12 @@ myModal.addEventListener('hide.bs.modal', function (event) {
     cleanupPanel();
     disableButtons();
 	submitButton.removeAttribute("data-bs-runid");
+	denyButton.removeAttribute("data-bs-runid");
 })
 
 function sendApprove(event)
 {
-	var button = denyButton;
+	var button = submitButton;
 	//console.log(button);
     var runID = button.getAttribute('data-bs-runid');
 	GetApprovedRun(runID);
@@ -50,7 +51,7 @@ function sendApprove(event)
 
 function sendDeny(event)
 {
-	var button = submitButton;
+	var button = denyButton;
 	//console.log(button);
     var runID = button.getAttribute('data-bs-runid');
 	GetDeniedRun(runID);
@@ -277,6 +278,7 @@ function generateInfo(event) {
     var button = event.relatedTarget;
     var runID = button.getAttribute('data-bs-submitid');
 	submitButton.setAttribute("data-bs-runid",runID);
+	denyButton.setAttribute("data-bs-runid",runID);
 
 	const httpRequest = new XMLHttpRequest();
 	
