@@ -29,10 +29,16 @@ module.exports = async function (context, req) {
         var sqlQuery = `
 
             INSERT INTO dbo.TestTable2(IDRef,garbage)
-            VALUES(5556,'` + JSON.stringify(req) + `')`;
+            VALUES(5645,'@TEST')`;
                 
-            await poolConnection.request().query(sqlQuery);
+            await poolConnection.request().input('TEST',sql.NVarChar,JSON.stringify(req)).query(sqlQuery);
 
+            var sqlQuery = `
+
+            INSERT INTO dbo.TestTable2(IDRef,garbage)
+            VALUES(5456,@TEST)`;
+                
+            await poolConnection.request().input('TEST',sql.NVarChar,JSON.stringify(req)).query(sqlQuery);
         /*sqlQuery = `
         
         SELECT PlayerID FROM Players.Information WHERE PlayerName = @name
